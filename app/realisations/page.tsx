@@ -1,0 +1,5 @@
+import { getProjects } from "../../lib/data";
+export default async function RealisationsPage(){
+ const projects=await getProjects();
+ return <main><section className="page-hero"><div className="container"><span className="kicker">Portfolio</span><h1>Des réalisations qui parlent d’elles-mêmes.</h1><p>Construction, rénovation, aménagement et décoration : découvrez notre approche à travers nos projets.</p></div></section><section className="section"><div className="container"><div className="project-grid">{projects.map((p:any)=><article className="project" key={p.id}><div className="project-media">{p.image_url ? <img src={p.image_url} alt={p.title} style={{width:"100%",height:"100%",objectFit:"cover"}}/> : <span>{p.category}</span>}</div><div className="project-body"><div className="eyebrow">{p.category} · {p.location}</div><h3>{p.title}</h3><p>{p.description}</p></div></article>)}</div></div></section></main>
+}
