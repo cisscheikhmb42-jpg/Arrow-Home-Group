@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { submitLead } from "@/app/actions/lead";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/fr";
-import { budgetKeys, type LeadField, type LeadState } from "@/lib/leads/schema";
+import { budgetKeys, type LeadField, type LeadState } from "@/lib/leads/shared";
 
 type Values = Record<"name" | "phone" | "email" | "service" | "location" | "budget" | "message", string> & { consent: boolean };
 const empty: Values = { name: "", phone: "", email: "", service: "", location: "", budget: "", message: "", consent: false };

@@ -80,7 +80,7 @@ export default function ScrollCarousel({
         ref={ref}
         aria-label={label}
         tabIndex={0}
-        className="scroller -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain scroll-smooth px-5 pb-2 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 motion-reduce:scroll-auto"
+        className="scroller -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain scroll-smooth px-5 pb-2 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 motion-reduce:scroll-auto"
       >
         {children}
       </ul>

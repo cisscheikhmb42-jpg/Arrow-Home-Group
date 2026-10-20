@@ -1,0 +1,55 @@
+PASS  hero: liens des boutons  — /fr/devis /fr/realisations /fr/devis?service=construction /fr/services /fr/devis?service=renovation /fr/realisations /fr/immobilier /fr/devis?service=immobilier /fr/devis?service=construction /fr/notre-methode
+PASS  hero lien /fr/devis  — 200
+PASS  hero lien /fr/realisations  — 200
+PASS  hero lien /fr/devis?service=construction  — 200
+PASS  hero lien /fr/services  — 200
+PASS  hero lien /fr/devis?service=renovation  — 200
+PASS  hero lien /fr/immobilier  — 200
+PASS  hero lien /fr/devis?service=immobilier  — 200
+PASS  hero lien /fr/notre-methode  — 200
+PASS  clic Rénover mon espace → devis pré-rempli
+PASS  ancien lien /devis?service=projets-hoteliers
+PASS  logo: présent (header + footer)  — [{"filter":"none","blend":"normal","op":1,"ratio":"1.684","shown":"1.688"},{"filter":"none","blend":"normal","op":1,"ratio":"1.684","shown":"1.679"}]
+PASS  logo: aucun filtre/fusion/transparence, proportions intactes
+PASS  filtre bois actif
+PASS  FR→EN conserve page + filtre  — http://localhost:3100/en/projects?cat=bois
+PASS  filtre toujours appliqué en EN
+PASS  EN→ZH
+PASS  filtre « tous » affiche plus d'éléments  — 1 → 7
+PASS  saisie conservée après changement de langue
+PASS  validation EN: erreurs en anglais  — quote-name-error: This field is required. | quote-phone-error: Invalid phone number. | quote-email-error: Invalid email address. | quote-consent-error: Your consent is required to process this request.
+PASS  champ invalide marqué aria-invalid
+PASS  validation ZH: erreurs en chinois
+PASS  sans Supabase/Resend: erreur « indisponible », pas de confirmation
+PASS  3 envois valides → confirmation affichée après enregistrement
+PASS  4e envoi en 15 min → bloqué (limitation de fréquence)
+PASS  pot de miel rempli → rejeté
+PASS  envoi en moins de 2,5 s → rejeté
+PASS  mobile 375px /fr: pas de débordement horizontal  — +0px
+PASS  mobile 375px /zh: pas de débordement horizontal  — +0px
+PASS  mobile 375px /en/projects: pas de débordement horizontal  — +0px
+PASS  mobile 375px /fr/devis: pas de débordement horizontal  — +0px
+PASS  mobile 375px /fr/services: pas de débordement horizontal  — +0px
+PASS  mobile 375px /zh/contact: pas de débordement horizontal  — +0px
+PASS  mobile: menu mobile réellement visible et cliquable  — {"y":96,"visible":true}
+PASS  mobile: menu s'ouvre et se ferme (Échap)
+PASS  tablette 768px /fr: pas de débordement horizontal  — +0px
+PASS  tablette 768px /zh: pas de débordement horizontal  — +0px
+PASS  tablette 768px /en/projects: pas de débordement horizontal  — +0px
+PASS  tablette 768px /fr/devis: pas de débordement horizontal  — +0px
+PASS  tablette 768px /fr/services: pas de débordement horizontal  — +0px
+PASS  tablette 768px /zh/contact: pas de débordement horizontal  — +0px
+PASS  tablette: menu mobile réellement visible et cliquable  — {"y":96,"visible":true}
+PASS  tablette: menu s'ouvre et se ferme (Échap)
+PASS  desktop 1440px /fr: pas de débordement horizontal  — +0px
+PASS  desktop 1440px /zh: pas de débordement horizontal  — +0px
+PASS  desktop 1440px /en/projects: pas de débordement horizontal  — +0px
+PASS  desktop 1440px /fr/devis: pas de débordement horizontal  — +0px
+PASS  desktop 1440px /fr/services: pas de débordement horizontal  — +0px
+PASS  desktop 1440px /zh/contact: pas de débordement horizontal  — +0px
+PASS  1er Tab = lien « Skip to content »
+PASS  focus visible sur le lien suivant  — solid
+PASS  rail: flèches du clavier + bouton font défiler  — 0→391→782
+PASS  aucune erreur JavaScript / CSP dans la console
+
+53/53 PASS

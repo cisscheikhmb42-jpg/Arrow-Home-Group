@@ -111,7 +111,7 @@ export function Testimonials({ locale, t }: { locale: Locale; t: Dictionary }) {
         <ul className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((q) => (
             <li key={q.author} className="border-t border-champagne pt-8">
-              <blockquote className="display text-2xl leading-snug text-graphite">« {q.quote[locale]} »</blockquote>
+              <blockquote className="display text-2xl leading-snug text-graphite">{locale === "fr" ? `« ${q.quote[locale]} »` : `“${q.quote[locale]}”`}</blockquote>
               <p className="mt-6 font-semibold text-graphite">{q.author}</p>
               <p className="text-sm text-stone">{q.context[locale]}</p>
             </li>

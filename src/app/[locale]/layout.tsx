@@ -64,7 +64,7 @@ export default async function LocaleLayout({
     <html lang={htmlLang[locale]}>
       <body className="flex min-h-dvh flex-col font-sans">
         <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+          <style>{`[data-reveal]{opacity:1!important;translate:none!important;transform:none!important}`}</style>
         </noscript>
         <a
           href="#contenu"

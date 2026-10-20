@@ -51,6 +51,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
   };
 
   return (
+    <>
     <header
       className={`sticky top-0 z-50 border-b bg-ivory/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ${
         scrolled ? "border-mist shadow-[0_10px_30px_-20px_rgba(23,25,28,0.35)]" : "border-transparent"
@@ -62,7 +63,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
         </Link>
 
         <nav aria-label={t.mainNav} className="hidden xl:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-5 2xl:gap-8">
             {items.map((item) => {
               const active = isActive(item.key);
               return (
@@ -70,7 +71,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
                   <Link
                     href={href(locale, item.key)}
                     aria-current={active ? "page" : undefined}
-                    className={`relative py-2 text-[13px] font-semibold tracking-[0.1em] uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-champagne after:transition-transform after:duration-300 lang-zh:tracking-normal ${
+                    className={`relative py-2 text-[13px] font-semibold whitespace-nowrap tracking-[0.1em] uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-champagne after:transition-transform after:duration-300 lang-zh:tracking-normal ${
                       active ? "text-graphite after:scale-x-100" : "text-stone after:scale-x-0 hover:text-graphite hover:after:scale-x-100"
                     }`}
                   >
@@ -84,7 +85,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
 
         <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher locale={locale} label={t.language} className="hidden md:flex" />
-          <Link href={href(locale, "quote")} className="btn btn-dark hidden min-h-11 px-5 py-2.5 text-xs sm:inline-flex">
+          <Link href={href(locale, "quote")} className="btn btn-dark hidden min-h-11 px-5 py-2.5 text-xs whitespace-nowrap sm:inline-flex xl:hidden wide:inline-flex">
             {t.cta}
           </Link>
           <button
@@ -99,6 +100,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
           </button>
         </div>
       </div>
+    </header>
 
       {open && (
         <div id="mobile-menu" className="fixed inset-0 z-[60] xl:hidden" role="dialog" aria-modal="true" aria-label={t.menu}>
@@ -150,6 +152,6 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

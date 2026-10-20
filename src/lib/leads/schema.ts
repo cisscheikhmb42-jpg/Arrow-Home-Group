@@ -2,12 +2,9 @@ import { z } from "zod";
 import { locales } from "@/i18n/config";
 import { serviceSlugs } from "@/content/services";
 
-/** Codes d'erreur renvoyés au navigateur ; leurs libellés traduits sont dans `form.errors` des dictionnaires. */
-export type FieldErrorCode = "required" | "tooShort" | "tooLong" | "email" | "phone" | "consent" | "invalid";
-export type FormErrorCode = "rateLimited" | "spam" | "unavailable" | "server";
+import { budgetKeys, leadKinds } from "./shared";
 
-export const budgetKeys = ["lt5", "5-20", "20-50", "50-100", "gt100", "unknown"] as const;
-export const leadKinds = ["quote", "contact"] as const;
+export type { FieldErrorCode, FormErrorCode, LeadField, LeadState } from "./shared";
 
 const text = (min: number, max: number) =>
   z
@@ -64,9 +61,3 @@ export const leadSchema = z
   });
 
 export type Lead = z.infer<typeof leadSchema>;
-export type LeadField = "name" | "phone" | "email" | "service" | "location" | "budget" | "message" | "consent";
-
-export type LeadState =
-  | { status: "idle" }
-  | { status: "success" }
-  | { status: "error"; fieldErrors?: Partial<Record<LeadField, FieldErrorCode>>; formError?: FormErrorCode };

@@ -44,7 +44,7 @@ export default function LanguageSwitcher({
                 onNavigate?.();
                 if (!active) router.push(`${target}${window.location.search}${window.location.hash}`);
               }}
-              className={`inline-flex min-h-11 min-w-11 items-center justify-center px-2 text-[13px] font-semibold tracking-[0.08em] transition-colors ${
+              className={`inline-flex min-h-11 min-w-11 items-center justify-center px-2 whitespace-nowrap text-[13px] font-semibold tracking-[0.08em] transition-colors ${
                 dark
                   ? active ? "text-white" : "text-ash hover:text-white"
                   : active ? "text-graphite" : "text-stone hover:text-graphite"

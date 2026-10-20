@@ -25,6 +25,9 @@
   --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, "Times New Roman", serif;
 
+  /* Point de rupture « large » : le bouton du header réapparaît à côté du menu complet */
+  --breakpoint-wide: 87.5rem;
+
   --animate-marquee: ah-marquee 45s linear infinite;
 }
 
@@ -54,6 +57,7 @@ body {
   color: var(--color-graphite);
 }
 
+@layer components {
 /* Titres éditoriaux */
 .display {
   font-family: var(--font-display);
@@ -186,6 +190,7 @@ select.field {
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1.1rem;
+}
 }
 
 @keyframes ah-progress {

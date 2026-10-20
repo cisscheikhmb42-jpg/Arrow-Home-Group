@@ -3,7 +3,8 @@
 import { headers } from "next/headers";
 import { isServiceSlug } from "@/content/services";
 import fr from "@/i18n/dictionaries/fr";
-import { leadSchema, type FieldErrorCode, type LeadField, type LeadState } from "@/lib/leads/schema";
+import { leadSchema } from "@/lib/leads/schema";
+import type { FieldErrorCode, LeadField, LeadState } from "@/lib/leads/shared";
 import { notifyConfigured, notifyLead } from "@/lib/leads/notify";
 import { hashIp, isRateLimited } from "@/lib/leads/rate-limit";
 import { insertLead, storageConfigured } from "@/lib/leads/store";

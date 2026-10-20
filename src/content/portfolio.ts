@@ -69,7 +69,6 @@ export const projects: Project[] = [];
  */
 export const illustrations: { id: string; category: PortfolioCategory; variant: number }[] = [
   { id: "construction-1", category: "construction", variant: 0 },
-  { id: "construction-2", category: "construction", variant: 3 },
   { id: "renovation-1", category: "renovation", variant: 6 },
   { id: "amenagement-1", category: "amenagement", variant: 1 },
   { id: "aluminium-1", category: "aluminium", variant: 4 },
