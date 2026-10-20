@@ -14,12 +14,13 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 - Textes : `src/i18n/dictionaries/{fr,en,zh}.ts` (fr définit le type). Aucun texte en dur dans les composants
 
 ## Charte
-- Design : graphite `#17191C`, champagne `#C2A878` (texte sur fond clair : `champagne-700` `#7D6438`), blanc cassé `#F5F3EE`, anthracite `#34383D`, gris clair `#E7E5E0`
+- Design (demande du client) : FOND BLANC partout, TEXTES EN BLEU du logo `#004E85` (jeton `graphite`), texte secondaire bleu `#3D6D96` (`stone`), bordures `#DCE6EF` (`mist`), encadrés `#F3F7FB` (`tint`). Vert du logo `#95BE29` (`champagne`) seulement pour de fins traits décoratifs ; petits sur-titres en vert foncé `#4A7A12` (`champagne-700`). Les noms de jetons historiques sont conservés
+- AUCUN DESSIN / ILLUSTRATION : le client les a refusés. Sans photo, afficher un encadré sobre « Photos à venir » (PortfolioCard) ou une icône (expertises). Les vraies photos arriveront plus tard
 - LOGO : `public/brand/logo.png`, original (SHA-256 71d70061…68390), via `src/components/Logo.tsx`. Jamais de filtre, d'opacité, de recoloration ni de version redessinée. Texte noir → toujours sur fond clair
 - Coordonnées : `src/lib/site.ts` (e-mail principal info@arrowhome.cc, secondaire arrowhome.senegal@gmail.com)
 
 ## Contenu
-- Réalisations réelles : `src/content/portfolio.ts` (`projects`, vide pour l'instant ; les illustrations au trait sont signalées « Illustration »)
+- Réalisations réelles : `src/content/portfolio.ts` (`projects`, vide pour l'instant ; encadrés « Photos à venir » via `placeholders`)
 - Témoignages et biens : `src/content/trust.ts` (vides ; sections masquées tant qu'ils sont vides)
 - Ne pas inventer de chiffres, projets, témoignages, certifications, dates. Ne pas afficher d'année de création
 - Infos de l'ancien site (50+ projets, 100 % satisfaits, 90 jours, garantie 1 an, ingénierie chinoise, projets Almadies/Plateau…) : à confirmer par l'utilisateur avant ajout
