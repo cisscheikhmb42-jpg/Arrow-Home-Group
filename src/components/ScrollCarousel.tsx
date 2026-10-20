@@ -1,42 +1,86 @@
 "use client";
 
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-/** Rangée de cartes qui défile horizontalement (glisser au doigt, ou flèches). */
+/**
+ * Rangée horizontale : glisser au doigt, trackpad, molette + Maj, flèches du clavier (quand la liste a le focus)
+ * ou boutons. Le défilement vertical de la page n'est jamais intercepté.
+ */
 export default function ScrollCarousel({
   children,
   label,
+  prevLabel,
+  nextLabel,
   dark = false,
 }: {
   children: React.ReactNode;
   label: string;
+  prevLabel: string;
+  nextLabel: string;
   dark?: boolean;
 }) {
   const ref = useRef<HTMLUListElement>(null);
+  const [edges, setEdges] = useState({ start: true, end: false });
+
+  const update = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    setEdges({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 8 });
+  }, []);
+
+  useEffect(() => {
+    update();
+    const el = ref.current;
+    if (!el) return;
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [update]);
+
   const scroll = (dir: number) => {
     const el = ref.current;
     if (!el) return;
-    el.scrollBy({ left: dir * Math.max(el.clientWidth * 0.8, 280), behavior: "smooth" });
+    const card = el.querySelector("li");
+    const step = card ? card.getBoundingClientRect().width + 24 : el.clientWidth * 0.8;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollBy({ left: dir * step, behavior: reduce ? "auto" : "smooth" });
   };
+
   const btn = dark
-    ? "border-white/25 text-white hover:bg-white/10"
-    : "border-slate-300 bg-white text-slate-800 hover:border-brand-600 hover:text-brand-600";
+    ? "border-white/25 text-white enabled:hover:border-champagne enabled:hover:text-champagne"
+    : "border-graphite/25 text-graphite enabled:hover:border-graphite enabled:hover:bg-graphite enabled:hover:text-white";
 
   return (
     <div>
-      <div className="mb-6 flex justify-end gap-2">
-        <button type="button" onClick={() => scroll(-1)} aria-label="Défiler vers la gauche" className={`focus-ring inline-flex size-11 items-center justify-center rounded-full border transition-colors ${btn}`}>
-          <ChevronLeft className="size-5" />
+      <div className="mb-8 flex justify-end gap-3">
+        <button
+          type="button"
+          onClick={() => scroll(-1)}
+          disabled={edges.start}
+          aria-label={prevLabel}
+          className={`inline-flex size-12 items-center justify-center rounded-full border transition-colors disabled:opacity-30 ${btn}`}
+        >
+          <ArrowLeft className="size-5" strokeWidth={1.5} />
         </button>
-        <button type="button" onClick={() => scroll(1)} aria-label="Défiler vers la droite" className={`focus-ring inline-flex size-11 items-center justify-center rounded-full border transition-colors ${btn}`}>
-          <ChevronRight className="size-5" />
+        <button
+          type="button"
+          onClick={() => scroll(1)}
+          disabled={edges.end}
+          aria-label={nextLabel}
+          className={`inline-flex size-12 items-center justify-center rounded-full border transition-colors disabled:opacity-30 ${btn}`}
+        >
+          <ArrowRight className="size-5" strokeWidth={1.5} />
         </button>
       </div>
       <ul
         ref={ref}
         aria-label={label}
-        className="scroller -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-4 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0"
+        tabIndex={0}
+        className="scroller -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain scroll-smooth px-5 pb-2 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 motion-reduce:scroll-auto"
       >
         {children}
       </ul>

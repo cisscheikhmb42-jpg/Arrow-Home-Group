@@ -1,12 +1,27 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, Phone, X } from "lucide-react";
-import { nav, site } from "@/lib/site";
+import { ArrowRight, Menu, Phone, X } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import { href, type RouteKey } from "@/i18n/routes";
+import type { Dictionary } from "@/i18n/dictionaries/fr";
+import { site } from "@/lib/site";
+import LanguageSwitcher from "./LanguageSwitcher";
+import Logo from "./Logo";
 
-export default function Header() {
+const items: { key: RouteKey; label: keyof Dictionary["nav"] }[] = [
+  { key: "home", label: "home" },
+  { key: "services", label: "services" },
+  { key: "projects", label: "projects" },
+  { key: "about", label: "about" },
+  { key: "process", label: "process" },
+  { key: "contact", label: "contact" },
+];
+
+export default function Header({ locale, t }: { locale: Locale; t: Dictionary["nav"] }) {
+  const pathname = usePathname() || "";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -18,106 +33,116 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
+  useEffect(() => setOpen(false), [pathname]);
+
+  const isActive = (key: RouteKey) => {
+    const target = href(locale, key);
+    return key === "home" ? pathname === target : pathname === target || pathname.startsWith(`${target}/`);
+  };
+
   return (
     <header
-      className={`sticky top-0 z-50 bg-white/95 backdrop-blur transition-shadow ${
-        scrolled ? "shadow-[0_1px_0_rgba(15,23,32,0.08),0_8px_24px_-12px_rgba(15,23,32,0.18)]" : ""
+      className={`sticky top-0 z-50 border-b bg-ivory/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ${
+        scrolled ? "border-mist shadow-[0_10px_30px_-20px_rgba(23,25,28,0.35)]" : "border-transparent"
       }`}
     >
-      <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
-        <Link href="/" className="focus-ring flex shrink-0 items-center rounded" aria-label="Arrow Home, accueil">
-          <Image src="/brand/logo.png" alt="Arrow Home" width={320} height={190} priority className="h-12 w-auto lg:h-16" />
+      <div className="container-x flex h-[4.5rem] items-center justify-between gap-6 lg:h-24">
+        <Link href={href(locale, "home")} className="flex shrink-0 items-center" aria-label={t.homeLabel}>
+          <Logo priority className="h-12 w-auto lg:h-16" />
         </Link>
 
-        <nav aria-label="Navigation principale" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="focus-ring rounded-md px-3 py-2 text-[15px] font-semibold text-slate-700 transition-colors hover:text-brand-600"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+        <nav aria-label={t.mainNav} className="hidden xl:block">
+          <ul className="flex items-center gap-7">
+            {items.map((item) => {
+              const active = isActive(item.key);
+              return (
+                <li key={item.key}>
+                  <Link
+                    href={href(locale, item.key)}
+                    aria-current={active ? "page" : undefined}
+                    className={`relative py-2 text-[13px] font-semibold tracking-[0.1em] uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-champagne after:transition-transform after:duration-300 lang-zh:tracking-normal ${
+                      active ? "text-graphite after:scale-x-100" : "text-stone after:scale-x-0 hover:text-graphite hover:after:scale-x-100"
+                    }`}
+                  >
+                    {t[item.label]}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <a
-            href={site.phoneHref}
-            className="focus-ring hidden items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-brand-700 xl:flex"
-          >
-            <Phone className="size-4" aria-hidden />
-            {site.phone}
-          </a>
-          <Link
-            href="/devis"
-            className="focus-ring hidden rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700 sm:inline-flex"
-          >
-            Demander un devis
+        <div className="flex items-center gap-2 sm:gap-4">
+          <LanguageSwitcher locale={locale} label={t.language} className="hidden md:flex" />
+          <Link href={href(locale, "quote")} className="btn btn-dark hidden min-h-11 px-5 py-2.5 text-xs sm:inline-flex">
+            {t.cta}
           </Link>
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="focus-ring inline-flex size-11 items-center justify-center rounded-lg text-brand-800 lg:hidden"
-            aria-label="Ouvrir le menu"
+            className="inline-flex size-11 items-center justify-center text-graphite xl:hidden"
+            aria-label={t.openMenu}
             aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            <Menu className="size-6" />
+            <Menu className="size-6" strokeWidth={1.5} />
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
-          <div className="absolute inset-0 bg-brand-950/50" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 right-0 flex w-[min(22rem,88vw)] flex-col bg-white shadow-2xl">
-            <div className="flex h-16 items-center justify-between border-b border-slate-100 px-4">
-              <Image src="/brand/logo.png" alt="Arrow Home" width={320} height={190} className="h-10 w-auto" />
+        <div id="mobile-menu" className="fixed inset-0 z-[60] xl:hidden" role="dialog" aria-modal="true" aria-label={t.menu}>
+          <div className="absolute inset-0 bg-graphite/60" onClick={() => setOpen(false)} />
+          <div className="absolute inset-y-0 right-0 flex w-[min(26rem,100vw)] flex-col bg-ivory">
+            <div className="flex h-[4.5rem] items-center justify-between border-b border-mist px-5">
+              <Logo className="h-11 w-auto" />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="focus-ring inline-flex size-11 items-center justify-center rounded-lg text-brand-800"
-                aria-label="Fermer le menu"
+                className="inline-flex size-11 items-center justify-center text-graphite"
+                aria-label={t.closeMenu}
+                autoFocus
               >
-                <X className="size-6" />
+                <X className="size-6" strokeWidth={1.5} />
               </button>
             </div>
-            <nav aria-label="Navigation mobile" className="flex-1 overflow-y-auto px-2 py-4">
-              <ul>
-                {nav.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="focus-ring block rounded-lg px-4 py-3.5 text-lg font-semibold text-slate-800 hover:bg-brand-50"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+            <nav aria-label={t.mobileNav} className="flex-1 overflow-y-auto px-5 py-6">
+              <ul className="divide-y divide-mist">
+                {[...items, { key: "real-estate" as RouteKey, label: "realEstate" as const }].map((item) => {
+                  const active = isActive(item.key);
+                  return (
+                    <li key={item.key}>
+                      <Link
+                        href={href(locale, item.key)}
+                        onClick={() => setOpen(false)}
+                        aria-current={active ? "page" : undefined}
+                        className={`flex items-center justify-between py-4 text-lg ${active ? "font-semibold text-graphite" : "text-anthracite"}`}
+                      >
+                        {t[item.label]}
+                        {active && <span aria-hidden className="h-px w-8 bg-champagne" />}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
+              <LanguageSwitcher locale={locale} label={t.language} className="mt-6 -ml-2" onNavigate={() => setOpen(false)} />
             </nav>
-            <div className="space-y-3 border-t border-slate-100 p-4">
-              <Link
-                href="/devis"
-                onClick={() => setOpen(false)}
-                className="focus-ring flex w-full items-center justify-center rounded-lg bg-brand-600 px-5 py-3.5 font-bold text-white"
-              >
-                Demander un devis
+            <div className="space-y-3 border-t border-mist p-5">
+              <Link href={href(locale, "quote")} onClick={() => setOpen(false)} className="btn btn-dark w-full">
+                {t.cta}
+                <ArrowRight className="arrow size-4" aria-hidden />
               </Link>
-              <a
-                href={site.phoneHref}
-                className="focus-ring flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-5 py-3.5 font-semibold text-brand-700"
-              >
+              <a href={site.phoneHref} className="btn btn-outline-dark w-full">
                 <Phone className="size-4" aria-hidden />
                 {site.phone}
               </a>

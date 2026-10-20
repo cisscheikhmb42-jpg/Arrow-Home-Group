@@ -1,23 +1,23 @@
-/** Bandeau de texte qui défile en continu. */
-export default function Marquee({ items }: { items: string[] }) {
+/** Bandeau éditorial qui défile lentement (en pause au survol, immobile si l'utilisateur réduit les animations). */
+export default function Marquee({ items, label }: { items: string[]; label: string }) {
   const row = (hidden: boolean) => (
-    <ul aria-hidden={hidden} className="flex shrink-0 items-center gap-10 pr-10">
+    <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center">
       {items.map((t) => (
-        <li key={t} className="flex items-center gap-10 whitespace-nowrap">
-          <span className="text-lg font-extrabold tracking-tight text-brand-950 sm:text-xl">{t}</span>
-          <svg viewBox="0 0 20 18" className="size-4 shrink-0" aria-hidden>
-            <path d="M10 0 L20 18 H0 Z" fill="#004f86" />
-          </svg>
+        <li key={t} className="flex items-center whitespace-nowrap">
+          <span className="display px-8 text-3xl text-graphite italic sm:px-12 sm:text-4xl lang-zh:not-italic">{t}</span>
+          <span aria-hidden className="h-px w-10 bg-champagne sm:w-16" />
         </li>
       ))}
     </ul>
   );
   return (
-    <div className="group relative flex overflow-hidden bg-accent-500 py-5" aria-label="Nos métiers">
-      <div className="flex animate-[ah-marquee_40s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+    <section aria-label={label} className="group relative flex overflow-hidden border-y border-mist bg-white py-7 sm:py-9">
+      <div className="flex animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none">
         {row(false)}
         {row(true)}
+        {row(true)}
+        {row(true)}
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,17 +1,16 @@
 import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./Icon";
 
-export default function WhatsAppButton() {
+export default function WhatsAppButton({ label, message }: { label: string; message: string }) {
   return (
     <a
-      href={whatsappLink()}
+      href={whatsappLink(message)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Discuter avec Arrow Home sur WhatsApp"
-      className="focus-ring fixed right-4 bottom-4 z-40 inline-flex items-center gap-2 rounded-full bg-[#25D366] p-3.5 text-white shadow-lg shadow-black/20 transition-transform hover:scale-105 sm:right-6 sm:bottom-6 sm:px-5"
+      aria-label={label}
+      className="fixed right-4 bottom-4 z-40 inline-flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform hover:scale-105 sm:right-6 sm:bottom-6"
     >
-      <WhatsAppIcon className="size-7 sm:size-6" />
-      <span className="hidden text-sm font-bold sm:inline">WhatsApp</span>
+      <WhatsAppIcon className="size-7" />
     </a>
   );
 }

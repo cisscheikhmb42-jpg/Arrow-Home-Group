@@ -1,34 +1,24 @@
 import {
+  AppWindow,
   ArrowUpDown,
   Building2,
-  CalendarCheck,
-  DoorOpen,
   Hammer,
-  Handshake,
-  Hotel,
   KeyRound,
   PaintRoller,
-  ReceiptText,
-  ShieldCheck,
   Sofa,
-  Trees,
+  TreePine,
   type LucideProps,
 } from "lucide-react";
 
 const icons = {
+  AppWindow,
   ArrowUpDown,
   Building2,
-  CalendarCheck,
-  DoorOpen,
   Hammer,
-  Handshake,
-  Hotel,
   KeyRound,
   PaintRoller,
-  ReceiptText,
-  ShieldCheck,
   Sofa,
-  Trees,
+  TreePine,
 };
 
 export default function Icon({ name, ...props }: { name: string } & LucideProps) {

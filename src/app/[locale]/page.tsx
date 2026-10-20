@@ -1,0 +1,80 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import HeroSlider, { type Slide } from "@/components/HeroSlider";
+import { InstagramIcon } from "@/components/Icon";
+import Marquee from "@/components/Marquee";
+import Reveal from "@/components/Reveal";
+import { AboutSection, ContactSection, ProcessTimeline, RealEstateBanner, Testimonials } from "@/components/sections/Blocks";
+import PortfolioRail from "@/components/sections/PortfolioRail";
+import SectionHeading from "@/components/sections/SectionHeading";
+import ServicesGrid from "@/components/sections/ServicesGrid";
+import { getPortfolioItems } from "@/content/portfolio-items";
+import { getDictionary } from "@/i18n";
+import type { Locale } from "@/i18n/config";
+import { href } from "@/i18n/routes";
+import { site } from "@/lib/site";
+
+export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const t = getDictionary(locale);
+  const s = t.hero.slides;
+  const quote = href(locale, "quote");
+
+  // Chaque diapositive renvoie vers une vraie page (devis pré-rempli, immobilier, réalisations…).
+  const slides: Slide[] = [
+    { ...s[0], cta: { label: s[0].cta, href: quote }, secondary: { label: s[0].secondary, href: href(locale, "projects") }, variant: 0 },
+    { ...s[1], cta: { label: s[1].cta, href: `${quote}?service=construction` }, secondary: { label: s[1].secondary, href: href(locale, "services") }, variant: 3 },
+    { ...s[2], cta: { label: s[2].cta, href: `${quote}?service=renovation` }, secondary: { label: s[2].secondary, href: href(locale, "projects") }, variant: 1 },
+    { ...s[3], cta: { label: s[3].cta, href: href(locale, "real-estate") }, secondary: { label: s[3].secondary, href: `${quote}?service=immobilier` }, variant: 2 },
+    { ...s[4], cta: { label: s[4].cta, href: `${quote}?service=construction` }, secondary: { label: s[4].secondary, href: href(locale, "process") }, variant: 4 },
+  ];
+
+  return (
+    <>
+      <HeroSlider slides={slides} t={t.hero} />
+      <div id="contenu-suite" />
+      <Marquee items={t.marquee.items} label={t.marquee.label} />
+
+      {/* Expertises */}
+      <section className="bg-ivory py-24 lg:py-36">
+        <div className="container-x">
+          <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} subtitle={t.services.subtitle}>
+            <Link href={href(locale, "services")} className="link-line self-start text-graphite lg:self-auto">
+              {t.services.more}
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+          </SectionHeading>
+          <ServicesGrid locale={locale} t={t} />
+        </div>
+      </section>
+
+      {/* Réalisations */}
+      <section className="overflow-hidden bg-white py-24 lg:py-36">
+        <div className="container-x">
+          <SectionHeading eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} subtitle={t.portfolio.subtitle}>
+            <Link href={href(locale, "projects")} className="link-line self-start text-graphite lg:self-auto">
+              {t.portfolio.viewAll}
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+          </SectionHeading>
+          <Reveal className="mt-10 max-w-3xl border-l border-champagne pl-5 text-sm leading-relaxed text-stone">
+            {t.portfolio.illustrationNote}{" "}
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-graphite underline decoration-champagne underline-offset-4">
+              <InstagramIcon className="size-4" />
+              {t.portfolio.instagram}
+            </a>
+          </Reveal>
+          <div className="mt-6">
+            <PortfolioRail items={getPortfolioItems(locale, t)} t={t} />
+          </div>
+        </div>
+      </section>
+
+      <AboutSection locale={locale} t={t} />
+      <ProcessTimeline t={t} />
+      <Testimonials locale={locale} t={t} />
+      <RealEstateBanner locale={locale} t={t} />
+      <ContactSection locale={locale} t={t} />
+    </>
+  );
+}

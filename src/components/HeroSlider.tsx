@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import type { Dictionary } from "@/i18n/dictionaries/fr";
+import { fill } from "@/i18n/fill";
 import Blueprint from "./Blueprint";
-import { WhatsAppIcon } from "./Icon";
-import { whatsappLink } from "@/lib/site";
 
 export type Slide = {
   eyebrow: string;
@@ -14,13 +14,16 @@ export type Slide = {
   highlight: string;
   text: string;
   cta: { label: string; href: string };
-  /** Chemin d'une photo dans /public (ex. "/photos/chantier.jpg"). Sans photo, une illustration est affichée. */
+  secondary: { label: string; href: string };
+  /** Illustration affichée tant qu'aucune photo n'est fournie. */
+  variant: number;
+  /** Photo dans /public (ex. "/photos/hero/facade.jpg"), à utiliser uniquement avec des images dont les droits sont acquis. */
   image?: string;
 };
 
-const DURATION = 6500;
+const DURATION = 7000;
 
-export default function HeroSlider({ slides }: { slides: Slide[] }) {
+export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictionary["hero"] }) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hover, setHover] = useState(false);
@@ -35,17 +38,21 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
 
   useEffect(() => {
     if (!playing || hover) return;
-    const t = setTimeout(() => go(index + 1), DURATION);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => go(index + 1), DURATION);
+    return () => clearTimeout(timer);
   }, [index, playing, hover, go]);
+
+  const running = playing && !hover;
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-brand-950 text-white"
-      aria-roledescription="carrousel"
-      aria-label="Présentation d'Arrow Home"
+      className="on-dark relative isolate overflow-hidden bg-graphite text-white"
+      aria-roledescription="carousel"
+      aria-label={t.carousel}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onFocusCapture={() => setHover(true)}
+      onBlurCapture={() => setHover(false)}
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
       onTouchEnd={(e) => {
         if (touchX.current === null) return;
@@ -69,126 +76,129 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                className={`object-cover transition-transform duration-[7000ms] ease-out ${i === index ? "scale-105" : "scale-100"}`}
+                className={`object-cover transition-transform duration-[8000ms] ease-out ${i === index ? "scale-105" : "scale-100"}`}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/75 to-brand-950/30" />
+              <div className="absolute inset-0 bg-gradient-to-r from-graphite/95 via-graphite/75 to-graphite/30" />
             </>
           ) : (
             <>
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_40%,#0a64a4_0%,#002f52_45%,#001526_100%)]" />
               <Blueprint
-                variant={i % 4}
-                className={`absolute top-1/2 right-[-12%] h-[115%] -translate-y-1/2 opacity-40 transition-transform duration-[7000ms] ease-out sm:right-[-6%] lg:right-[-7%] lg:h-[88%] lg:opacity-80 ${
-                  i === index ? "scale-105" : "scale-100"
+                variant={s.variant}
+                className={`absolute inset-y-0 right-0 h-full w-full opacity-35 transition-transform duration-[8000ms] ease-out lg:w-[62%] lg:opacity-90 ${
+                  i === index ? "scale-[1.04]" : "scale-100"
                 }`}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/70 to-transparent lg:via-brand-950/60" />
+              <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/85 to-graphite/10 lg:via-graphite/70" />
             </>
           )}
         </div>
       ))}
 
-      <div className="container-x relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20 sm:min-h-[38rem] lg:min-h-[calc(100svh-5rem)] lg:max-h-[52rem] lg:py-24">
-        <div className="relative max-w-2xl">
+      <div className="container-x relative flex min-h-[calc(100svh-4.5rem)] flex-col justify-center pt-16 pb-28 sm:min-h-[40rem] lg:min-h-[calc(100svh-6rem)] lg:max-h-[56rem] lg:pt-20">
+        <div className="relative max-w-3xl">
           {slides.map((s, i) => (
             <div
               key={i}
               role="group"
-              aria-roledescription="diapositive"
-              aria-label={`${i + 1} sur ${count}`}
+              aria-roledescription={t.slide}
+              aria-label={fill(t.slideOf, { n: i + 1, total: count })}
               aria-hidden={i !== index}
+              inert={i !== index}
               className={`transition-all duration-700 ${
                 i === index
                   ? "relative translate-y-0 opacity-100 delay-200"
-                  : "pointer-events-none absolute inset-x-0 top-0 translate-y-6 opacity-0"
+                  : "pointer-events-none absolute inset-x-0 top-0 translate-y-5 opacity-0"
               }`}
             >
               <p className="eyebrow eyebrow-light">{s.eyebrow}</p>
-              <h1 className="mt-5 text-[2.5rem] leading-[1.05] font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-                {s.title} <span className="text-accent-400">{s.highlight}</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-100 sm:text-xl">{s.text}</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href={s.cta.href}
-                  tabIndex={i === index ? 0 : -1}
-                  className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-7 py-4 font-bold text-brand-950 transition-colors hover:bg-accent-400"
-                >
+              {i === 0 ? (
+                <h1 className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[5.5rem]">
+                  <span className="block">{s.title}</span>
+                  <span className="block text-champagne italic lang-zh:not-italic">{s.highlight}</span>
+                </h1>
+              ) : (
+                <p className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[5.5rem]">
+                  <span className="block">{s.title}</span>
+                  <span className="block text-champagne italic lang-zh:not-italic">{s.highlight}</span>
+                </p>
+              )}
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">{s.text}</p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Link href={s.cta.href} className="btn btn-champagne">
                   {s.cta.label}
-                  <ArrowRight className="size-5" aria-hidden />
+                  <ArrowRight className="arrow size-4" aria-hidden />
                 </Link>
-                <a
-                  href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  tabIndex={i === index ? 0 : -1}
-                  className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/5 px-7 py-4 font-bold backdrop-blur transition-colors hover:bg-white/15"
-                >
-                  <WhatsAppIcon className="size-5" />
-                  Écrire sur WhatsApp
-                </a>
+                <Link href={s.secondary.href} className="btn btn-outline-light">
+                  {s.secondary.label}
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Contrôles */}
-        <div className="mt-14 flex items-center gap-4 sm:mt-16">
-          <div className="flex gap-2">
+        {/* Commandes */}
+        <div className="absolute inset-x-0 bottom-0 pb-8">
+          <div className="container-x flex items-center gap-4">
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => go(index - 1)}
+                className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:border-champagne hover:text-champagne"
+                aria-label={t.prev}
+              >
+                <ChevronLeft className="size-5" strokeWidth={1.5} />
+              </button>
+              <button
+                type="button"
+                onClick={() => go(index + 1)}
+                className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:border-champagne hover:text-champagne"
+                aria-label={t.next}
+              >
+                <ChevronRight className="size-5" strokeWidth={1.5} />
+              </button>
+            </div>
+            <ol className="flex flex-1 gap-2 sm:max-w-xs">
+              {slides.map((s, i) => (
+                <li key={i} className="flex-1">
+                  <button
+                    type="button"
+                    onClick={() => go(i)}
+                    className="block w-full py-4"
+                    aria-label={fill(t.goTo, { n: i + 1, name: s.eyebrow })}
+                    aria-current={i === index ? "true" : undefined}
+                  >
+                    <span className="block h-px overflow-hidden bg-white/25">
+                      <span
+                        key={`${index}-${running}`}
+                        className="block h-full bg-champagne"
+                        style={{
+                          width: i < index || (i === index && !running) ? "100%" : i === index ? undefined : "0%",
+                          animation: i === index && running ? `ah-progress ${DURATION}ms linear forwards` : undefined,
+                        }}
+                      />
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ol>
             <button
               type="button"
-              onClick={() => go(index - 1)}
-              className="focus-ring inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:bg-white/10"
-              aria-label="Diapositive précédente"
+              onClick={() => setPlaying((p) => !p)}
+              className="inline-flex size-11 items-center justify-center rounded-full text-white/70 hover:text-white"
+              aria-label={playing ? t.pause : t.play}
             >
-              <ChevronLeft className="size-5" />
+              {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
             </button>
-            <button
-              type="button"
-              onClick={() => go(index + 1)}
-              className="focus-ring inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:bg-white/10"
-              aria-label="Diapositive suivante"
-            >
-              <ChevronRight className="size-5" />
-            </button>
+            <p className="hidden text-xs font-semibold tracking-[0.2em] text-white/60 tabular-nums sm:block">
+              {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+            </p>
+            <a href="#contenu-suite" className="ml-auto hidden items-center gap-3 text-xs tracking-[0.2em] text-white/60 uppercase hover:text-white lg:flex">
+              {t.scroll}
+              <span aria-hidden className="relative block h-10 w-px overflow-hidden bg-white/20">
+                <span className="absolute inset-x-0 top-0 h-1/2 animate-[ah-scroll-cue_2.2s_ease-in-out_infinite] bg-champagne motion-reduce:animate-none" />
+              </span>
+            </a>
           </div>
-          <ol className="flex flex-1 gap-2 sm:max-w-sm">
-            {slides.map((s, i) => (
-              <li key={i} className="flex-1">
-                <button
-                  type="button"
-                  onClick={() => go(i)}
-                  className="focus-ring group block w-full rounded py-3"
-                  aria-label={`Aller à la diapositive ${i + 1} : ${s.eyebrow}`}
-                  aria-current={i === index}
-                >
-                  <span className="block h-1 overflow-hidden rounded-full bg-white/20">
-                    <span
-                      key={`${index}-${playing && !hover}`}
-                      className="block h-full rounded-full bg-accent-400"
-                      style={{
-                        width: i < index ? "100%" : i === index ? undefined : "0%",
-                        animation:
-                          i === index && playing && !hover ? `ah-progress ${DURATION}ms linear forwards` : undefined,
-                        ...(i === index && (!playing || hover) ? { width: "100%" } : {}),
-                      }}
-                    />
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
-          <button
-            type="button"
-            onClick={() => setPlaying((p) => !p)}
-            className="focus-ring inline-flex size-11 items-center justify-center rounded-full text-white/70 hover:text-white"
-            aria-label={playing ? "Mettre en pause le défilement" : "Relancer le défilement"}
-          >
-            {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
-          </button>
-          <p className="hidden text-sm font-semibold text-white/60 tabular-nums sm:block">
-            {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
-          </p>
         </div>
       </div>
     </section>
