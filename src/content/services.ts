@@ -1,7 +1,7 @@
 /**
  * Les 8 expertises. Les textes sont dans les dictionnaires (`src/i18n/dictionaries`), sous `services.items[slug]`.
  * `image` : chemin d'une vraie photo dans /public (ex. "/photos/services/construction.jpg").
- * Sans photo, l'illustration `variant` de <Blueprint> est affichée.
+ * Sans photo, seule l'icone est affichee.
  */
 export const serviceSlugs = [
   "construction",
@@ -16,15 +16,15 @@ export const serviceSlugs = [
 
 export type ServiceSlug = (typeof serviceSlugs)[number];
 
-export const serviceMeta: Record<ServiceSlug, { icon: string; variant: number; image?: string }> = {
-  construction: { icon: "Building2", variant: 0 },
-  renovation: { icon: "Hammer", variant: 6 },
-  "amenagement-finition": { icon: "PaintRoller", variant: 1 },
-  aluminium: { icon: "AppWindow", variant: 4 },
-  bois: { icon: "TreePine", variant: 5 },
-  ascenseurs: { icon: "ArrowUpDown", variant: 3 },
-  immobilier: { icon: "KeyRound", variant: 2 },
-  decoration: { icon: "Sofa", variant: 7 },
+export const serviceMeta: Record<ServiceSlug, { icon: string; image?: string }> = {
+  construction: { icon: "Building2" },
+  renovation: { icon: "Hammer" },
+  "amenagement-finition": { icon: "PaintRoller" },
+  aluminium: { icon: "AppWindow" },
+  bois: { icon: "TreePine" },
+  ascenseurs: { icon: "ArrowUpDown" },
+  immobilier: { icon: "KeyRound" },
+  decoration: { icon: "Sofa" },
 };
 
 /** Anciens identifiants (liens ?service= de la version précédente du site) → nouvelle expertise. */

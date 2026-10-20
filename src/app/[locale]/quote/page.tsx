@@ -30,7 +30,7 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
   return (
     <>
       <PageHero eyebrow={t.quote.eyebrow} title={t.quote.title} text={t.quote.text} />
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-white py-20 lg:py-28">
         <div className="container-x grid gap-14 lg:grid-cols-[1.6fr_1fr] lg:gap-20">
           <Reveal>
             <Suspense fallback={<LeadForm kind="quote" {...formProps} />}>
@@ -38,24 +38,24 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
             </Suspense>
           </Reveal>
           <Reveal delay={120}>
-            <aside className="on-dark bg-graphite p-8 text-white sm:p-10 lg:sticky lg:top-32">
-              <h2 className="display text-3xl">{t.quote.asideTitle}</h2>
-              <p className="mt-4 text-ash">{t.quote.asideText}</p>
+            <aside className="border border-mist bg-tint p-8 sm:p-10 lg:sticky lg:top-32">
+              <h2 className="display text-3xl text-graphite">{t.quote.asideTitle}</h2>
+              <p className="mt-4 text-stone">{t.quote.asideText}</p>
               <div className="mt-8 flex flex-col gap-3">
-                <a href={site.phoneHref} className="btn btn-champagne">
+                <a href={site.phoneHref} className="btn btn-dark">
                   <Phone className="size-4" aria-hidden />
                   {site.phone}
                 </a>
-                <a href={whatsappLink(t.contact.whatsappMsg)} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                <a href={whatsappLink(t.contact.whatsappMsg)} target="_blank" rel="noopener noreferrer" className="btn btn-outline-dark">
                   <WhatsAppIcon className="size-4" />
                   {t.contact.whatsapp}
                 </a>
               </div>
-              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 border-t border-white/10 pt-6 text-sm">
+              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 border-t border-mist pt-6 text-sm">
                 {t.contact.hours.map((h) => (
                   <div key={h.days} className="contents">
-                    <dt className="text-ash">{h.days}</dt>
-                    <dd className="text-white">{h.time}</dd>
+                    <dt className="text-stone">{h.days}</dt>
+                    <dd className="font-semibold text-graphite">{h.time}</dd>
                   </div>
                 ))}
               </dl>

@@ -210,9 +210,8 @@ const fr = {
     scrollRight: "Défiler vers la droite",
     gridTitle: "Toutes les catégories",
     viewAll: "Voir toutes les réalisations",
-    illustration: "Illustration",
-    illustrationNote:
-      "Les photographies de nos chantiers seront publiées prochainement. En attendant, les visuels ci-dessous sont des illustrations et ne représentent pas des réalisations d'Arrow Home Group.",
+    illustration: "Photos à venir",
+    illustrationNote: "Les photographies de nos chantiers seront publiées très prochainement.",
     illustrationCaption: "Domaine d'intervention",
     instagram: "Suivre nos chantiers sur Instagram",
     startProject: "Un projet similaire ?",
@@ -420,7 +419,6 @@ const fr = {
         heading: "Propriété intellectuelle",
         body: [
           "Le logo, les textes et les éléments graphiques de ce site sont la propriété d'ARROW HOME GROUP ou utilisés avec autorisation. Toute reproduction sans autorisation préalable est interdite.",
-          "Les illustrations au trait présentes sur le site sont des visuels d'illustration : elles ne représentent pas des réalisations de l'entreprise.",
         ],
       },
       {
@@ -485,7 +483,6 @@ const fr = {
 
   common: {
     learnMore: "En savoir plus",
-    illustrationAlt: "Illustration au trait : {name}",
   },
 };
 

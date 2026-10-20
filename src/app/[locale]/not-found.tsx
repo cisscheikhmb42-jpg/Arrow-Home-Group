@@ -14,7 +14,7 @@ export default function NotFound() {
   const locale = isLocale(seg) ? seg : defaultLocale;
   const t = dicts[locale].notFound;
   return (
-    <section className="flex min-h-[60vh] items-center bg-ivory py-24">
+    <section className="flex min-h-[60vh] items-center bg-white py-24">
       <div className="container-x max-w-2xl">
         <p className="eyebrow">404</p>
         <h1 className="display mt-6 text-5xl text-graphite sm:text-6xl">{t.title}</h1>

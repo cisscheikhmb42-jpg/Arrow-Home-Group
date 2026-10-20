@@ -4,28 +4,27 @@
 @custom-variant lang-zh (&:lang(zh-Hans));
 
 @theme {
-  /* Design du site : noir graphite, champagne, blanc cassé */
-  --color-graphite: #17191c;
-  --color-graphite-900: #111315;
-  --color-anthracite: #34383d;
-  --color-champagne: #c2a878;
-  --color-champagne-200: #e6dac2;
-  --color-champagne-300: #d9c9a6;
-  /* Champagne foncé : seule variante lisible en texte sur fond clair (contraste 5:1) */
-  --color-champagne-700: #7d6438;
-  --color-ivory: #f5f3ee;
-  --color-mist: #e7e5e0;
-  --color-stone: #5e636a; /* texte secondaire sur fond clair (5,5:1) */
-  --color-ash: #a9adb3; /* texte secondaire sur fond graphite (7,8:1) */
+  /* Charte : fond blanc, textes en bleu du logo, vert du logo pour les fins traits decoratifs.
+     Les noms de jetons (graphite, champagne...) sont conserves pour ne pas toucher tous les composants. */
+  --color-graphite: #004e85; /* bleu du logo : titres, boutons */
+  --color-graphite-900: #003a64; /* bleu fonce : survol des boutons */
+  --color-anthracite: #004e85; /* texte courant en bleu */
+  --color-champagne: #95be29; /* vert du logo : traits decoratifs uniquement (pas de texte) */
+  --color-champagne-200: #e8f1d2;
+  --color-champagne-300: #b5d45a;
+  --color-champagne-700: #4a7a12; /* vert fonce lisible sur blanc (5,1:1) pour les petits sur-titres */
+  --color-ivory: #ffffff;
+  --color-mist: #dce6ef; /* bordures bleu tres clair */
+  --color-stone: #3d6d96; /* texte secondaire bleu (5,5:1) */
+  --color-ash: #3d6d96;
+  --color-tint: #f3f7fb; /* fond bleu tres pale pour les encadres */
 
-  /* Couleurs ORIGINALES du logo (mesurées sur public/brand/logo.png). Ne servent qu'à la marque. */
   --color-logo-blue: #004e85;
   --color-logo-green: #95be29;
 
   --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, "Times New Roman", serif;
 
-  /* Point de rupture « large » : le bouton du header réapparaît à côté du menu complet */
   --breakpoint-wide: 87.5rem;
 
   --animate-marquee: ah-marquee 45s linear infinite;
@@ -53,7 +52,7 @@ body {
 }
 
 ::selection {
-  background: var(--color-champagne);
+  background: var(--color-champagne-200);
   color: var(--color-graphite);
 }
 
@@ -110,7 +109,7 @@ a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-champagne-700);
+  outline: 2px solid var(--color-graphite);
   outline-offset: 3px;
 }
 .on-dark :is(a, button, [tabindex]):focus-visible,
@@ -138,7 +137,7 @@ summary:focus-visible,
 .btn svg { transition: transform 0.3s; }
 .btn:hover svg.arrow { transform: translateX(4px); }
 .btn-dark { background: var(--color-graphite); color: #fff; }
-.btn-dark:hover { background: var(--color-anthracite); }
+.btn-dark:hover { background: var(--color-graphite-900); }
 .btn-champagne { background: var(--color-champagne); color: var(--color-graphite); }
 .btn-champagne:hover { background: var(--color-champagne-300); }
 .btn-outline-light { border-color: rgb(255 255 255 / 0.35); color: #fff; }

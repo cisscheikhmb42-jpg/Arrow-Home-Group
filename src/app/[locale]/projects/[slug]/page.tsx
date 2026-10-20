@@ -36,7 +36,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   return (
     <>
       <article>
-        <header className="bg-ivory pt-12 pb-14 lg:pt-20">
+        <header className="bg-white pt-12 pb-14 lg:pt-20">
           <div className="container-x">
             <Link href={href(locale, "projects")} className="link-line text-graphite">
               <ArrowLeft className="size-4" aria-hidden />

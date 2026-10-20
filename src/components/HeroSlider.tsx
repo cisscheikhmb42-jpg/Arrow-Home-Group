@@ -6,7 +6,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { fill } from "@/i18n/fill";
-import Blueprint from "./Blueprint";
 
 export type Slide = {
   eyebrow: string;
@@ -15,9 +14,7 @@ export type Slide = {
   text: string;
   cta: { label: string; href: string };
   secondary: { label: string; href: string };
-  /** Illustration affichée tant qu'aucune photo n'est fournie. */
-  variant: number;
-  /** Photo dans /public (ex. "/photos/hero/facade.jpg"), à utiliser uniquement avec des images dont les droits sont acquis. */
+  /** Photo dans /public (ex. "/photos/hero/facade.jpg"), affichée a droite du texte. A ajouter des reception des photos. */
   image?: string;
 };
 
@@ -29,6 +26,7 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
   const [hover, setHover] = useState(false);
   const touchX = useRef<number | null>(null);
   const count = slides.length;
+  const hasImages = slides.some((s) => s.image);
 
   const go = useCallback((i: number) => setIndex(((i % count) + count) % count), [count]);
 
@@ -46,7 +44,7 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
 
   return (
     <section
-      className="on-dark relative isolate overflow-hidden bg-graphite text-white"
+      className="relative isolate overflow-hidden border-b border-mist bg-white text-graphite"
       aria-roledescription="carousel"
       aria-label={t.carousel}
       onMouseEnter={() => setHover(true)}
@@ -61,41 +59,21 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
         touchX.current = null;
       }}
     >
-      {/* Arrière-plans */}
-      {slides.map((s, i) => (
-        <div
-          key={i}
-          aria-hidden
-          className={`absolute inset-0 -z-10 transition-opacity duration-1000 ${i === index ? "opacity-100" : "opacity-0"}`}
-        >
-          {s.image ? (
-            <>
-              <Image
-                src={s.image}
-                alt=""
-                fill
-                priority={i === 0}
-                sizes="100vw"
-                className={`object-cover transition-transform duration-[8000ms] ease-out ${i === index ? "scale-105" : "scale-100"}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-graphite/95 via-graphite/75 to-graphite/30" />
-            </>
-          ) : (
-            <>
-              <Blueprint
-                variant={s.variant}
-                className={`absolute inset-y-0 right-0 h-full w-full opacity-35 transition-transform duration-[8000ms] ease-out lg:w-[62%] lg:opacity-90 ${
-                  i === index ? "scale-[1.04]" : "scale-100"
-                }`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/85 to-graphite/10 lg:via-graphite/70" />
-            </>
-          )}
-        </div>
-      ))}
+      {hasImages &&
+        slides.map((s, i) =>
+          s.image ? (
+            <div
+              key={i}
+              aria-hidden
+              className={`absolute inset-y-0 right-0 -z-10 hidden w-[45%] transition-opacity duration-1000 lg:block ${i === index ? "opacity-100" : "opacity-0"}`}
+            >
+              <Image src={s.image} alt="" fill priority={i === 0} sizes="45vw" className="object-cover" />
+            </div>
+          ) : null,
+        )}
 
-      <div className="container-x relative flex min-h-[calc(100svh-4.5rem)] flex-col justify-center pt-16 pb-28 sm:min-h-[40rem] lg:min-h-[calc(100svh-6rem)] lg:max-h-[56rem] lg:pt-20">
-        <div className="relative max-w-3xl">
+      <div className="container-x relative flex min-h-[34rem] flex-col justify-center pt-16 pb-28 lg:min-h-[40rem] lg:pt-20">
+        <div className={`relative ${hasImages ? "max-w-2xl lg:max-w-[50%]" : "max-w-4xl"}`}>
           {slides.map((s, i) => (
             <div
               key={i}
@@ -110,25 +88,25 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
                   : "pointer-events-none absolute inset-x-0 top-0 translate-y-5 opacity-0"
               }`}
             >
-              <p className="eyebrow eyebrow-light">{s.eyebrow}</p>
+              <p className="eyebrow">{s.eyebrow}</p>
               {i === 0 ? (
                 <h1 className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[5.5rem]">
                   <span className="block">{s.title}</span>
-                  <span className="block text-champagne italic lang-zh:not-italic">{s.highlight}</span>
+                  <span className="block text-stone italic lang-zh:not-italic">{s.highlight}</span>
                 </h1>
               ) : (
                 <p className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[5.5rem]">
                   <span className="block">{s.title}</span>
-                  <span className="block text-champagne italic lang-zh:not-italic">{s.highlight}</span>
+                  <span className="block text-stone italic lang-zh:not-italic">{s.highlight}</span>
                 </p>
               )}
-              <p className="mt-8 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">{s.text}</p>
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-graphite sm:text-lg">{s.text}</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-                <Link href={s.cta.href} className="btn btn-champagne">
+                <Link href={s.cta.href} className="btn btn-dark">
                   {s.cta.label}
                   <ArrowRight className="arrow size-4" aria-hidden />
                 </Link>
-                <Link href={s.secondary.href} className="btn btn-outline-light">
+                <Link href={s.secondary.href} className="btn btn-outline-dark">
                   {s.secondary.label}
                 </Link>
               </div>
@@ -136,14 +114,13 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
           ))}
         </div>
 
-        {/* Commandes */}
         <div className="absolute inset-x-0 bottom-0 pb-8">
           <div className="container-x flex items-center gap-4">
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={() => go(index - 1)}
-                className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:border-champagne hover:text-champagne"
+                className="inline-flex size-11 items-center justify-center rounded-full border border-graphite/25 transition-colors hover:border-graphite"
                 aria-label={t.prev}
               >
                 <ChevronLeft className="size-5" strokeWidth={1.5} />
@@ -151,7 +128,7 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
               <button
                 type="button"
                 onClick={() => go(index + 1)}
-                className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:border-champagne hover:text-champagne"
+                className="inline-flex size-11 items-center justify-center rounded-full border border-graphite/25 transition-colors hover:border-graphite"
                 aria-label={t.next}
               >
                 <ChevronRight className="size-5" strokeWidth={1.5} />
@@ -167,10 +144,10 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
                     aria-label={fill(t.goTo, { n: i + 1, name: s.eyebrow })}
                     aria-current={i === index ? "true" : undefined}
                   >
-                    <span className="block h-px overflow-hidden bg-white/25">
+                    <span className="block h-0.5 overflow-hidden bg-mist">
                       <span
                         key={`${index}-${running}`}
-                        className="block h-full bg-champagne"
+                        className="block h-full bg-graphite"
                         style={{
                           width: i < index || (i === index && !running) ? "100%" : i === index ? undefined : "0%",
                           animation: i === index && running ? `ah-progress ${DURATION}ms linear forwards` : undefined,
@@ -184,20 +161,14 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex size-11 items-center justify-center rounded-full text-white/70 hover:text-white"
+              className="inline-flex size-11 items-center justify-center rounded-full text-stone hover:text-graphite"
               aria-label={playing ? t.pause : t.play}
             >
               {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
             </button>
-            <p className="hidden text-xs font-semibold tracking-[0.2em] text-white/60 tabular-nums sm:block">
+            <p className="hidden text-xs font-semibold tracking-[0.2em] text-stone tabular-nums sm:block">
               {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
             </p>
-            <a href="#contenu-suite" className="ml-auto hidden items-center gap-3 text-xs tracking-[0.2em] text-white/60 uppercase hover:text-white lg:flex">
-              {t.scroll}
-              <span aria-hidden className="relative block h-10 w-px overflow-hidden bg-white/20">
-                <span className="absolute inset-x-0 top-0 h-1/2 animate-[ah-scroll-cue_2.2s_ease-in-out_infinite] bg-champagne motion-reduce:animate-none" />
-              </span>
-            </a>
           </div>
         </div>
       </div>

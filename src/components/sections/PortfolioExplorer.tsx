@@ -8,7 +8,7 @@ import { fill } from "@/i18n/fill";
 import PortfolioCard from "./PortfolioCard";
 
 /** Grille filtrable. Le filtre est stocké dans l'URL (?cat=) : il est conservé au changement de langue et partageable. */
-export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]; t: Dictionary["portfolio"] & { illustrationAlt: string } }) {
+export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]; t: Dictionary["portfolio"] }) {
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -36,7 +36,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
               aria-pressed={on}
               onClick={() => select(cat)}
               className={`min-h-11 shrink-0 border px-5 text-[13px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors lang-zh:tracking-normal ${
-                on ? "border-graphite bg-graphite text-white" : "border-mist bg-white text-anthracite hover:border-graphite"
+                on ? "border-graphite bg-graphite text-white" : "border-mist bg-white text-graphite hover:border-graphite"
               }`}
             >
               {t.categories[cat]}
@@ -50,11 +50,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
       <ul className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((item) => (
           <li key={item.id}>
-            <PortfolioCard
-              item={item}
-              illustrationLabel={t.illustration}
-              illustrationAlt={fill(t.illustrationAlt, { name: item.title })}
-            />
+            <PortfolioCard item={item} placeholderLabel={t.illustration} />
           </li>
         ))}
       </ul>

@@ -22,11 +22,11 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   // Chaque diapositive renvoie vers une vraie page (devis pré-rempli, immobilier, réalisations…).
   const slides: Slide[] = [
-    { ...s[0], cta: { label: s[0].cta, href: quote }, secondary: { label: s[0].secondary, href: href(locale, "projects") }, variant: 0 },
-    { ...s[1], cta: { label: s[1].cta, href: `${quote}?service=construction` }, secondary: { label: s[1].secondary, href: href(locale, "services") }, variant: 3 },
-    { ...s[2], cta: { label: s[2].cta, href: `${quote}?service=renovation` }, secondary: { label: s[2].secondary, href: href(locale, "projects") }, variant: 1 },
-    { ...s[3], cta: { label: s[3].cta, href: href(locale, "real-estate") }, secondary: { label: s[3].secondary, href: `${quote}?service=immobilier` }, variant: 2 },
-    { ...s[4], cta: { label: s[4].cta, href: `${quote}?service=construction` }, secondary: { label: s[4].secondary, href: href(locale, "process") }, variant: 4 },
+    { ...s[0], cta: { label: s[0].cta, href: quote }, secondary: { label: s[0].secondary, href: href(locale, "projects") } },
+    { ...s[1], cta: { label: s[1].cta, href: `${quote}?service=construction` }, secondary: { label: s[1].secondary, href: href(locale, "services") } },
+    { ...s[2], cta: { label: s[2].cta, href: `${quote}?service=renovation` }, secondary: { label: s[2].secondary, href: href(locale, "projects") } },
+    { ...s[3], cta: { label: s[3].cta, href: href(locale, "real-estate") }, secondary: { label: s[3].secondary, href: `${quote}?service=immobilier` } },
+    { ...s[4], cta: { label: s[4].cta, href: `${quote}?service=construction` }, secondary: { label: s[4].secondary, href: href(locale, "process") } },
   ];
 
   return (
@@ -36,7 +36,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Marquee items={t.marquee.items} label={t.marquee.label} />
 
       {/* Expertises */}
-      <section className="bg-ivory py-24 lg:py-36">
+      <section className="bg-white py-24 lg:py-36">
         <div className="container-x">
           <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} subtitle={t.services.subtitle}>
             <Link href={href(locale, "services")} className="link-line self-start text-graphite lg:self-auto">
@@ -49,7 +49,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       </section>
 
       {/* Réalisations */}
-      <section className="overflow-hidden bg-white py-24 lg:py-36">
+      <section className="overflow-hidden border-t border-mist bg-white py-24 lg:py-36">
         <div className="container-x">
           <SectionHeading eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} subtitle={t.portfolio.subtitle}>
             <Link href={href(locale, "projects")} className="link-line self-start text-graphite lg:self-auto">

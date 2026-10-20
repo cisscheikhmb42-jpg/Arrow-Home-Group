@@ -53,7 +53,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
   return (
     <>
     <header
-      className={`sticky top-0 z-50 border-b bg-ivory/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ${
+      className={`sticky top-0 z-50 border-b bg-white/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ${
         scrolled ? "border-mist shadow-[0_10px_30px_-20px_rgba(23,25,28,0.35)]" : "border-transparent"
       }`}
     >
@@ -105,7 +105,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
       {open && (
         <div id="mobile-menu" className="fixed inset-0 z-[60] xl:hidden" role="dialog" aria-modal="true" aria-label={t.menu}>
           <div className="absolute inset-0 bg-graphite/60" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 right-0 flex w-[min(26rem,100vw)] flex-col bg-ivory">
+          <div className="absolute inset-y-0 right-0 flex w-[min(26rem,100vw)] flex-col bg-white">
             <div className="flex h-[4.5rem] items-center justify-between border-b border-mist px-5">
               <Logo className="h-11 w-auto" />
               <button

@@ -1,9 +1,9 @@
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { href } from "@/i18n/routes";
-import { illustrations, projects, type PortfolioCategory } from "./portfolio";
+import { placeholders, projects, type PortfolioCategory } from "./portfolio";
 
-/** Élément affiché dans le portfolio : un projet réel, ou une illustration clairement signalée. */
+/** Element affiche dans le portfolio : un projet reel, ou un encadre « Photos a venir ». */
 export type PortfolioItem = {
   id: string;
   category: PortfolioCategory;
@@ -11,8 +11,7 @@ export type PortfolioItem = {
   caption: string;
   href?: string;
   image?: string;
-  variant?: number;
-  illustration: boolean;
+  placeholder: boolean;
 };
 
 export function getPortfolioItems(locale: Locale, t: Dictionary): PortfolioItem[] {
@@ -23,18 +22,17 @@ export function getPortfolioItems(locale: Locale, t: Dictionary): PortfolioItem[
     caption: p.location?.[locale] ?? t.portfolio.categories[p.category],
     href: href(locale, "projects", `/${p.slug}`),
     image: p.cover,
-    illustration: false,
+    placeholder: false,
   }));
   const covered = new Set(real.map((r) => r.category));
-  const demo: PortfolioItem[] = illustrations
-    .filter((i) => !covered.has(i.category))
-    .map((i) => ({
-      id: i.id,
-      category: i.category,
-      title: t.portfolio.categories[i.category],
+  const upcoming: PortfolioItem[] = placeholders
+    .filter((p) => !covered.has(p.category))
+    .map((p) => ({
+      id: p.id,
+      category: p.category,
+      title: t.portfolio.categories[p.category],
       caption: t.portfolio.illustrationCaption,
-      variant: i.variant,
-      illustration: true,
+      placeholder: true,
     }));
-  return [...real, ...demo];
+  return [...real, ...upcoming];
 }

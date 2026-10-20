@@ -20,13 +20,12 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   const t = getDictionary(locale);
   const items = getPortfolioItems(locale, t);
-  const explorerT = { ...t.portfolio, illustrationAlt: t.common.illustrationAlt };
 
   return (
     <>
       <PageHero eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} text={t.portfolio.subtitle} />
 
-      <section className="overflow-hidden bg-white py-20 lg:py-28">
+      <section className="overflow-hidden border-b border-mist bg-white py-20 lg:py-28">
         <div className="container-x">
           <Reveal className="max-w-3xl border-l border-champagne pl-5 text-sm leading-relaxed text-stone">
             {t.portfolio.illustrationNote}{" "}
@@ -42,11 +41,11 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-white py-20 lg:py-28">
         <div className="container-x">
           <h2 className="display mb-10 text-4xl text-graphite sm:text-5xl">{t.portfolio.gridTitle}</h2>
           <Suspense fallback={null}>
-            <PortfolioExplorer items={items} t={explorerT} />
+            <PortfolioExplorer items={items} t={t.portfolio} />
           </Suspense>
         </div>
       </section>

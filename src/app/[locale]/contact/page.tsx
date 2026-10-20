@@ -18,7 +18,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <>
       <PageHero eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} />
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-white py-20 lg:py-28">
         <div className="container-x grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <Reveal className="space-y-10">
             <ContactDetails t={t} />

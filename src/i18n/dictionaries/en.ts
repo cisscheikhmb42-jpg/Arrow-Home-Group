@@ -210,9 +210,8 @@ const en: Dictionary = {
     scrollRight: "Scroll right",
     gridTitle: "All categories",
     viewAll: "View all projects",
-    illustration: "Illustration",
-    illustrationNote:
-      "Photographs of our projects will be published soon. In the meantime, the visuals below are illustrations and do not depict work carried out by Arrow Home Group.",
+    illustration: "Photos coming soon",
+    illustrationNote: "Photographs of our projects will be published very soon.",
     illustrationCaption: "Field of work",
     instagram: "Follow our sites on Instagram",
     startProject: "Planning something similar?",
@@ -417,7 +416,6 @@ const en: Dictionary = {
         heading: "Intellectual property",
         body: [
           "The logo, text and graphic elements of this website are the property of ARROW HOME GROUP or used with permission. Any reproduction without prior authorisation is prohibited.",
-          "The line drawings on this website are illustrations: they do not depict work carried out by the company.",
         ],
       },
       {
@@ -482,7 +480,6 @@ const en: Dictionary = {
 
   common: {
     learnMore: "Learn more",
-    illustrationAlt: "Line illustration: {name}",
   },
 };
 

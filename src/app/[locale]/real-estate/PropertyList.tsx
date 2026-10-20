@@ -7,7 +7,6 @@ import type { Property } from "@/content/trust";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { fill } from "@/i18n/fill";
-import Blueprint from "@/components/Blueprint";
 
 /** Liste filtrable des biens (affichée dès qu'un bien réel est ajouté dans src/content/trust.ts). */
 export default function PropertyList({ items, locale, t, quoteHref }: { items: Property[]; locale: Locale; t: Dictionary["realEstate"]; quoteHref: string }) {
@@ -43,12 +42,12 @@ export default function PropertyList({ items, locale, t, quoteHref }: { items: P
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite">
           {shown.map((p) => (
             <li key={p.id} className="border border-mist bg-white">
-              <div className="relative aspect-[4/3] bg-graphite">
-                {p.image ? <Image src={p.image} alt={p.title[locale]} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" /> : <Blueprint variant={2} className="absolute inset-0 h-full w-full" />}
-                <span className="absolute top-4 left-4 bg-graphite/85 px-3 py-1.5 text-xs font-semibold tracking-[0.15em] text-champagne uppercase">{f[p.deal]}</span>
+              <div className="relative aspect-[4/3] bg-tint">
+                {p.image ? <Image src={p.image} alt={p.title[locale]} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" /> : null}
+                <span className="absolute top-4 left-4 bg-graphite px-3 py-1.5 text-xs font-semibold tracking-[0.15em] text-white uppercase">{f[p.deal]}</span>
               </div>
               <div className="p-6">
-                <p className="text-xs font-semibold tracking-[0.18em] text-champagne-700 uppercase">{f[p.type]} · {p.city}</p>
+                <p className="text-xs font-semibold tracking-[0.18em] text-stone uppercase">{f[p.type]} · {p.city}</p>
                 <h3 className="display mt-2 text-2xl text-graphite">{p.title[locale]}</h3>
                 <p className="mt-3 text-sm text-stone">
                   {[p.areaM2 && fill(t.area, { n: p.areaM2 }), p.bedrooms && fill(t.bedrooms, { n: p.bedrooms })].filter(Boolean).join(" · ")}

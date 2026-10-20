@@ -199,8 +199,8 @@ const zh: Dictionary = {
     scrollRight: "向右滚动",
     gridTitle: "全部类别",
     viewAll: "查看全部项目",
-    illustration: "示意图",
-    illustrationNote: "我们的工程实景照片即将发布。在此之前，以下图片均为示意插图，并非 Arrow Home Group 的实际项目。",
+    illustration: "照片即将上线",
+    illustrationNote: "我们的工程实景照片即将发布。",
     illustrationCaption: "业务领域",
     instagram: "在 Instagram 关注我们的工地动态",
     startProject: "有类似的项目？",
@@ -402,7 +402,6 @@ const zh: Dictionary = {
         heading: "知识产权",
         body: [
           "本网站的标志、文字及图形元素归 ARROW HOME GROUP 所有或经授权使用。未经事先许可，禁止复制。",
-          "网站中的线描插图仅为示意，并非本公司的实际项目。",
         ],
       },
       {
@@ -461,7 +460,6 @@ const zh: Dictionary = {
 
   common: {
     learnMore: "了解更多",
-    illustrationAlt: "线描示意图：{name}",
   },
 };
 

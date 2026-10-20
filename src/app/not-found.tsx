@@ -5,7 +5,7 @@ import "./globals.css";
 export default function GlobalNotFound() {
   return (
     <html lang="fr">
-      <body className="flex min-h-dvh items-center justify-center bg-ivory p-6 font-sans text-anthracite">
+      <body className="flex min-h-dvh items-center justify-center bg-white p-6 font-sans text-graphite">
         <main className="max-w-md text-center">
           <p className="eyebrow justify-center">404</p>
           <h1 className="display mt-6 text-5xl text-graphite">Page introuvable</h1>

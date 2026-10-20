@@ -62,17 +62,15 @@ export type Project = {
 export const projects: Project[] = [];
 
 /**
- * VISUELS D'ILLUSTRATION (en attendant les photos de chantiers).
- * Ce sont des dessins au trait, présentés comme tels sur le site : ils ne sont jamais attribués à un projet réel.
- * Pour les remplacer, publier les vrais projets dans `projects` ci-dessus : les illustrations disparaissent alors
- * automatiquement des catégories qui ont au moins un projet réel.
+ * CATEGORIES AFFICHEES EN ATTENDANT LES PHOTOS : un encadre sobre « Photos a venir » par categorie (aucun dessin).
+ * Des qu'un projet reel est ajoute dans `projects`, l'encadre de sa categorie est remplace automatiquement.
  */
-export const illustrations: { id: string; category: PortfolioCategory; variant: number }[] = [
-  { id: "construction-1", category: "construction", variant: 0 },
-  { id: "renovation-1", category: "renovation", variant: 6 },
-  { id: "amenagement-1", category: "amenagement", variant: 1 },
-  { id: "aluminium-1", category: "aluminium", variant: 4 },
-  { id: "bois-1", category: "bois", variant: 5 },
-  { id: "immobilier-1", category: "immobilier", variant: 2 },
-  { id: "decoration-1", category: "decoration", variant: 7 },
+export const placeholders: { id: string; category: PortfolioCategory }[] = [
+  { id: "construction", category: "construction" },
+  { id: "renovation", category: "renovation" },
+  { id: "amenagement", category: "amenagement" },
+  { id: "aluminium", category: "aluminium" },
+  { id: "bois", category: "bois" },
+  { id: "immobilier", category: "immobilier" },
+  { id: "decoration", category: "decoration" },
 ];

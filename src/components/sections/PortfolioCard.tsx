@@ -2,24 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { PortfolioItem } from "@/content/portfolio-items";
-import Blueprint from "../Blueprint";
 
+/** Carte de realisation : photo reelle, ou encadre sobre « Photos a venir » tant que les photos ne sont pas fournies. */
 export default function PortfolioCard({
   item,
-  illustrationLabel,
-  illustrationAlt,
+  placeholderLabel,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 85vw",
   tall = false,
 }: {
   item: PortfolioItem;
-  illustrationLabel: string;
-  illustrationAlt: string;
+  placeholderLabel: string;
   sizes?: string;
   tall?: boolean;
 }) {
   const body = (
     <>
-      <div className={`relative overflow-hidden bg-graphite ${tall ? "aspect-[4/5]" : "aspect-[4/3]"}`}>
+      <div className={`relative overflow-hidden ${tall ? "aspect-[4/5]" : "aspect-[4/3]"} ${item.image ? "" : "border border-mist bg-tint"}`}>
         {item.image ? (
           <Image
             src={item.image}
@@ -29,22 +27,15 @@ export default function PortfolioCard({
             className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
           />
         ) : (
-          <div role="img" aria-label={illustrationAlt} className="absolute inset-0">
-            <Blueprint
-              variant={item.variant}
-              className="absolute inset-0 h-full w-full transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-            />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+            <span className="block h-0.5 w-10 bg-champagne" aria-hidden />
+            <span className="text-xs font-semibold tracking-[0.18em] text-stone uppercase">{placeholderLabel}</span>
           </div>
-        )}
-        {item.illustration && (
-          <span className="absolute top-4 left-4 bg-graphite/80 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-champagne uppercase backdrop-blur">
-            {illustrationLabel}
-          </span>
         )}
       </div>
       <div className="flex items-start justify-between gap-4 pt-5">
         <div>
-          <p className="text-xs font-semibold tracking-[0.18em] text-champagne-700 uppercase">{item.caption}</p>
+          <p className="text-xs font-semibold tracking-[0.18em] text-stone uppercase">{item.caption}</p>
           <h3 className="display mt-2 text-2xl text-graphite sm:text-3xl">{item.title}</h3>
         </div>
         {item.href && (

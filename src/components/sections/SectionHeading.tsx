@@ -25,7 +25,7 @@ export default function SectionHeading({
         <p className={`eyebrow ${dark ? "eyebrow-light" : ""}`}>{eyebrow}</p>
         <Tag className={`display mt-6 text-4xl sm:text-5xl lg:text-6xl ${dark ? "text-white" : "text-graphite"}`}>{title}</Tag>
         {subtitle && (
-          <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${center ? "mx-auto" : ""} ${dark ? "text-ash" : "text-stone"}`}>
+          <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${center ? "mx-auto" : ""} text-stone`}>
             {subtitle}
           </p>
         )}
