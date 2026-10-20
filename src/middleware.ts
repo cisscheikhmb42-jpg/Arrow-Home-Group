@@ -19,6 +19,9 @@ function preferredLocale(req: NextRequest): Locale {
   return defaultLocale;
 }
 
+/** Pages supprimees (anciens liens) : renvoi vers l'accueil de la langue. */
+const REMOVED = new Set(["immobilier", "real-estate"]);
+
 export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
   const parts = pathname.split("/").filter(Boolean);
@@ -43,6 +46,7 @@ export function middleware(req: NextRequest) {
 
   const locale = first;
   if (!seg) return NextResponse.next();
+  if (REMOVED.has(seg)) return redirect(`/${locale}`);
 
   // URL publique traduite → dossier interne.
   const key = keyFromSlug(locale, seg);

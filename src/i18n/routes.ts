@@ -12,7 +12,6 @@ export const routes = {
   process: { fr: "notre-methode", en: "our-process", zh: "process" },
   contact: { fr: "contact", en: "contact", zh: "contact" },
   quote: { fr: "devis", en: "quote", zh: "quote" },
-  "real-estate": { fr: "immobilier", en: "real-estate", zh: "real-estate" },
   legal: { fr: "mentions-legales", en: "legal-notice", zh: "legal" },
   privacy: { fr: "confidentialite", en: "privacy-policy", zh: "privacy" },
 } as const satisfies Record<string, Record<Locale, string>>;

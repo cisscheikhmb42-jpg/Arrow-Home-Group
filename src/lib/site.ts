@@ -7,10 +7,7 @@ export const site = {
   phone: "+221 78 715 54 54",
   phoneHref: "tel:+221787155454",
   whatsapp: "221787155454",
-  /** Adresse principale affichée en premier. */
   email: "info@arrowhome.cc",
-  /** Adresse historique, conservée. */
-  emailSecondary: "arrowhome.senegal@gmail.com",
   address: {
     street: "Avenue Malick Sy, Médina",
     city: "Dakar",

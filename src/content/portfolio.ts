@@ -8,7 +8,6 @@ export const portfolioCategories = [
   "amenagement",
   "aluminium",
   "bois",
-  "immobilier",
   "decoration",
 ] as const;
 export type PortfolioCategory = Exclude<(typeof portfolioCategories)[number], "all">;
@@ -23,7 +22,6 @@ export const categoryService: Record<PortfolioCategory, ServiceSlug> = {
   amenagement: "amenagement-finition",
   aluminium: "aluminium",
   bois: "bois",
-  immobilier: "immobilier",
   decoration: "decoration",
 };
 
@@ -71,6 +69,5 @@ export const placeholders: { id: string; category: PortfolioCategory }[] = [
   { id: "amenagement", category: "amenagement" },
   { id: "aluminium", category: "aluminium" },
   { id: "bois", category: "bois" },
-  { id: "immobilier", category: "immobilier" },
   { id: "decoration", category: "decoration" },
 ];

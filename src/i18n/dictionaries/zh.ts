@@ -2,21 +2,21 @@ import type { Dictionary } from "./fr";
 
 const zh: Dictionary = {
   meta: {
-    siteTitle: "Arrow Home Group｜塞内加尔建筑、翻新与房地产服务",
+    siteTitle: "Arrow Home Group｜塞内加尔建筑、翻新与装修服务",
     siteDescription:
-      "Arrow Home Group 在达喀尔及塞内加尔各地提供建筑施工、翻新改造、室内装修、精装修与房地产服务。欢迎与我们洽谈您的项目。",
+      "Arrow Home Group 在达喀尔及塞内加尔各地提供建筑施工、翻新改造、室内装修与精装修服务。欢迎与我们洽谈您的项目。",
     pages: {
       services: {
         title: "业务领域：建筑、翻新、装修",
-        description: "在达喀尔及塞内加尔提供建筑与土建、翻新改造、装修与精装修、铝制门窗、木作、电梯、房地产及室内设计服务。",
+        description: "在达喀尔及塞内加尔提供建筑与土建、翻新改造、装修与精装修、铝制门窗、木作、电梯及室内设计服务。",
       },
       projects: {
         title: "项目案例",
-        description: "了解 Arrow Home Group 的业务领域：建筑、翻新、装修、铝制门窗、木作、房地产与室内设计。",
+        description: "了解 Arrow Home Group 的业务领域：建筑、翻新、装修、铝制门窗、木作与室内设计。",
       },
       about: {
         title: "关于 Arrow Home Group",
-        description: "立足达喀尔的建筑、翻新与房地产企业：我们的愿景、工作方式与承诺。",
+        description: "立足达喀尔的建筑、翻新与装修企业：我们的愿景、工作方式与承诺。",
       },
       process: {
         title: "服务流程",
@@ -28,11 +28,7 @@ const zh: Dictionary = {
       },
       quote: {
         title: "申请报价",
-        description: "向我们介绍您的建筑、翻新、装修或房地产项目，Arrow Home Group 将尽快与您联系。",
-      },
-      realEstate: {
-        title: "房地产",
-        description: "达喀尔及塞内加尔的土地、别墅、公寓与商铺：委托 Arrow Home Group 为您寻找合适的物业。",
+        description: "向我们介绍您的建筑、翻新或装修项目，Arrow Home Group 将尽快与您联系。",
       },
       legal: { title: "法律声明", description: "Arrow Home Group 网站法律声明。" },
       privacy: { title: "隐私政策", description: "Arrow Home Group 如何处理您通过本网站提交的个人信息。" },
@@ -46,7 +42,6 @@ const zh: Dictionary = {
     about: "关于我们",
     process: "服务流程",
     contact: "联系我们",
-    realEstate: "房地产",
     cta: "洽谈您的项目",
     openMenu: "打开菜单",
     closeMenu: "关闭菜单",
@@ -74,7 +69,7 @@ const zh: Dictionary = {
         eyebrow: "Arrow Home Group",
         title: "筑造今天，",
         highlight: "塑造未来。",
-        text: "Arrow Home Group 以品质、精准与细节为本，为您的建筑、翻新、装修及房地产项目提供全程支持。",
+        text: "Arrow Home Group 以品质、精准与细节为本，为您的建筑、翻新及装修项目提供全程支持。",
         cta: "洽谈您的项目",
         secondary: "查看项目案例",
       },
@@ -95,14 +90,6 @@ const zh: Dictionary = {
         secondary: "项目案例",
       },
       {
-        eyebrow: "房地产",
-        title: "寻找",
-        highlight: "理想物业。",
-        text: "达喀尔及各地区的土地、别墅、公寓与商铺，从寻找到签约全程陪伴。",
-        cta: "查看在售物业",
-        secondary: "委托我们寻找",
-      },
-      {
         eyebrow: "大型项目",
         title: "一站式解决方案，",
         highlight: "服务您的建筑项目。",
@@ -115,7 +102,7 @@ const zh: Dictionary = {
 
   marquee: {
     label: "我们的业务领域",
-    items: ["建筑施工", "翻新改造", "室内装修", "精装修", "房地产"],
+    items: ["建筑施工", "翻新改造", "室内装修", "精装修", "室内设计"],
   },
 
   services: {
@@ -124,7 +111,7 @@ const zh: Dictionary = {
     subtitle: "根据所需服务，为您的项目提供从设计到施工的定制化解决方案。",
     more: "了解更多",
     quote: "申请报价",
-    pageIntro: "由一个团队统一协调项目所涉及的各个工种：建筑施工、精装修、门窗木作、电梯、房地产与室内设计。",
+    pageIntro: "由一个团队统一协调项目所涉及的各个工种：建筑施工、精装修、门窗木作、电梯与室内设计。",
     items: {
       construction: {
         title: "建筑与土建",
@@ -135,7 +122,7 @@ const zh: Dictionary = {
       renovation: {
         title: "翻新改造",
         short: "改造和提升现有别墅、公寓及建筑。",
-        body: "局部或整体翻新、建筑修缮、空间重新规划：我们从舒适度、功能性与美观性等方面提升您的物业价值。",
+        body: "局部或整体翻新、建筑修缮、空间重新规划：我们从舒适度、功能性与美观性等方面提升您的房屋价值。",
         points: ["整体或局部翻新", "建筑修缮", "空间现代化改造"],
       },
       "amenagement-finition": {
@@ -162,12 +149,6 @@ const zh: Dictionary = {
         body: "我们为住宅、商业及酒店建筑提供电梯项目支持：需求评估、设备供应、安装与维护。",
         points: ["供应与安装", "维护保养", "住宅与商业建筑"],
       },
-      immobilier: {
-        title: "房地产",
-        short: "物业买卖、租赁及房地产项目咨询。",
-        body: "土地、别墅、公寓与商铺：我们在达喀尔及塞内加尔各地区，为您提供物业寻找、出售、出租及增值方面的支持。",
-        points: ["买卖与租赁", "购房陪同", "物业增值"],
-      },
       decoration: {
         title: "室内设计",
         short: "和谐、美观、实用的室内空间。",
@@ -190,7 +171,6 @@ const zh: Dictionary = {
       amenagement: "装修",
       aluminium: "铝制门窗",
       bois: "木作",
-      immobilier: "房地产",
       decoration: "室内设计",
     },
     filterLabel: "按类别筛选",
@@ -222,8 +202,8 @@ const zh: Dictionary = {
     title: "关于 Arrow Home Group",
     lead: "建造、改造并提升您的空间价值。",
     paragraphs: [
-      "Arrow Home Group 为个人、企业和投资者的建筑、翻新、装修及房地产项目提供支持。",
-      "公司位于达喀尔麦地那区，将多项互补的专业能力整合于一体：建筑施工、精装修、铝制与木制门窗、电梯、室内设计及房地产。这种组织方式使我们能够统筹协调各方，并为客户提供单一对接窗口。",
+      "Arrow Home Group 为个人、企业和投资者的建筑、翻新及装修项目提供支持。",
+      "公司位于达喀尔麦地那区，将多项互补的专业能力整合于一体：建筑施工、精装修、铝制与木制门窗、电梯及室内设计。这种组织方式使我们能够统筹协调各方，并为客户提供单一对接窗口。",
       "我们的理念很简单：为每个项目提供合适的解决方案，用心实施，信守对客户的承诺。",
     ],
     values: [
@@ -251,36 +231,6 @@ const zh: Dictionary = {
   },
 
   testimonials: { eyebrow: "客户评价", title: "客户的信任" },
-
-  realEstate: {
-    eyebrow: "房地产",
-    title: "土地、别墅还是公寓？",
-    text: "在达喀尔及各地区寻找出售或出租的物业，我们陪伴您直至签约。",
-    cta: "查看物业",
-    entrust: "委托我们寻找",
-    pageIntro: "购买、出售或租赁：Arrow Home Group 为您在达喀尔及塞内加尔各地区的房地产项目提供支持。",
-    emptyTitle: "目前暂无在线发布的物业",
-    emptyText: "我们的物业信息可应要求提供。请告诉我们您的需求（物业类型、地点、预算），我们将为您推荐合适的选择。",
-    whatsappMsg: "您好，Arrow Home，我正在寻找房产。",
-    filters: {
-      label: "筛选物业",
-      deal: "交易类型",
-      type: "物业类型",
-      city: "城市",
-      all: "全部",
-      sale: "出售",
-      rent: "出租",
-      land: "土地",
-      villa: "别墅",
-      apartment: "公寓",
-      commercial: "商铺",
-    },
-    priceOnRequest: "价格面议",
-    area: "{n} 平方米",
-    bedrooms: "{n} 间卧室",
-    noResults: "没有符合条件的物业。",
-    enquire: "咨询详情",
-  },
 
   contact: {
     eyebrow: "联系我们",
@@ -373,7 +323,7 @@ const zh: Dictionary = {
   },
 
   footer: {
-    about: "在达喀尔及塞内加尔各地区提供建筑施工、翻新改造、装修、精装修与房地产服务。",
+    about: "在达喀尔及塞内加尔各地区提供建筑施工、翻新改造、装修与精装修服务。",
     services: "业务领域",
     navigation: "网站导航",
     contact: "联系方式",

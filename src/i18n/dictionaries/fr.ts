@@ -1,24 +1,24 @@
 /** Dictionnaire de référence : sa structure définit le type des autres langues. */
 const fr = {
   meta: {
-    siteTitle: "Arrow Home Group | Construction, rénovation et immobilier au Sénégal",
+    siteTitle: "Arrow Home Group | Construction, rénovation et aménagement au Sénégal",
     siteDescription:
-      "Arrow Home Group accompagne vos projets de construction, de rénovation, d'aménagement, de finition et d'immobilier à Dakar et au Sénégal. Parlons de votre projet.",
+      "Arrow Home Group accompagne vos projets de construction, de rénovation, d'aménagement et de finition à Dakar et au Sénégal. Parlons de votre projet.",
     pages: {
       services: {
         title: "Nos expertises : construction, rénovation, aménagement",
         description:
-          "Construction et BTP, rénovation, aménagement et finition, aluminium, bois, ascenseurs, immobilier et décoration à Dakar et au Sénégal.",
+          "Construction et BTP, rénovation, aménagement et finition, aluminium, bois, ascenseurs et décoration à Dakar et au Sénégal.",
       },
       projects: {
         title: "Nos réalisations",
         description:
-          "Découvrez les domaines d'intervention d'Arrow Home Group : construction, rénovation, aménagement, aluminium, bois, immobilier et décoration.",
+          "Découvrez les domaines d'intervention d'Arrow Home Group : construction, rénovation, aménagement, aluminium, bois et décoration.",
       },
       about: {
         title: "À propos d'Arrow Home Group",
         description:
-          "Entreprise de construction, de rénovation et d'immobilier basée à Dakar : notre vision, notre approche et nos engagements.",
+          "Entreprise de construction, de rénovation et d'aménagement basée à Dakar : notre vision, notre approche et nos engagements.",
       },
       process: {
         title: "Notre méthode",
@@ -33,12 +33,7 @@ const fr = {
       quote: {
         title: "Demande de devis",
         description:
-          "Décrivez votre projet de construction, de rénovation, d'aménagement ou d'immobilier : Arrow Home Group vous recontacte.",
-      },
-      realEstate: {
-        title: "Immobilier",
-        description:
-          "Terrains, villas, appartements et locaux à Dakar et au Sénégal : confiez votre recherche immobilière à Arrow Home Group.",
+          "Décrivez votre projet de construction, de rénovation ou d'aménagement : Arrow Home Group vous recontacte.",
       },
       legal: { title: "Mentions légales", description: "Mentions légales du site Arrow Home Group." },
       privacy: {
@@ -55,7 +50,6 @@ const fr = {
     about: "À propos",
     process: "Notre méthode",
     contact: "Contact",
-    realEstate: "Immobilier",
     cta: "Parlons de votre projet",
     openMenu: "Ouvrir le menu",
     closeMenu: "Fermer le menu",
@@ -83,7 +77,7 @@ const fr = {
         eyebrow: "Arrow Home Group",
         title: "Construire aujourd'hui.",
         highlight: "Donner forme à demain.",
-        text: "Arrow Home Group accompagne vos projets de construction, de rénovation, d'aménagement et d'immobilier avec une approche fondée sur la qualité, la précision et le sens du détail.",
+        text: "Arrow Home Group accompagne vos projets de construction, de rénovation et d'aménagement avec une approche fondée sur la qualité, la précision et le sens du détail.",
         cta: "Parlons de votre projet",
         secondary: "Découvrir nos réalisations",
       },
@@ -104,14 +98,6 @@ const fr = {
         secondary: "Nos réalisations",
       },
       {
-        eyebrow: "Immobilier",
-        title: "Trouvez le bien",
-        highlight: "qui vous ressemble.",
-        text: "Terrains, villas, appartements et locaux à Dakar et dans les régions, avec un accompagnement de la recherche jusqu'à la signature.",
-        cta: "Voir les biens disponibles",
-        secondary: "Confier ma recherche",
-      },
-      {
         eyebrow: "Grands projets",
         title: "Des solutions complètes",
         highlight: "pour vos ouvrages.",
@@ -124,7 +110,7 @@ const fr = {
 
   marquee: {
     label: "Nos domaines d'intervention",
-    items: ["Construction", "Rénovation", "Aménagement", "Finition", "Immobilier"],
+    items: ["Construction", "Rénovation", "Aménagement", "Finition", "Décoration"],
   },
 
   services: {
@@ -135,7 +121,7 @@ const fr = {
     more: "En savoir plus",
     quote: "Demander un devis",
     pageIntro:
-      "Un interlocuteur unique pour coordonner les différents corps de métier de votre projet : construction, finitions, menuiseries, ascenseurs, immobilier et décoration.",
+      "Un interlocuteur unique pour coordonner les différents corps de métier de votre projet : construction, finitions, menuiseries, ascenseurs et décoration.",
     items: {
       construction: {
         title: "Construction & BTP",
@@ -173,12 +159,6 @@ const fr = {
         body: "Nous accompagnons les immeubles résidentiels, professionnels et hôteliers dans leurs projets d'ascenseurs : définition du besoin, fourniture, installation et maintenance.",
         points: ["Fourniture et installation", "Maintenance", "Bâtiments résidentiels et professionnels"],
       },
-      immobilier: {
-        title: "Immobilier",
-        short: "Vente, location et accompagnement dans vos projets immobiliers.",
-        body: "Terrains, villas, appartements et locaux : nous vous accompagnons dans la recherche, la vente, la location et la valorisation de biens, à Dakar et dans les régions du Sénégal.",
-        points: ["Vente et location", "Accompagnement des acquéreurs", "Valorisation de biens"],
-      },
       decoration: {
         title: "Décoration",
         short: "Des intérieurs harmonieux, esthétiques et fonctionnels.",
@@ -201,7 +181,6 @@ const fr = {
       amenagement: "Aménagement",
       aluminium: "Aluminium",
       bois: "Bois",
-      immobilier: "Immobilier",
       decoration: "Décoration",
     },
     filterLabel: "Filtrer par catégorie",
@@ -233,8 +212,8 @@ const fr = {
     title: "À propos d'Arrow Home Group",
     lead: "Bâtir, transformer et valoriser vos espaces.",
     paragraphs: [
-      "Arrow Home Group accompagne les particuliers, les entreprises et les investisseurs dans leurs projets de construction, de rénovation, d'aménagement et d'immobilier.",
-      "Basés à la Médina, à Dakar, nous réunissons dans une même structure plusieurs savoir-faire complémentaires : construction, finitions, menuiseries aluminium et bois, ascenseurs, décoration et immobilier. Cette organisation permet de coordonner les intervenants et d'offrir à nos clients un interlocuteur unique.",
+      "Arrow Home Group accompagne les particuliers, les entreprises et les investisseurs dans leurs projets de construction, de rénovation et d'aménagement.",
+      "Basés à la Médina, à Dakar, nous réunissons dans une même structure plusieurs savoir-faire complémentaires : construction, finitions, menuiseries aluminium et bois, ascenseurs et décoration. Cette organisation permet de coordonner les intervenants et d'offrir à nos clients un interlocuteur unique.",
       "Notre vision est simple : proposer des solutions adaptées à chaque projet, réalisées avec soin, dans le respect des engagements pris avec le client.",
     ],
     values: [
@@ -262,38 +241,6 @@ const fr = {
   },
 
   testimonials: { eyebrow: "Témoignages", title: "Ils nous ont fait confiance" },
-
-  realEstate: {
-    eyebrow: "Immobilier",
-    title: "Terrain, villa ou appartement ?",
-    text: "Faites-vous accompagner dans votre recherche de bien à vendre ou à louer, à Dakar et dans les régions, jusqu'à la signature.",
-    cta: "Voir les biens",
-    entrust: "Confier ma recherche",
-    pageIntro:
-      "Achat, vente ou location : Arrow Home Group vous accompagne dans vos projets immobiliers à Dakar et dans les régions du Sénégal.",
-    emptyTitle: "Aucun bien n'est publié en ligne pour le moment",
-    emptyText:
-      "Notre sélection de biens est communiquée sur demande. Décrivez-nous votre recherche (type de bien, localisation, budget) : nous revenons vers vous avec des propositions adaptées.",
-    whatsappMsg: "Bonjour Arrow Home, je recherche un bien immobilier.",
-    filters: {
-      label: "Filtrer les biens",
-      deal: "Transaction",
-      type: "Type de bien",
-      city: "Ville",
-      all: "Tous",
-      sale: "À vendre",
-      rent: "À louer",
-      land: "Terrain",
-      villa: "Villa",
-      apartment: "Appartement",
-      commercial: "Local commercial",
-    },
-    priceOnRequest: "Prix sur demande",
-    area: "{n} m²",
-    bedrooms: "{n} chambre(s)",
-    noResults: "Aucun bien ne correspond à ces critères.",
-    enquire: "Demander des informations",
-  },
 
   contact: {
     eyebrow: "Contact",
@@ -390,7 +337,7 @@ const fr = {
 
   footer: {
     about:
-      "Construction, rénovation, aménagement, finition et immobilier à Dakar et dans les régions du Sénégal.",
+      "Construction, rénovation, aménagement et finition à Dakar et dans les régions du Sénégal.",
     services: "Expertises",
     navigation: "Navigation",
     contact: "Contact",

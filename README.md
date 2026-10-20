@@ -1,6 +1,6 @@
 # Arrow Home Group : site web
 
-Site corporate multilingue (français, anglais, chinois simplifié) d'ARROW HOME GROUP : construction, rénovation, aménagement, finition, aluminium, bois, ascenseurs, immobilier et décoration, à Dakar (Sénégal).
+Site corporate multilingue (français, anglais, chinois simplifié) d'ARROW HOME GROUP : construction, rénovation, aménagement, finition, aluminium, bois, ascenseurs et décoration, à Dakar (Sénégal).
 
 - Next.js 15.5 (App Router, `src/`), React 19, TypeScript, Tailwind CSS v4
 - Toutes les pages sont générées statiquement ; seul l'envoi des formulaires s'exécute côté serveur (Server Action)
@@ -28,13 +28,12 @@ Version de production locale : `npm run build && npm start`.
 | Méthode | `/fr/notre-methode` | `/en/our-process` | `/zh/process` |
 | Contact | `/fr/contact` | `/en/contact` | `/zh/contact` |
 | Devis | `/fr/devis` | `/en/quote` | `/zh/quote` |
-| Immobilier | `/fr/immobilier` | `/en/real-estate` | `/zh/real-estate` |
 | Mentions légales | `/fr/mentions-legales` | `/en/legal-notice` | `/zh/legal` |
 | Confidentialité | `/fr/confidentialite` | `/en/privacy-policy` | `/zh/privacy` |
 
 - `/` redirige vers la langue du visiteur (cookie de choix, sinon langue du navigateur, sinon français).
-- Les anciens liens restent valides : `/devis?service=…` → `/fr/devis?service=…`, `/immobilier` → `/fr/immobilier`. Les anciens identifiants de services (`construction-btp`, `projets-hoteliers`, `menuiserie`…) pré-remplissent la bonne prestation.
-- Le devis se pré-remplit avec `?service=construction|renovation|amenagement-finition|aluminium|bois|ascenseurs|immobilier|decoration`.
+- Les anciens liens restent valides : `/devis?service=…` → `/fr/devis?service=…`. L'ancienne page `/immobilier` (supprimée à la demande du client) renvoie vers l'accueil. Les anciens identifiants de services (`construction-btp`, `projets-hoteliers`, `menuiserie`…) pré-remplissent la bonne prestation.
+- Le devis se pré-remplit avec `?service=construction|renovation|amenagement-finition|aluminium|bois|ascenseurs|decoration`.
 
 ## Où modifier le contenu
 
@@ -45,7 +44,7 @@ Version de production locale : `npm run build && npm start`.
 | URL traduites des pages | `src/i18n/routes.ts` |
 | Expertises : icône, illustration, photo | `src/content/services.ts` |
 | Réalisations réelles + illustrations d'attente | `src/content/portfolio.ts` |
-| Témoignages, biens immobiliers | `src/content/trust.ts` |
+| Témoignages | `src/content/trust.ts` |
 | Couleurs, typographie, boutons | `src/app/globals.css` |
 
 ### Ajouter les vraies photos
@@ -54,7 +53,7 @@ Version de production locale : `npm run build && npm start`.
 3. Expertise : renseigner `image` dans `serviceMeta` (`src/content/services.ts`).
 4. Diaporama d'accueil : ajouter `image: "/photos/…"` à une diapositive dans `src/app/[locale]/page.tsx`.
 
-Les témoignages et les biens immobiliers ne s'affichent que lorsqu'ils existent réellement : aucune donnée fictive n'est publiée.
+Les témoignages ne s'affichent que lorsqu'ils existent réellement : aucune donnée fictive n'est publiée.
 
 ## Logo
 

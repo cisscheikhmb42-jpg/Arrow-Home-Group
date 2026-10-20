@@ -4,7 +4,7 @@ import HeroSlider, { type Slide } from "@/components/HeroSlider";
 import { InstagramIcon } from "@/components/Icon";
 import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
-import { AboutSection, ContactSection, ProcessTimeline, RealEstateBanner, Testimonials } from "@/components/sections/Blocks";
+import { AboutSection, ContactSection, ProcessTimeline, Testimonials } from "@/components/sections/Blocks";
 import PortfolioRail from "@/components/sections/PortfolioRail";
 import SectionHeading from "@/components/sections/SectionHeading";
 import ServicesGrid from "@/components/sections/ServicesGrid";
@@ -20,13 +20,12 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   const s = t.hero.slides;
   const quote = href(locale, "quote");
 
-  // Chaque diapositive renvoie vers une vraie page (devis pré-rempli, immobilier, réalisations…).
+  // Chaque diapositive renvoie vers une vraie page (devis pré-rempli, réalisations, méthode…).
   const slides: Slide[] = [
     { ...s[0], cta: { label: s[0].cta, href: quote }, secondary: { label: s[0].secondary, href: href(locale, "projects") } },
     { ...s[1], cta: { label: s[1].cta, href: `${quote}?service=construction` }, secondary: { label: s[1].secondary, href: href(locale, "services") } },
     { ...s[2], cta: { label: s[2].cta, href: `${quote}?service=renovation` }, secondary: { label: s[2].secondary, href: href(locale, "projects") } },
-    { ...s[3], cta: { label: s[3].cta, href: href(locale, "real-estate") }, secondary: { label: s[3].secondary, href: `${quote}?service=immobilier` } },
-    { ...s[4], cta: { label: s[4].cta, href: `${quote}?service=construction` }, secondary: { label: s[4].secondary, href: href(locale, "process") } },
+    { ...s[3], cta: { label: s[3].cta, href: `${quote}?service=construction` }, secondary: { label: s[3].secondary, href: href(locale, "process") } },
   ];
 
   return (
@@ -73,7 +72,6 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <AboutSection locale={locale} t={t} />
       <ProcessTimeline t={t} />
       <Testimonials locale={locale} t={t} />
-      <RealEstateBanner locale={locale} t={t} />
       <ContactSection locale={locale} t={t} />
     </>
   );

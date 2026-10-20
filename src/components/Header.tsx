@@ -120,7 +120,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
             </div>
             <nav aria-label={t.mobileNav} className="flex-1 overflow-y-auto px-5 py-6">
               <ul className="divide-y divide-mist">
-                {[...items, { key: "real-estate" as RouteKey, label: "realEstate" as const }].map((item) => {
+                {items.map((item) => {
                   const active = isActive(item.key);
                   return (
                     <li key={item.key}>

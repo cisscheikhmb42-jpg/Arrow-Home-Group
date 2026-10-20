@@ -20,7 +20,6 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dictionary })
     { key: "home", label: t.nav.home },
     { key: "services", label: t.nav.services },
     { key: "projects", label: t.nav.projects },
-    { key: "real-estate", label: t.nav.realEstate },
     { key: "about", label: t.nav.about },
     { key: "process", label: t.nav.process },
     { key: "contact", label: t.nav.contact },
@@ -93,14 +92,9 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dictionary })
             </li>
             <li className="flex gap-3">
               <Mail className="mt-0.5 size-4 shrink-0 text-graphite" aria-hidden />
-              <span className="flex flex-col gap-1">
-                <a href={`mailto:${site.email}`} className="break-all hover:text-graphite">
-                  {site.email}
-                </a>
-                <a href={`mailto:${site.emailSecondary}`} className="break-all hover:text-graphite">
-                  {site.emailSecondary}
-                </a>
-              </span>
+              <a href={`mailto:${site.email}`} className="break-all hover:text-graphite">
+                {site.email}
+              </a>
             </li>
             <li>
               <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 pl-7">

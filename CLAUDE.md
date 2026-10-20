@@ -1,6 +1,6 @@
 # Arrow Home : site web
 
-Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, aménagement, finition, aluminium, bois, ascenseurs, immobilier, décoration), à Dakar, au Sénégal.
+Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, aménagement, finition, aluminium, bois, ascenseurs, décoration). L'IMMOBILIER A ÉTÉ RETIRÉ du site à la demande du client : ne pas le remettre, à Dakar, au Sénégal.
 
 ## Stack
 - Next.js 15.5 (App Router, `src/`), React 19, TypeScript, Tailwind CSS v4 (thème dans `src/app/globals.css`, classes maison dans `@layer components`)
@@ -10,18 +10,18 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 
 ## Langues
 - FR (défaut), EN, ZH (`zh-Hans`). Une seule app : `src/app/[locale]/…`, dossiers internes en anglais (`projects`, `quote`…)
-- URL publiques traduites dans `src/i18n/routes.ts` ; `src/middleware.ts` réécrit l'URL publique vers le dossier interne et redirige `/`, les anciens liens (`/devis`, `/immobilier`) et les slugs non traduits
+- URL publiques traduites dans `src/i18n/routes.ts` ; `src/middleware.ts` réécrit l'URL publique vers le dossier interne et redirige `/`, les anciens liens (`/devis`), les pages supprimées (`/immobilier` → accueil) et les slugs non traduits
 - Textes : `src/i18n/dictionaries/{fr,en,zh}.ts` (fr définit le type). Aucun texte en dur dans les composants
 
 ## Charte
 - Design (demande du client) : FOND BLANC partout, TEXTES EN BLEU du logo `#004E85` (jeton `graphite`), texte secondaire bleu `#3D6D96` (`stone`), bordures `#DCE6EF` (`mist`), encadrés `#F3F7FB` (`tint`). Vert du logo `#95BE29` (`champagne`) seulement pour de fins traits décoratifs ; petits sur-titres en vert foncé `#4A7A12` (`champagne-700`). Les noms de jetons historiques sont conservés
 - AUCUN DESSIN / ILLUSTRATION : le client les a refusés. Sans photo, afficher un encadré sobre « Photos à venir » (PortfolioCard) ou une icône (expertises). Les vraies photos arriveront plus tard
 - LOGO : `public/brand/logo.png`, original (SHA-256 71d70061…68390), via `src/components/Logo.tsx`. Jamais de filtre, d'opacité, de recoloration ni de version redessinée. Texte noir → toujours sur fond clair
-- Coordonnées : `src/lib/site.ts` (e-mail principal info@arrowhome.cc, secondaire arrowhome.senegal@gmail.com)
+- Coordonnées : `src/lib/site.ts` (e-mail unique : info@arrowhome.cc ; l'adresse gmail a été retirée à la demande du client)
 
 ## Contenu
 - Réalisations réelles : `src/content/portfolio.ts` (`projects`, vide pour l'instant ; encadrés « Photos à venir » via `placeholders`)
-- Témoignages et biens : `src/content/trust.ts` (vides ; sections masquées tant qu'ils sont vides)
+- Témoignages : `src/content/trust.ts` (vide ; section masquée tant qu'elle est vide)
 - Ne pas inventer de chiffres, projets, témoignages, certifications, dates. Ne pas afficher d'année de création
 - Infos de l'ancien site (50+ projets, 100 % satisfaits, 90 jours, garantie 1 an, ingénierie chinoise, projets Almadies/Plateau…) : à confirmer par l'utilisateur avant ajout
 

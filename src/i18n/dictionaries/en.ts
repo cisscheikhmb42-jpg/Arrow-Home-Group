@@ -2,24 +2,24 @@ import type { Dictionary } from "./fr";
 
 const en: Dictionary = {
   meta: {
-    siteTitle: "Arrow Home Group | Construction, renovation and real estate in Senegal",
+    siteTitle: "Arrow Home Group | Construction, renovation and fit-out in Senegal",
     siteDescription:
-      "Arrow Home Group delivers construction, renovation, interior fit-out, finishing and real estate services in Dakar and across Senegal. Let's talk about your project.",
+      "Arrow Home Group delivers construction, renovation, interior fit-out and finishing services in Dakar and across Senegal. Let's talk about your project.",
     pages: {
       services: {
         title: "Our expertise: construction, renovation, fit-out",
         description:
-          "Construction and civil works, renovation, fit-out and finishing, aluminium, wood, elevators, real estate and interior design in Dakar and Senegal.",
+          "Construction and civil works, renovation, fit-out and finishing, aluminium, wood, elevators and interior design in Dakar and Senegal.",
       },
       projects: {
         title: "Our projects",
         description:
-          "Explore Arrow Home Group's fields of work: construction, renovation, fit-out, aluminium, wood, real estate and interior design.",
+          "Explore Arrow Home Group's fields of work: construction, renovation, fit-out, aluminium, wood and interior design.",
       },
       about: {
         title: "About Arrow Home Group",
         description:
-          "A construction, renovation and real estate company based in Dakar: our vision, our approach and our commitments.",
+          "A construction, renovation and fit-out company based in Dakar: our vision, our approach and our commitments.",
       },
       process: {
         title: "Our process",
@@ -34,12 +34,7 @@ const en: Dictionary = {
       quote: {
         title: "Request a quote",
         description:
-          "Tell us about your construction, renovation, fit-out or real estate project and Arrow Home Group will get back to you.",
-      },
-      realEstate: {
-        title: "Real estate",
-        description:
-          "Land, villas, apartments and commercial premises in Dakar and Senegal: let Arrow Home Group handle your property search.",
+          "Tell us about your construction, renovation or fit-out project and Arrow Home Group will get back to you.",
       },
       legal: { title: "Legal notice", description: "Legal notice for the Arrow Home Group website." },
       privacy: {
@@ -56,7 +51,6 @@ const en: Dictionary = {
     about: "About",
     process: "Our process",
     contact: "Contact",
-    realEstate: "Real estate",
     cta: "Let's talk about your project",
     openMenu: "Open menu",
     closeMenu: "Close menu",
@@ -84,7 +78,7 @@ const en: Dictionary = {
         eyebrow: "Arrow Home Group",
         title: "Building today.",
         highlight: "Shaping tomorrow.",
-        text: "Arrow Home Group supports your construction, renovation, fit-out and real estate projects with an approach built on quality, precision and attention to detail.",
+        text: "Arrow Home Group supports your construction, renovation and fit-out projects with an approach built on quality, precision and attention to detail.",
         cta: "Let's talk about your project",
         secondary: "Discover our projects",
       },
@@ -105,14 +99,6 @@ const en: Dictionary = {
         secondary: "Our projects",
       },
       {
-        eyebrow: "Real estate",
-        title: "Find the property",
-        highlight: "that suits you.",
-        text: "Land, villas, apartments and commercial premises in Dakar and the regions, with support from the search all the way to signing.",
-        cta: "View available properties",
-        secondary: "Entrust us with your search",
-      },
-      {
         eyebrow: "Large-scale projects",
         title: "Complete solutions",
         highlight: "for your buildings.",
@@ -125,7 +111,7 @@ const en: Dictionary = {
 
   marquee: {
     label: "Our fields of work",
-    items: ["Construction", "Renovation", "Fit-out", "Finishing", "Real estate"],
+    items: ["Construction", "Renovation", "Fit-out", "Finishing", "Interior design"],
   },
 
   services: {
@@ -135,7 +121,7 @@ const en: Dictionary = {
     more: "Learn more",
     quote: "Request a quote",
     pageIntro:
-      "A single point of contact to coordinate every trade on your project: construction, finishing, joinery, elevators, real estate and interior design.",
+      "A single point of contact to coordinate every trade on your project: construction, finishing, joinery, elevators and interior design.",
     items: {
       construction: {
         title: "Construction & civil works",
@@ -173,12 +159,6 @@ const en: Dictionary = {
         body: "We support residential, commercial and hotel buildings with their elevator projects: needs assessment, supply, installation and maintenance.",
         points: ["Supply and installation", "Maintenance", "Residential and commercial buildings"],
       },
-      immobilier: {
-        title: "Real estate",
-        short: "Sales, rentals and support for your property projects.",
-        body: "Land, villas, apartments and commercial premises: we support you in searching for, selling, renting and adding value to property in Dakar and across Senegal.",
-        points: ["Sales and rentals", "Buyer support", "Property enhancement"],
-      },
       decoration: {
         title: "Interior design",
         short: "Harmonious, attractive and functional interiors.",
@@ -201,7 +181,6 @@ const en: Dictionary = {
       amenagement: "Fit-out",
       aluminium: "Aluminium",
       bois: "Wood",
-      immobilier: "Real estate",
       decoration: "Interior design",
     },
     filterLabel: "Filter by category",
@@ -233,8 +212,8 @@ const en: Dictionary = {
     title: "About Arrow Home Group",
     lead: "Building, transforming and enhancing your spaces.",
     paragraphs: [
-      "Arrow Home Group supports individuals, businesses and investors with their construction, renovation, fit-out and real estate projects.",
-      "Based in Médina, Dakar, we bring several complementary skills together under one roof: construction, finishing, aluminium and wood joinery, elevators, interior design and real estate. This lets us coordinate every trade and give our clients a single point of contact.",
+      "Arrow Home Group supports individuals, businesses and investors with their construction, renovation and fit-out projects.",
+      "Based in Médina, Dakar, we bring several complementary skills together under one roof: construction, finishing, aluminium and wood joinery, elevators and interior design. This lets us coordinate every trade and give our clients a single point of contact.",
       "Our vision is simple: to offer solutions tailored to each project, delivered with care and in line with the commitments made to the client.",
     ],
     values: [
@@ -262,38 +241,6 @@ const en: Dictionary = {
   },
 
   testimonials: { eyebrow: "Testimonials", title: "They placed their trust in us" },
-
-  realEstate: {
-    eyebrow: "Real estate",
-    title: "Land, villa or apartment?",
-    text: "Get support in finding a property to buy or rent in Dakar and the regions, all the way to signing.",
-    cta: "View properties",
-    entrust: "Entrust us with your search",
-    pageIntro:
-      "Buying, selling or renting: Arrow Home Group supports your property projects in Dakar and across Senegal.",
-    emptyTitle: "No properties are listed online at the moment",
-    emptyText:
-      "Our property selection is shared on request. Tell us what you are looking for (property type, location, budget) and we will come back to you with suitable options.",
-    whatsappMsg: "Hello Arrow Home, I am looking for a property.",
-    filters: {
-      label: "Filter properties",
-      deal: "Transaction",
-      type: "Property type",
-      city: "City",
-      all: "All",
-      sale: "For sale",
-      rent: "For rent",
-      land: "Land",
-      villa: "Villa",
-      apartment: "Apartment",
-      commercial: "Commercial premises",
-    },
-    priceOnRequest: "Price on request",
-    area: "{n} m²",
-    bedrooms: "{n} bedroom(s)",
-    noResults: "No properties match these criteria.",
-    enquire: "Request information",
-  },
 
   contact: {
     eyebrow: "Contact",
@@ -387,7 +334,7 @@ const en: Dictionary = {
   },
 
   footer: {
-    about: "Construction, renovation, fit-out, finishing and real estate in Dakar and across Senegal.",
+    about: "Construction, renovation, fit-out and finishing in Dakar and across Senegal.",
     services: "Expertise",
     navigation: "Navigation",
     contact: "Contact",

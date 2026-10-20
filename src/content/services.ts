@@ -10,7 +10,6 @@ export const serviceSlugs = [
   "aluminium",
   "bois",
   "ascenseurs",
-  "immobilier",
   "decoration",
 ] as const;
 
@@ -23,7 +22,6 @@ export const serviceMeta: Record<ServiceSlug, { icon: string; image?: string }> 
   aluminium: { icon: "AppWindow" },
   bois: { icon: "TreePine" },
   ascenseurs: { icon: "ArrowUpDown" },
-  immobilier: { icon: "KeyRound" },
   decoration: { icon: "Sofa" },
 };
 

@@ -112,31 +112,6 @@ export function Testimonials({ locale, t }: { locale: Locale; t: Dictionary }) {
   );
 }
 
-/** Bandeau immobilier. */
-export function RealEstateBanner({ locale, t }: { locale: Locale; t: Dictionary }) {
-  const r = t.realEstate;
-  return (
-    <section className="border-t border-mist bg-white py-24 lg:py-32">
-      <div className="container-x">
-        <Reveal className="border border-mist bg-tint px-7 py-14 sm:px-12 lg:px-16 lg:py-20">
-          <p className="eyebrow">{r.eyebrow}</p>
-          <h2 className="display mt-6 max-w-3xl text-4xl text-graphite sm:text-5xl">{r.title}</h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">{r.text}</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Link href={href(locale, "real-estate")} className="btn btn-dark">
-              {r.cta}
-              <ArrowRight className="arrow size-4" aria-hidden />
-            </Link>
-            <Link href={`${href(locale, "quote")}?service=immobilier`} className="btn btn-outline-dark">
-              {r.entrust}
-            </Link>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /** Coordonnees : telephone, WhatsApp, e-mails, adresse, horaires. */
 export function ContactDetails({ t }: { t: Dictionary }) {
   const c = t.contact;
@@ -154,7 +129,6 @@ export function ContactDetails({ t }: { t: Dictionary }) {
       label: c.email,
       value: site.email,
       icon: <Mail className="size-5" strokeWidth={1.5} aria-hidden />,
-      extra: { href: `mailto:${site.emailSecondary}`, value: site.emailSecondary },
     },
   ];
   return (
@@ -174,11 +148,6 @@ export function ContactDetails({ t }: { t: Dictionary }) {
               >
                 {r.value}
               </a>
-              {r.extra && (
-                <a href={r.extra.href} className="mt-0.5 block break-words text-stone hover:underline">
-                  {r.extra.value}
-                </a>
-              )}
             </span>
           </li>
         ))}
