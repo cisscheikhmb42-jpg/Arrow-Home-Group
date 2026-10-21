@@ -48,7 +48,7 @@ export default function QuickQuote({ locale, t }: { locale: Locale; t: Dictionar
           href={whatsappLink(t.contact.whatsappMsg)}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-whatsapp px-3"
+          className="btn border-[#1e9e4f] px-3 text-[#157a3b] hover:bg-[#1e9e4f] hover:text-white"
         >
           <WhatsAppIcon className="size-4" />
           {q.whatsapp}
