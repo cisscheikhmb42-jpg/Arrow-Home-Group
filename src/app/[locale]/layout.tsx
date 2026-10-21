@@ -6,6 +6,7 @@ import "@fontsource-variable/cormorant-garamond/wght-italic.css";
 import "../globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import MobileActionBar from "@/components/MobileActionBar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { getDictionary } from "@/i18n";
 import { htmlLang, isLocale, locales } from "@/i18n/config";
@@ -62,7 +63,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={htmlLang[locale]}>
-      <body className="flex min-h-dvh flex-col font-sans">
+      <body className="flex min-h-dvh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] font-sans lg:pb-0">
         <noscript>
           <style>{`[data-reveal]{opacity:1!important;translate:none!important;transform:none!important}`}</style>
         </noscript>
@@ -78,6 +79,7 @@ export default async function LocaleLayout({
         </main>
         <Footer locale={locale} t={t} />
         <WhatsAppButton label={t.hero.whatsapp} message={t.contact.whatsappMsg} />
+        <MobileActionBar locale={locale} t={t} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       </body>
     </html>

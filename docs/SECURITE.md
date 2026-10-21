@@ -29,7 +29,7 @@ Aucun site n'est invulnérable. Ce document décrit les protections réellement 
 - Recherche de secrets dans les fichiers suivis par Git : aucun trouvé.
 - `npm audit --omit=dev` : voir ci-dessous.
 
-Les tests d'enregistrement ont utilisé une **simulation** de l'API Supabase : l'écriture dans la vraie base n'a pas pu être testée, car le projet Supabase est en pause et aucune clé n'est configurée.
+Les tests d'enregistrement du site ont utilisé une **simulation** de l'API Supabase. Les migrations SQL ont été exécutées sur un PostgreSQL 16 local : lecture/écriture directes refusées au rôle anon, jeton illisible, mauvais jeton refusé, 4e envoi en 15 min bloqué, données invalides rejetées. L'écriture dans la vraie base n'a pas pu être testée : le projet Supabase est en pause (limite de 2 projets gratuits actifs).
 
 ## Dépendances
 
@@ -40,7 +40,7 @@ Les tests d'enregistrement ont utilisé une **simulation** de l'API Supabase : l
 ## À faire avant / après la mise en ligne
 
 1. Générer un `LEAD_IP_SALT` aléatoire (`openssl rand -hex 32`) dans Vercel.
-2. Ne jamais copier la clé `service_role` ailleurs que dans les variables Vercel. En cas de doute sur une fuite : la régénérer dans Supabase.
+2. Le site n'utilise plus la clé `service_role` : il appelle uniquement la fonction `submit_website_lead` avec la clé publique et le jeton `LEAD_RPC_TOKEN` (stocké seulement dans Vercel ; la base n'en garde que l'empreinte SHA-256). En cas de doute sur une fuite : générer un nouveau jeton et remplacer l'empreinte dans `private.lead_settings`.
 3. Activer l'authentification à deux facteurs sur les comptes GitHub, Vercel, Supabase et Resend.
 4. Après déploiement, vérifier les en-têtes sur le domaine réel (par ex. securityheaders.com).
 5. Prévoir une purge régulière des anciennes demandes, conformément à la politique de confidentialité.

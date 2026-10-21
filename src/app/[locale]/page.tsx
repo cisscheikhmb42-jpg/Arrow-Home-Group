@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import HeroSlider, { type Slide } from "@/components/HeroSlider";
 import { InstagramIcon } from "@/components/Icon";
 import Marquee from "@/components/Marquee";
+import QuickQuote from "@/components/QuickQuote";
 import Reveal from "@/components/Reveal";
 import { AboutSection, ContactSection, ProcessTimeline, Testimonials } from "@/components/sections/Blocks";
 import PortfolioRail from "@/components/sections/PortfolioRail";
@@ -30,7 +31,13 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <>
-      <HeroSlider slides={slides} t={t.hero} />
+      <HeroSlider slides={slides} t={t.hero} aside={<QuickQuote locale={locale} t={t} />} />
+      {/* Sur téléphone et tablette, le choix rapide de prestation suit le diaporama. */}
+      <section className="border-b border-mist bg-tint py-12 lg:hidden">
+        <div className="container-x max-w-xl">
+          <QuickQuote locale={locale} t={t} />
+        </div>
+      </section>
       <div id="contenu-suite" />
       <Marquee items={t.marquee.items} label={t.marquee.label} />
 

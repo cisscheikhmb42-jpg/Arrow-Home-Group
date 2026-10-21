@@ -64,6 +64,20 @@ const zh: Dictionary = {
     goTo: "前往第 {n} 张：{name}",
     scroll: "向下浏览",
     whatsapp: "通过 WhatsApp 联系",
+    trust: [
+      "办公室位于达喀尔 Médina 区 Malick Sy 大道",
+      "七大专业领域，由同一团队统筹",
+      "可通过电话、WhatsApp 或电子邮件联系我们",
+    ],
+    quick: {
+      title: "您的项目是什么？",
+      text: "选择一项服务，报价表单将自动预填。",
+      other: "其他项目",
+      or: "或直接联系我们",
+      call: "致电",
+      whatsapp: "WhatsApp",
+    },
+    mobileBar: { label: "快捷操作", call: "致电", whatsapp: "WhatsApp", quote: "报价" },
     slides: [
       {
         eyebrow: "Arrow Home Group",

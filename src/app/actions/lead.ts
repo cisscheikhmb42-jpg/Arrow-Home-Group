@@ -6,8 +6,8 @@ import fr from "@/i18n/dictionaries/fr";
 import { leadSchema } from "@/lib/leads/schema";
 import type { FieldErrorCode, LeadField, LeadState } from "@/lib/leads/shared";
 import { notifyConfigured, notifyLead } from "@/lib/leads/notify";
-import { hashIp, isRateLimited } from "@/lib/leads/rate-limit";
-import { insertLead, storageConfigured } from "@/lib/leads/store";
+import { hashIp, isRateLimitedLocally } from "@/lib/leads/rate-limit";
+import { storageConfigured, storeLead } from "@/lib/leads/store";
 
 const FIELDS = ["kind", "locale", "name", "phone", "email", "service", "location", "budget", "message", "consent"] as const;
 const MIN_FILL_MS = 2500;
@@ -51,17 +51,13 @@ export async function submitLead(_prev: LeadState, formData: FormData): Promise<
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip") || "unknown";
   const ipHash = hashIp(ip);
 
-  try {
-    if (await isRateLimited(ipHash)) return { status: "error", formError: "rateLimited" };
-  } catch (e) {
-    console.error("[lead] Vérification de fréquence impossible :", (e as Error).message);
-    return { status: "error", formError: "server" };
-  }
+  // Sans base, garde-fou en mémoire ; avec la base, c'est elle qui limite (partagé entre toutes les instances).
+  if (!canStore && isRateLimitedLocally(ipHash)) return { status: "error", formError: "rateLimited" };
 
   let stored = false;
   if (canStore) {
     try {
-      await insertLead(lead, ipHash);
+      if ((await storeLead(lead, ipHash)) === "rate_limited") return { status: "error", formError: "rateLimited" };
       stored = true;
     } catch (e) {
       console.error("[lead] Échec de l'enregistrement :", (e as Error).message);

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { fill } from "@/i18n/fill";
 
@@ -20,7 +20,16 @@ export type Slide = {
 
 const DURATION = 7000;
 
-export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictionary["hero"] }) {
+export default function HeroSlider({
+  slides,
+  t,
+  aside,
+}: {
+  slides: Slide[];
+  t: Dictionary["hero"];
+  /** Encadré affiché à droite sur grand écran quand il n'y a pas de photo (ex. choix rapide de prestation). */
+  aside?: React.ReactNode;
+}) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hover, setHover] = useState(false);
@@ -72,7 +81,11 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
           ) : null,
         )}
 
-      <div className="container-x relative flex min-h-[34rem] flex-col justify-center pt-16 pb-28 lg:min-h-[40rem] lg:pt-20">
+      <div
+        className={`container-x relative grid min-h-[34rem] items-center gap-12 pt-14 pb-28 lg:min-h-[44rem] lg:pt-16 ${
+          aside && !hasImages ? "lg:grid-cols-[minmax(0,1fr)_25rem] xl:gap-20" : ""
+        }`}
+      >
         <div className={`relative ${hasImages ? "max-w-2xl lg:max-w-[50%]" : "max-w-4xl"}`}>
           {slides.map((s, i) => (
             <div
@@ -90,12 +103,12 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
             >
               <p className="eyebrow">{s.eyebrow}</p>
               {i === 0 ? (
-                <h1 className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[5.5rem]">
+                <h1 className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[4.5rem] xl:text-[5.25rem]">
                   <span className="block">{s.title}</span>
                   <span className="block text-stone italic lang-zh:not-italic">{s.highlight}</span>
                 </h1>
               ) : (
-                <p className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[5.5rem]">
+                <p className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[4.5rem] xl:text-[5.25rem]">
                   <span className="block">{s.title}</span>
                   <span className="block text-stone italic lang-zh:not-italic">{s.highlight}</span>
                 </p>
@@ -112,7 +125,17 @@ export default function HeroSlider({ slides, t }: { slides: Slide[]; t: Dictiona
               </div>
             </div>
           ))}
+          <ul className="mt-10 grid gap-3 border-t border-mist pt-7 text-sm text-graphite sm:grid-cols-3 sm:gap-5">
+            {t.trust.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 leading-snug">
+                <Check className="mt-0.5 size-4 shrink-0 text-champagne-700" strokeWidth={2.25} aria-hidden />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
+
+        {aside && !hasImages && <div className="hidden lg:block">{aside}</div>}
 
         <div className="absolute inset-x-0 bottom-0 pb-8">
           <div className="container-x flex items-center gap-4">

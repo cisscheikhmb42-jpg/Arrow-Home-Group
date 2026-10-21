@@ -72,6 +72,20 @@ const fr = {
     goTo: "Aller à la diapositive {n} : {name}",
     scroll: "Découvrir la suite",
     whatsapp: "Écrire sur WhatsApp",
+    trust: [
+      "Bureau à Dakar, Avenue Malick Sy, Médina",
+      "7 métiers coordonnés par une seule équipe",
+      "Joignables par téléphone, WhatsApp ou e-mail",
+    ],
+    quick: {
+      title: "Quel est votre projet ?",
+      text: "Choisissez une prestation : le formulaire de devis s'ouvre déjà rempli.",
+      other: "Autre projet",
+      or: "ou contactez-nous directement",
+      call: "Appeler",
+      whatsapp: "WhatsApp",
+    },
+    mobileBar: { label: "Actions rapides", call: "Appeler", whatsapp: "WhatsApp", quote: "Devis" },
     slides: [
       {
         eyebrow: "Arrow Home Group",

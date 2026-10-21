@@ -64,10 +64,11 @@ Les témoignages ne s'affichent que lorsqu'ils existent réellement : aucune don
 Fonctionnement : validation côté serveur (zod) → champ piège anti-robot + délai minimum → limitation à 3 envois par 15 min et par adresse IP (empreinte hachée) → enregistrement Supabase → e-mail facultatif. La confirmation n'est affichée **que si** la demande a été enregistrée ou transmise par e-mail. Si rien n'est configuré, le visiteur voit un message l'invitant à appeler ou écrire sur WhatsApp.
 
 ### Activer l'enregistrement (Supabase)
-1. Dans Supabase, projet « Arrow Home » (actuellement **en pause** : le relancer depuis le tableau de bord).
-2. SQL Editor → exécuter `supabase/migrations/20261020000000_website_leads.sql` (crée seulement une nouvelle table, RLS activé, aucun accès public).
-3. Dans Vercel → Settings → Environment Variables (Production et Preview) : `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `LEAD_IP_SALT`.
-4. Les demandes se consultent dans Supabase → Table Editor → `website_leads`.
+1. Dans Supabase, projet « Arrow Home » (actuellement **en pause** : le relancer depuis le tableau de bord ; l'offre gratuite n'autorise que 2 projets actifs).
+2. SQL Editor → exécuter, dans l'ordre, `supabase/migrations/20261020000000_website_leads.sql` puis `20261021000000_submit_website_lead.sql` (aucune suppression ; RLS activé, aucun accès public à la table).
+3. Générer un jeton : `openssl rand -hex 32`. Enregistrer son empreinte dans la base (commande en tête de la seconde migration).
+4. Dans Vercel → Settings → Environment Variables (Production et Preview) : `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` (clé publique), `LEAD_RPC_TOKEN` (le jeton), `LEAD_IP_SALT`. La clé `service_role` n'est **pas** utilisée.
+5. Les demandes se consultent dans Supabase → Table Editor → `website_leads`.
 
 ### Activer la notification e-mail (facultatif)
 Créer un compte Resend, vérifier le domaine `arrowhome.cc`, puis renseigner `RESEND_API_KEY`, `LEAD_NOTIFY_FROM` (ex. `Site Arrow Home <site@arrowhome.cc>`) et `LEAD_NOTIFY_TO` (ex. `info@arrowhome.cc`).

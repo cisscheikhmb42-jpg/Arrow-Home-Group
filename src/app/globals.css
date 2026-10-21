@@ -144,6 +144,8 @@ summary:focus-visible,
 .btn-outline-light:hover { border-color: var(--color-champagne); color: var(--color-champagne); }
 .btn-outline-dark { border-color: var(--color-graphite); color: var(--color-graphite); }
 .btn-outline-dark:hover { background: var(--color-graphite); color: #fff; }
+.btn-whatsapp { border-color: #1e9e4f; color: #157a3b; }
+.btn-whatsapp:hover { background: #1e9e4f; color: #fff; }
 
 /* Lien éditorial souligné d'un trait champagne */
 .link-line {

@@ -27,11 +27,13 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 
 ## Formulaires
 - `src/app/actions/lead.ts` (Server Action) → `src/lib/leads/` (schema zod, store Supabase REST côté serveur, notify Resend, rate-limit)
-- Table `website_leads` : `supabase/migrations/20261020000000_website_leads.sql` (RLS sans politique, écriture via service_role)
+- Table `website_leads` : `supabase/migrations/20261020000000_website_leads.sql` (RLS sans politique)
+- Écriture uniquement via la fonction `submit_website_lead` (`20261021000000_submit_website_lead.sql`) : clé publique + jeton secret `LEAD_RPC_TOKEN`, limitation 3/15 min par IP et 60/h au total dans la base. Plus de clé service_role
+- Conversion : `QuickQuote` (choix de prestation → devis pré-rempli), `MobileActionBar` (Appeler / WhatsApp / Devis sur mobile), case d'appel dans `ServicesGrid`
 - Variables : voir `.env.example`. Sans configuration, le formulaire affiche « indisponible » (jamais de fausse confirmation)
 
 ## À faire
-1. Relancer le projet Supabase, exécuter la migration, renseigner les variables dans Vercel ; tester un envoi réel
+1. Relancer le projet Supabase (bloqué : limite de 2 projets gratuits actifs — mettre en pause un autre projet ou passer à l'offre payante), exécuter les 2 migrations, enregistrer l'empreinte du jeton, renseigner les variables dans Vercel ; tester un envoi réel
 2. Photos réelles (diaporama, expertises, réalisations) avec droits d'usage
 3. Pousser ce code sur GitHub `cisscheikhmb42-jpg/Arrow-Home-Group` (contient une ancienne version), relier Vercel, déployer en Preview puis production ; puis supprimer les 5 anciens projets Vercel arrow-home-* (avec accord)
 4. Nom de domaine définitif → `NEXT_PUBLIC_SITE_URL`

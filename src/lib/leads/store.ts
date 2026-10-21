@@ -2,59 +2,50 @@ import "server-only";
 import type { Lead } from "./schema";
 
 /**
- * Enregistrement des demandes dans Supabase via l'API REST, côté serveur uniquement.
- * La clé utilisée (SUPABASE_SERVICE_ROLE_KEY, ou la nouvelle « secret key ») ne doit JAMAIS être exposée au navigateur :
- * elle n'est pas préfixée NEXT_PUBLIC_ et ce module est marqué server-only.
- * La table a RLS activé sans aucune politique : elle est inaccessible avec la clé publique (anon).
+ * Enregistrement des demandes dans Supabase, côté serveur uniquement.
+ * Le site n'appelle qu'une fonction verrouillée (public.submit_website_lead) avec la clé publique du projet
+ * et un jeton secret (LEAD_RPC_TOKEN). Aucune clé service_role n'est nécessaire.
+ * La table website_leads a RLS activé sans aucune politique : elle reste illisible depuis l'extérieur.
+ * Voir supabase/migrations/20261021000000_submit_website_lead.sql.
  */
-const TABLE = "website_leads";
-
 function config() {
   const url = process.env.SUPABASE_URL?.replace(/\/$/, "");
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key || !/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url)) return null;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+  const token = process.env.LEAD_RPC_TOKEN;
+  if (!url || !key || !token || token.length < 32 || !/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url)) return null;
   const headers: Record<string, string> = { apikey: key };
-  // Les anciennes clés sont des JWT ; les nouvelles clés secrètes (sb_secret_…) ne passent que par l'en-tête apikey.
+  // Les anciennes clés anon sont des JWT ; les nouvelles clés (sb_publishable_…) ne passent que par l'en-tête apikey.
   if (key.startsWith("eyJ")) headers.Authorization = `Bearer ${key}`;
-  return { url, headers };
+  return { url, headers, token };
 }
 
 export const storageConfigured = () => config() !== null;
 
-export async function countRecent(ipHash: string, sinceMs: number): Promise<number | null> {
-  const c = config();
-  if (!c) return null;
-  const since = new Date(Date.now() - sinceMs).toISOString();
-  const res = await fetch(
-    `${c.url}/rest/v1/${TABLE}?select=id&ip_hash=eq.${encodeURIComponent(ipHash)}&created_at=gte.${encodeURIComponent(since)}`,
-    { method: "HEAD", headers: { ...c.headers, Prefer: "count=exact", Range: "0-0" }, cache: "no-store", signal: AbortSignal.timeout(6000) },
-  );
-  if (!res.ok && res.status !== 206) throw new Error(`count failed: ${res.status}`);
-  const total = Number(res.headers.get("content-range")?.split("/")[1]);
-  return Number.isFinite(total) ? total : 0;
-}
-
-export async function insertLead(lead: Lead, ipHash: string): Promise<void> {
+/** Enregistre la demande. La limitation de fréquence est appliquée par la base elle-même. */
+export async function storeLead(lead: Lead, ipHash: string): Promise<"ok" | "rate_limited"> {
   const c = config();
   if (!c) throw new Error("storage not configured");
-  const res = await fetch(`${c.url}/rest/v1/${TABLE}`, {
+  const res = await fetch(`${c.url}/rest/v1/rpc/submit_website_lead`, {
     method: "POST",
-    headers: { ...c.headers, "Content-Type": "application/json", Prefer: "return=minimal" },
+    headers: { ...c.headers, "Content-Type": "application/json" },
     body: JSON.stringify({
-      kind: lead.kind,
-      locale: lead.locale,
-      full_name: lead.name,
-      phone: lead.phone,
-      email: lead.email ?? null,
-      service: lead.service ?? null,
-      location: lead.location ?? null,
-      budget: lead.budget ?? null,
-      message: lead.message,
-      consent: true,
-      ip_hash: ipHash,
+      p_token: c.token,
+      p_kind: lead.kind,
+      p_locale: lead.locale,
+      p_full_name: lead.name,
+      p_phone: lead.phone,
+      p_email: lead.email ?? null,
+      p_service: lead.service ?? null,
+      p_location: lead.location ?? null,
+      p_budget: lead.budget ?? null,
+      p_message: lead.message,
+      p_ip_hash: ipHash,
     }),
     cache: "no-store",
     signal: AbortSignal.timeout(8000),
   });
-  if (!res.ok) throw new Error(`insert failed: ${res.status}`);
+  if (!res.ok) throw new Error(`rpc failed: ${res.status}`);
+  const result = await res.json();
+  if (result === "ok" || result === "rate_limited") return result;
+  throw new Error(`rpc refused: ${String(result).slice(0, 20)}`);
 }

@@ -73,6 +73,20 @@ const en: Dictionary = {
     goTo: "Go to slide {n}: {name}",
     scroll: "Scroll to discover more",
     whatsapp: "Message us on WhatsApp",
+    trust: [
+      "Office in Dakar, Avenue Malick Sy, Médina",
+      "7 trades coordinated by a single team",
+      "Reach us by phone, WhatsApp or e-mail",
+    ],
+    quick: {
+      title: "What is your project?",
+      text: "Pick a service: the quote form opens already filled in.",
+      other: "Other project",
+      or: "or contact us directly",
+      call: "Call",
+      whatsapp: "WhatsApp",
+    },
+    mobileBar: { label: "Quick actions", call: "Call", whatsapp: "WhatsApp", quote: "Quote" },
     slides: [
       {
         eyebrow: "Arrow Home Group",
