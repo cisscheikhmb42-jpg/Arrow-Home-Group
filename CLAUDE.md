@@ -33,7 +33,7 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 - Variables : voir `.env.example`. Sans configuration, le formulaire affiche « indisponible » (jamais de fausse confirmation)
 
 ## À faire
-1. Relancer le projet Supabase (bloqué : limite de 2 projets gratuits actifs — mettre en pause un autre projet ou passer à l'offre payante), exécuter les 2 migrations, enregistrer l'empreinte du jeton, renseigner les variables dans Vercel ; tester un envoi réel
+1. Supabase « Arrow Home » relancé le 21/10/2026 (AYZORA AI mis en pause à la demande du client). Migrations appliquées, empreinte du jeton enregistrée, variables Vercel (Production + Preview) : SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, LEAD_RPC_TOKEN, LEAD_IP_SALT. Reste : confirmer un envoi réel depuis le site
 2. Photos réelles (diaporama, expertises, réalisations) avec droits d'usage
 3. Pousser ce code sur GitHub `cisscheikhmb42-jpg/Arrow-Home-Group` (contient une ancienne version), relier Vercel, déployer en Preview puis production ; puis supprimer les 5 anciens projets Vercel arrow-home-* (avec accord)
 4. Nom de domaine définitif → `NEXT_PUBLIC_SITE_URL`
