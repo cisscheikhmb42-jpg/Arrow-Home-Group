@@ -25,11 +25,11 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
     <>
       <PageHero eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} text={t.portfolio.subtitle} />
 
-      <section className="overflow-hidden border-b border-mist bg-white py-20 lg:py-28">
+      <section className="overflow-hidden border-b border-line bg-canvas py-20 lg:py-28">
         <div className="container-x">
-          <Reveal className="max-w-3xl border-l border-champagne pl-5 text-sm leading-relaxed text-stone">
+          <Reveal className="max-w-3xl border-l border-accent pl-5 text-sm leading-relaxed text-muted">
             {t.portfolio.illustrationNote}{" "}
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-graphite underline decoration-champagne underline-offset-4">
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-ink underline decoration-accent underline-offset-4">
               <InstagramIcon className="size-4" />
               {t.portfolio.instagram}
             </a>
@@ -41,9 +41,9 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-canvas py-20 lg:py-28">
         <div className="container-x">
-          <h2 className="display mb-10 text-4xl text-graphite sm:text-5xl">{t.portfolio.gridTitle}</h2>
+          <h2 className="display mb-10 text-4xl text-ink sm:text-5xl">{t.portfolio.gridTitle}</h2>
           <Suspense fallback={null}>
             <PortfolioExplorer items={items} t={t.portfolio} />
           </Suspense>

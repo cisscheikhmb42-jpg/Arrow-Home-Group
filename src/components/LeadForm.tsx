@@ -74,11 +74,11 @@ export default function LeadForm({
 
   if (state.status === "success") {
     return (
-      <div ref={successRef} tabIndex={-1} role="status" className="border border-mist bg-white p-8 sm:p-12">
-        <CheckCircle2 className="size-10 text-champagne-700" strokeWidth={1.25} aria-hidden />
-        <h2 className="display mt-6 text-3xl text-graphite sm:text-4xl">{t.successTitle}</h2>
-        <p className="mt-4 max-w-lg text-lg leading-relaxed text-stone">{t.successText}</p>
-        <button type="button" onClick={() => window.location.reload()} className="btn btn-outline-dark mt-8">
+      <div ref={successRef} tabIndex={-1} role="status" className="border border-line bg-surface p-8 sm:p-12">
+        <CheckCircle2 className="size-10 text-accent" strokeWidth={1.25} aria-hidden />
+        <h2 className="display mt-6 text-3xl text-ink sm:text-4xl">{t.successTitle}</h2>
+        <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted">{t.successText}</p>
+        <button type="button" onClick={() => window.location.reload()} className="btn btn-outline mt-8">
           {t.newRequest}
         </button>
       </div>
@@ -86,27 +86,27 @@ export default function LeadForm({
   }
 
   const label = (f: LeadField, text: string, required: boolean) => (
-    <label htmlFor={`${kind}-${f}`} className="mb-2 block text-sm font-medium text-graphite">
+    <label htmlFor={`${kind}-${f}`} className="mb-2 block text-sm font-medium text-ink">
       {text}
       {required ? (
-        <span className="text-champagne-700" aria-hidden>
+        <span className="text-accent" aria-hidden>
           {" "}*
         </span>
       ) : (
-        <span className="font-normal text-stone"> ({t.optional})</span>
+        <span className="font-normal text-muted"> ({t.optional})</span>
       )}
     </label>
   );
   const describe = (f: LeadField) => (fieldErrors[f] ? `${kind}-${f}-error` : undefined);
   const errorText = (f: LeadField) =>
     err(f) ? (
-      <p id={`${kind}-${f}-error`} className="mt-2 text-sm text-[#b42318]">
+      <p id={`${kind}-${f}-error`} className="mt-2 text-sm text-[#fda29b]">
         {err(f)}
       </p>
     ) : null;
 
   return (
-    <form action={action} noValidate className="border border-mist bg-white p-6 sm:p-10">
+    <form action={action} noValidate className="border border-line bg-surface p-6 sm:p-10">
       <input type="hidden" name="kind" value={kind} />
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="started" value={started} />
@@ -120,12 +120,12 @@ export default function LeadForm({
         ref={summaryRef}
         tabIndex={-1}
         role="alert"
-        className={formError || Object.keys(fieldErrors).length ? "mb-8 border-l-2 border-[#b42318] bg-[#fef3f2] p-4 text-sm text-[#7a271a]" : "sr-only"}
+        className={formError || Object.keys(fieldErrors).length ? "mb-8 border-l-2 border-[#f97066] bg-[#f04438]/10 p-4 text-sm text-[#fecdca]" : "sr-only"}
       >
         {formError ? t.errors[formError] : Object.keys(fieldErrors).length ? t.errorSummary : ""}
       </div>
 
-      <p className="mb-6 text-sm text-stone">{t.requiredNote}</p>
+      <p className="mb-6 text-sm text-muted">{t.requiredNote}</p>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="sm:col-span-2">
@@ -196,11 +196,11 @@ export default function LeadForm({
         <div className="sm:col-span-2">
           <div className="flex items-start gap-3">
             <input id={`${kind}-consent`} name="consent" type="checkbox" required checked={values.consent} onChange={set("consent")}
-              className="mt-1 size-5 shrink-0 accent-graphite" aria-invalid={!!fieldErrors.consent} aria-describedby={describe("consent")} />
-            <label htmlFor={`${kind}-consent`} className="text-sm leading-relaxed text-anthracite">
+              className="mt-1 size-5 shrink-0 accent-[#95be29]" aria-invalid={!!fieldErrors.consent} aria-describedby={describe("consent")} />
+            <label htmlFor={`${kind}-consent`} className="text-sm leading-relaxed text-ink">
               {t.fields.consent}{" "}
-              <span className="text-champagne-700" aria-hidden>*</span>{" "}
-              <Link href={privacyHref} className="underline decoration-champagne underline-offset-4 hover:text-graphite">
+              <span className="text-accent" aria-hidden>*</span>{" "}
+              <Link href={privacyHref} className="underline decoration-accent underline-offset-4 hover:text-ink">
                 ({t.privacyLink})
               </Link>
             </label>
@@ -209,7 +209,7 @@ export default function LeadForm({
         </div>
       </div>
 
-      <button type="submit" disabled={pending} className="btn btn-dark mt-10 w-full disabled:opacity-60 sm:w-auto">
+      <button type="submit" disabled={pending} className="btn btn-primary mt-10 w-full disabled:opacity-60 sm:w-auto">
         {pending ? (
           <>
             <Loader2 className="size-4 animate-spin" aria-hidden />

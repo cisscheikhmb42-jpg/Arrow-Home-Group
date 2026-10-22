@@ -15,9 +15,9 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 - Textes : `src/i18n/dictionaries/{fr,en,zh}.ts` (fr définit le type). Aucun texte en dur dans les composants
 
 ## Charte
-- Design (demande du client) : FOND BLANC partout, TEXTES EN BLEU du logo `#004E85` (jeton `graphite`), texte secondaire bleu `#3D6D96` (`stone`), bordures `#DCE6EF` (`mist`), encadrés `#F3F7FB` (`tint`). Vert du logo `#95BE29` (`champagne`) seulement pour de fins traits décoratifs ; petits sur-titres en vert foncé `#4A7A12` (`champagne-700`). Les noms de jetons historiques sont conservés
+- Design (demande du DG, 22/10/2026) : THÈME SOMBRE dérivé du logo. Jetons sémantiques dans `globals.css` : `canvas` #06182A (fond bleu nuit), `deep` #04111F (pied de page), `surface` #0B2238 / `raised` #11304C (cartes), `line` #1E3D5C (bordures), `ink` #EEF3F8 (texte), `muted` #9FB4C9 (texte secondaire), `sky` #5AA7E0 (bleu du logo éclairci, 2e ligne des titres), `accent` #95BE29 (vert du logo : boutons `btn-primary`, sur-titres, filets) avec `on-accent` #06182A pour le texte posé dessus. Bouton secondaire `btn-outline`. Halo `.hero-glow` en haut de l'accueil. Tous les contrastes ≥ 4,5:1
 - AUCUN DESSIN / ILLUSTRATION : le client les a refusés. Sans photo, afficher un encadré sobre « Photos à venir » (PortfolioCard) ou une icône (expertises). Les vraies photos arriveront plus tard
-- LOGO : `public/brand/logo.png`, original (SHA-256 71d70061…68390), via `src/components/Logo.tsx`. Jamais de filtre, d'opacité, de recoloration ni de version redessinée. Texte noir → toujours sur fond clair
+- LOGO : `public/brand/logo.png`, original (SHA-256 71d70061…68390), via `src/components/Logo.tsx`. Jamais de filtre, d'opacité, de recoloration ni de version redessinée. Texte noir → toujours dans son cartouche blanc (géré par `Logo.tsx`)
 - Coordonnées : `src/lib/site.ts` (e-mail unique : info@arrowhome.cc ; l'adresse gmail a été retirée à la demande du client)
 
 ## Contenu

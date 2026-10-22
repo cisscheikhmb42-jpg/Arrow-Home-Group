@@ -36,7 +36,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
               aria-pressed={on}
               onClick={() => select(cat)}
               className={`min-h-11 shrink-0 border px-5 text-[13px] font-medium tracking-[0.08em] whitespace-nowrap uppercase transition-colors lang-zh:tracking-normal ${
-                on ? "border-graphite bg-graphite text-white" : "border-mist bg-white text-graphite hover:border-graphite"
+                on ? "border-accent bg-accent text-on-accent" : "border-line bg-surface text-ink hover:border-accent"
               }`}
             >
               {t.categories[cat]}
@@ -44,7 +44,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
           );
         })}
       </div>
-      <p className="mt-6 text-sm text-stone" aria-live="polite">
+      <p className="mt-6 text-sm text-muted" aria-live="polite">
         {fill(t.count, { n: shown.length })}
       </p>
       <ul className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">

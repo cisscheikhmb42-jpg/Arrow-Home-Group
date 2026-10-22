@@ -46,11 +46,11 @@ export default function LanguageSwitcher({
               }}
               className={`inline-flex min-h-11 min-w-11 items-center justify-center px-2 whitespace-nowrap text-[13px] font-medium tracking-[0.08em] transition-colors ${
                 dark
-                  ? active ? "text-white" : "text-ash hover:text-white"
-                  : active ? "text-graphite" : "text-stone hover:text-graphite"
+                  ? active ? "text-white" : "text-muted hover:text-white"
+                  : active ? "text-ink" : "text-muted hover:text-ink"
               }`}
             >
-              <span className={active ? "border-b border-champagne pb-0.5" : "pb-0.5"}>{localeLabels[l].short}</span>
+              <span className={active ? "border-b border-accent pb-0.5" : "pb-0.5"}>{localeLabels[l].short}</span>
               <span className="sr-only"> – {localeLabels[l].name}</span>
             </a>
           </li>

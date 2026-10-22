@@ -36,51 +36,51 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   return (
     <>
       <article>
-        <header className="bg-white pt-12 pb-14 lg:pt-20">
+        <header className="bg-canvas pt-12 pb-14 lg:pt-20">
           <div className="container-x">
-            <Link href={href(locale, "projects")} className="link-line text-graphite">
+            <Link href={href(locale, "projects")} className="link-line text-ink">
               <ArrowLeft className="size-4" aria-hidden />
               {d.back}
             </Link>
             <p className="eyebrow mt-12">{t.portfolio.categories[p.category]}</p>
-            <h1 className="display mt-6 max-w-4xl text-5xl text-graphite sm:text-6xl lg:text-7xl">{title}</h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-stone">{p.summary[locale]}</p>
+            <h1 className="display mt-6 max-w-4xl text-5xl text-ink sm:text-6xl lg:text-7xl">{title}</h1>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">{p.summary[locale]}</p>
           </div>
         </header>
-        <div className="relative aspect-[16/9] max-h-[80vh] w-full bg-graphite">
+        <div className="relative aspect-[16/9] max-h-[80vh] w-full bg-accent">
           <Image src={p.cover} alt={fill(d.image, { title })} fill priority sizes="100vw" className="object-cover" />
         </div>
         <div className="container-x grid gap-14 py-20 lg:grid-cols-[1fr_2fr] lg:gap-24">
-          <dl className="space-y-6 border-t border-graphite pt-6 text-sm">
+          <dl className="space-y-6 border-t border-ink pt-6 text-sm">
             <div>
-              <dt className="tracking-[0.18em] text-stone uppercase">{d.category}</dt>
-              <dd className="mt-1 text-lg text-graphite">{t.portfolio.categories[p.category]}</dd>
+              <dt className="tracking-[0.18em] text-muted uppercase">{d.category}</dt>
+              <dd className="mt-1 text-lg text-ink">{t.portfolio.categories[p.category]}</dd>
             </div>
             {p.location && (
               <div>
-                <dt className="tracking-[0.18em] text-stone uppercase">{d.location}</dt>
-                <dd className="mt-1 text-lg text-graphite">{p.location[locale]}</dd>
+                <dt className="tracking-[0.18em] text-muted uppercase">{d.location}</dt>
+                <dd className="mt-1 text-lg text-ink">{p.location[locale]}</dd>
               </div>
             )}
           </dl>
           <div className="space-y-12">
             {p.services.length > 0 && (
               <section>
-                <h2 className="display text-3xl text-graphite">{d.services}</h2>
+                <h2 className="display text-3xl text-ink">{d.services}</h2>
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                  {p.services.map((s) => <li key={s.fr} className="border-b border-mist py-3">{s[locale]}</li>)}
+                  {p.services.map((s) => <li key={s.fr} className="border-b border-line py-3">{s[locale]}</li>)}
                 </ul>
               </section>
             )}
             {p.highlights.length > 0 && (
               <section>
-                <h2 className="display text-3xl text-graphite">{d.highlights}</h2>
+                <h2 className="display text-3xl text-ink">{d.highlights}</h2>
                 <ul className="mt-5 space-y-3">
                   {p.highlights.map((s) => <li key={s.fr}>{s[locale]}</li>)}
                 </ul>
               </section>
             )}
-            <Link href={`${href(locale, "quote")}?service=${categoryService[p.category]}`} className="btn btn-dark">
+            <Link href={`${href(locale, "quote")}?service=${categoryService[p.category]}`} className="btn btn-primary">
               {d.cta}
               <ArrowRight className="arrow size-4" aria-hidden />
             </Link>
@@ -88,10 +88,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
         </div>
         {p.gallery.length > 0 && (
           <section className="container-x pb-24">
-            <h2 className="display text-3xl text-graphite">{d.gallery}</h2>
+            <h2 className="display text-3xl text-ink">{d.gallery}</h2>
             <ul className="mt-8 grid gap-6 sm:grid-cols-2">
               {p.gallery.map((src, i) => (
-                <li key={src} className="relative aspect-[4/3] overflow-hidden bg-mist">
+                <li key={src} className="relative aspect-[4/3] overflow-hidden bg-line">
                   <Image src={src} alt={`${fill(d.image, { title })} (${i + 2})`} fill sizes="(min-width:640px) 50vw, 100vw" className="object-cover" />
                 </li>
               ))}

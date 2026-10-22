@@ -17,7 +17,7 @@ export default function PortfolioCard({
 }) {
   const body = (
     <>
-      <div className={`relative overflow-hidden ${tall ? "aspect-[4/5]" : "aspect-[4/3]"} ${item.image ? "" : "border border-mist bg-tint"}`}>
+      <div className={`relative overflow-hidden ${tall ? "aspect-[4/5]" : "aspect-[4/3]"} ${item.image ? "" : "border border-line bg-surface"}`}>
         {item.image ? (
           <Image
             src={item.image}
@@ -28,19 +28,19 @@ export default function PortfolioCard({
           />
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-            <span className="block h-0.5 w-10 bg-champagne" aria-hidden />
-            <span className="text-xs font-medium tracking-[0.18em] text-stone uppercase">{placeholderLabel}</span>
+            <span className="block h-0.5 w-10 bg-accent" aria-hidden />
+            <span className="text-xs font-medium tracking-[0.18em] text-muted uppercase">{placeholderLabel}</span>
           </div>
         )}
       </div>
       <div className="flex items-start justify-between gap-4 pt-5">
         <div>
-          <p className="text-xs font-medium tracking-[0.18em] text-stone uppercase">{item.caption}</p>
-          <h3 className="display mt-2 text-2xl text-graphite sm:text-3xl">{item.title}</h3>
+          <p className="text-xs font-medium tracking-[0.18em] text-muted uppercase">{item.caption}</p>
+          <h3 className="display mt-2 text-2xl text-ink sm:text-3xl">{item.title}</h3>
         </div>
         {item.href && (
           <ArrowUpRight
-            className="mt-1 size-5 shrink-0 text-graphite transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="mt-1 size-5 shrink-0 text-ink transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             strokeWidth={1.5}
             aria-hidden
           />

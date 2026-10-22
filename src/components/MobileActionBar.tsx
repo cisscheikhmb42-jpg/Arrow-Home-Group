@@ -13,9 +13,9 @@ export default function MobileActionBar({ locale, t }: { locale: Locale; t: Dict
   return (
     <nav
       aria-label={m.label}
-      className="fixed inset-x-0 bottom-0 z-40 flex border-t border-mist bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_-12px_rgba(0,78,133,0.25)] backdrop-blur lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 flex border-t border-line bg-canvas/90 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.5)] backdrop-blur lg:hidden"
     >
-      <a href={site.phoneHref} className={`${item} text-graphite`}>
+      <a href={site.phoneHref} className={`${item} text-ink`}>
         <Phone className="size-5" strokeWidth={1.75} aria-hidden />
         {m.call}
       </a>
@@ -23,12 +23,12 @@ export default function MobileActionBar({ locale, t }: { locale: Locale; t: Dict
         href={whatsappLink(t.contact.whatsappMsg)}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${item} border-x border-mist text-[#157a3b]`}
+        className={`${item} border-x border-line text-[#25d366]`}
       >
         <WhatsAppIcon className="size-5" />
         {m.whatsapp}
       </a>
-      <Link href={href(locale, "quote")} className={`${item} bg-graphite text-white`}>
+      <Link href={href(locale, "quote")} className={`${item} bg-accent text-on-accent`}>
         <FileText className="size-5" strokeWidth={1.75} aria-hidden />
         {m.quote}
       </Link>

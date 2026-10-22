@@ -57,7 +57,7 @@ Les témoignages ne s'affichent que lorsqu'ils existent réellement : aucune don
 
 ## Logo
 
-`public/brand/logo.png` est le fichier original (320 × 190, SHA-256 `71d70061…68390`). Il est affiché tel quel par `src/components/Logo.tsx` : aucun filtre, aucune opacité, aucune recoloration. Son texte étant noir, il est toujours posé sur un fond clair (y compris dans le pied de page, sur un encart blanc cassé).
+`public/brand/logo.png` est le fichier original (320 × 190, SHA-256 `71d70061…68390`). Il est affiché tel quel par `src/components/Logo.tsx` : aucun filtre, aucune opacité, aucune recoloration. Le site étant sombre et le texte du logo noir, le composant le pose toujours sur un cartouche blanc.
 
 ## Formulaires (devis et contact)
 

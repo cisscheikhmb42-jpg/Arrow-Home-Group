@@ -23,11 +23,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     <>
       <PageHero eyebrow={t.services.eyebrow} title={t.services.title} text={`${t.services.subtitle} ${t.services.pageIntro}`} />
 
-      <nav aria-label={t.services.title} className="sticky top-[4.5rem] z-30 border-b border-mist bg-white/95 backdrop-blur lg:top-24">
+      <nav aria-label={t.services.title} className="sticky top-[4.5rem] z-30 border-b border-line bg-canvas/90 backdrop-blur lg:top-24">
         <ul className="container-x scroller flex gap-6 overflow-x-auto py-4 text-[13px] font-medium tracking-[0.08em] whitespace-nowrap uppercase lang-zh:tracking-normal">
           {serviceSlugs.map((slug) => (
             <li key={slug}>
-              <a href={`#${slug}`} className="text-stone hover:text-graphite">
+              <a href={`#${slug}`} className="text-muted hover:text-ink">
                 {t.services.items[slug].title}
               </a>
             </li>
@@ -35,13 +35,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </ul>
       </nav>
 
-      <div className="bg-white">
+      <div className="bg-canvas">
         {serviceSlugs.map((slug, i) => {
           const s = t.services.items[slug];
           const meta = serviceMeta[slug];
           const flip = i % 2 === 1;
           return (
-            <section key={slug} id={slug} aria-labelledby={`${slug}-title`} className={`scroll-mt-40 border-b border-mist py-20 lg:py-28 ${i % 2 ? "bg-tint" : "bg-white"}`}>
+            <section key={slug} id={slug} aria-labelledby={`${slug}-title`} className={`scroll-mt-40 border-b border-line py-20 lg:py-28 ${i % 2 ? "bg-surface" : "bg-canvas"}`}>
               <div className={`container-x grid gap-12 lg:gap-24 ${meta.image ? "items-center lg:grid-cols-2" : "lg:grid-cols-[auto_1fr]"}`}>
                 {meta.image ? (
                   <Reveal className={flip ? "lg:order-2" : ""}>
@@ -51,28 +51,28 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                   </Reveal>
                 ) : (
                   <Reveal>
-                    <span className="inline-flex size-16 items-center justify-center border border-mist bg-white text-graphite">
+                    <span className="inline-flex size-16 items-center justify-center border border-line bg-surface text-ink">
                       <Icon name={meta.icon} className="size-7" strokeWidth={1.5} />
                     </span>
                   </Reveal>
                 )}
                 <Reveal delay={120} className="max-w-3xl">
-                  <p className="text-xs font-medium tracking-[0.2em] text-stone tabular-nums">
+                  <p className="text-xs font-medium tracking-[0.2em] text-muted tabular-nums">
                     {String(i + 1).padStart(2, "0")} / {String(serviceSlugs.length).padStart(2, "0")}
                   </p>
-                  <h2 id={`${slug}-title`} className="display mt-4 text-4xl text-graphite sm:text-5xl">
+                  <h2 id={`${slug}-title`} className="display mt-4 text-4xl text-ink sm:text-5xl">
                     {s.title}
                   </h2>
-                  <p className="mt-6 text-lg leading-relaxed text-graphite">{s.body}</p>
-                  <ul className="mt-8 space-y-3 border-t border-mist pt-8">
+                  <p className="mt-6 text-lg leading-relaxed text-ink">{s.body}</p>
+                  <ul className="mt-8 space-y-3 border-t border-line pt-8">
                     {s.points.map((p) => (
-                      <li key={p} className="flex items-center gap-3 text-graphite">
-                        <Check className="size-4 shrink-0 text-graphite" aria-hidden />
+                      <li key={p} className="flex items-center gap-3 text-ink">
+                        <Check className="size-4 shrink-0 text-ink" aria-hidden />
                         {p}
                       </li>
                     ))}
                   </ul>
-                  <Link href={`${href(locale, "quote")}?service=${slug}`} className="btn btn-dark mt-10">
+                  <Link href={`${href(locale, "quote")}?service=${slug}`} className="btn btn-primary mt-10">
                     {t.services.quote}
                     <span className="sr-only"> : {s.title}</span>
                     <ArrowRight className="arrow size-4" aria-hidden />

@@ -32,7 +32,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
     <>
       <HeroSlider slides={slides} t={t.hero} aside={<QuickQuote locale={locale} t={t} />} />
       {/* Sur téléphone et tablette, le choix rapide de prestation suit le diaporama. */}
-      <section className="border-b border-mist bg-tint py-12 lg:hidden">
+      <section className="border-b border-line bg-surface py-12 lg:hidden">
         <div className="container-x max-w-xl">
           <QuickQuote locale={locale} t={t} />
         </div>
@@ -40,10 +40,10 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <div id="contenu-suite" />
 
       {/* Expertises */}
-      <section className="bg-white py-24 lg:py-36">
+      <section className="bg-canvas py-24 lg:py-36">
         <div className="container-x">
           <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} subtitle={t.services.subtitle}>
-            <Link href={href(locale, "services")} className="link-line self-start text-graphite lg:self-auto">
+            <Link href={href(locale, "services")} className="link-line self-start text-ink lg:self-auto">
               {t.services.more}
               <ArrowRight className="size-4" aria-hidden />
             </Link>
@@ -53,17 +53,17 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       </section>
 
       {/* Réalisations */}
-      <section className="overflow-hidden border-t border-mist bg-white py-24 lg:py-36">
+      <section className="overflow-hidden border-t border-line bg-canvas py-24 lg:py-36">
         <div className="container-x">
           <SectionHeading eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} subtitle={t.portfolio.subtitle}>
-            <Link href={href(locale, "projects")} className="link-line self-start text-graphite lg:self-auto">
+            <Link href={href(locale, "projects")} className="link-line self-start text-ink lg:self-auto">
               {t.portfolio.viewAll}
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </SectionHeading>
-          <Reveal className="mt-10 max-w-3xl border-l border-champagne pl-5 text-sm leading-relaxed text-stone">
+          <Reveal className="mt-10 max-w-3xl border-l border-accent pl-5 text-sm leading-relaxed text-muted">
             {t.portfolio.illustrationNote}{" "}
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-graphite underline decoration-champagne underline-offset-4">
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-ink underline decoration-accent underline-offset-4">
               <InstagramIcon className="size-4" />
               {t.portfolio.instagram}
             </a>

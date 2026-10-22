@@ -18,7 +18,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <>
       <PageHero eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} />
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-canvas py-20 lg:py-28">
         <div className="container-x grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <Reveal className="space-y-10">
             <ContactDetails t={t} />
@@ -26,8 +26,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </Reveal>
           <Reveal delay={120} className="space-y-10">
             <div>
-              <h2 className="display text-4xl text-graphite">{t.contact.formTitle}</h2>
-              <p className="mt-3 text-stone">{t.contact.formText}</p>
+              <h2 className="display text-4xl text-ink">{t.contact.formTitle}</h2>
+              <p className="mt-3 text-muted">{t.contact.formText}</p>
             </div>
             <LeadForm kind="contact" locale={locale} t={t.form} services={[]} privacyHref={href(locale, "privacy")} />
             <CtaPanel locale={locale} t={t} />

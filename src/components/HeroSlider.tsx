@@ -53,7 +53,7 @@ export default function HeroSlider({
 
   return (
     <section
-      className="relative isolate overflow-hidden border-b border-mist bg-white text-graphite"
+      className="hero-glow relative isolate overflow-hidden border-b border-line text-ink"
       aria-roledescription="carousel"
       aria-label={t.carousel}
       onMouseEnter={() => setHover(true)}
@@ -105,30 +105,30 @@ export default function HeroSlider({
               {i === 0 ? (
                 <h1 className="display mt-7 text-[2.5rem] sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]">
                   <span className="block">{s.title}</span>
-                  <span className="block text-stone">{s.highlight}</span>
+                  <span className="block text-sky">{s.highlight}</span>
                 </h1>
               ) : (
                 <p className="display mt-7 text-[2.5rem] sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]">
                   <span className="block">{s.title}</span>
-                  <span className="block text-stone">{s.highlight}</span>
+                  <span className="block text-sky">{s.highlight}</span>
                 </p>
               )}
-              <p className="mt-8 max-w-2xl text-base leading-relaxed text-graphite sm:text-lg">{s.text}</p>
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink sm:text-lg">{s.text}</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-                <Link href={s.cta.href} className="btn btn-dark">
+                <Link href={s.cta.href} className="btn btn-primary">
                   {s.cta.label}
                   <ArrowRight className="arrow size-4" aria-hidden />
                 </Link>
-                <Link href={s.secondary.href} className="btn btn-outline-dark">
+                <Link href={s.secondary.href} className="btn btn-outline">
                   {s.secondary.label}
                 </Link>
               </div>
             </div>
           ))}
-          <ul className="mt-10 grid gap-3 border-t border-mist pt-7 text-sm text-graphite sm:grid-cols-3 sm:gap-5">
+          <ul className="mt-10 grid gap-3 border-t border-line pt-7 text-sm text-ink sm:grid-cols-3 sm:gap-5">
             {t.trust.map((item) => (
               <li key={item} className="flex items-start gap-2.5 leading-snug">
-                <Check className="mt-0.5 size-4 shrink-0 text-champagne-700" strokeWidth={2.25} aria-hidden />
+                <Check className="mt-0.5 size-4 shrink-0 text-accent" strokeWidth={2.25} aria-hidden />
                 {item}
               </li>
             ))}
@@ -143,7 +143,7 @@ export default function HeroSlider({
               <button
                 type="button"
                 onClick={() => go(index - 1)}
-                className="inline-flex size-11 items-center justify-center rounded-full border border-graphite/25 transition-colors hover:border-graphite"
+                className="inline-flex size-11 items-center justify-center rounded-full border border-ink/25 transition-colors hover:border-accent"
                 aria-label={t.prev}
               >
                 <ChevronLeft className="size-5" strokeWidth={1.5} />
@@ -151,7 +151,7 @@ export default function HeroSlider({
               <button
                 type="button"
                 onClick={() => go(index + 1)}
-                className="inline-flex size-11 items-center justify-center rounded-full border border-graphite/25 transition-colors hover:border-graphite"
+                className="inline-flex size-11 items-center justify-center rounded-full border border-ink/25 transition-colors hover:border-accent"
                 aria-label={t.next}
               >
                 <ChevronRight className="size-5" strokeWidth={1.5} />
@@ -167,10 +167,10 @@ export default function HeroSlider({
                     aria-label={fill(t.goTo, { n: i + 1, name: s.eyebrow })}
                     aria-current={i === index ? "true" : undefined}
                   >
-                    <span className="block h-0.5 overflow-hidden bg-mist">
+                    <span className="block h-0.5 overflow-hidden bg-line">
                       <span
                         key={`${index}-${running}`}
-                        className="block h-full bg-graphite"
+                        className="block h-full bg-accent"
                         style={{
                           width: i < index || (i === index && !running) ? "100%" : i === index ? undefined : "0%",
                           animation: i === index && running ? `ah-progress ${DURATION}ms linear forwards` : undefined,
@@ -184,12 +184,12 @@ export default function HeroSlider({
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex size-11 items-center justify-center rounded-full text-stone hover:text-graphite"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted hover:text-ink"
               aria-label={playing ? t.pause : t.play}
             >
               {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
             </button>
-            <p className="hidden text-xs font-medium tracking-[0.2em] text-stone tabular-nums sm:block">
+            <p className="hidden text-xs font-medium tracking-[0.2em] text-muted tabular-nums sm:block">
               {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
             </p>
           </div>

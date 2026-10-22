@@ -4,25 +4,23 @@
 @custom-variant lang-zh (&:lang(zh-Hans));
 
 @theme {
-  /* Charte : fond blanc, textes en bleu du logo, vert du logo pour les fins traits decoratifs.
-     Les noms de jetons (graphite, champagne...) sont conserves pour ne pas toucher tous les composants. */
-  --color-graphite: #004e85; /* bleu du logo : titres, boutons */
-  --color-graphite-900: #003a64; /* bleu fonce : survol des boutons */
-  --color-anthracite: #004e85; /* texte courant en bleu */
-  --color-champagne: #95be29; /* vert du logo : traits decoratifs uniquement (pas de texte) */
-  --color-champagne-200: #e8f1d2;
-  --color-champagne-300: #b5d45a;
-  --color-champagne-700: #4a7a12; /* vert fonce lisible sur blanc (5,1:1) pour les petits sur-titres */
-  --color-ivory: #ffffff;
-  --color-mist: #dce6ef; /* bordures bleu tres clair */
-  --color-stone: #3d6d96; /* texte secondaire bleu (5,5:1) */
-  --color-ash: #3d6d96;
-  --color-tint: #f3f7fb; /* fond bleu tres pale pour les encadres */
-
+  /* Charte sombre, dérivée du logo : bleu nuit profond (bleu du logo assombri), vert du logo pour l'action.
+     Contrastes vérifiés sur le fond « canvas » : ink 16,1:1 · muted 8,4:1 · sky 6,9:1 · accent 8,3:1 (tous au-dessus de 4,5:1, même sur les cartes). */
+  --color-canvas: #06182a; /* fond principal : bleu nuit */
+  --color-deep: #04111f; /* pied de page */
+  --color-surface: #0b2238; /* cartes, encadrés */
+  --color-raised: #11304c; /* cartes mises en avant, survol */
+  --color-line: #1e3d5c; /* bordures et filets */
+  --color-ink: #eef3f8; /* texte principal */
+  --color-muted: #9fb4c9; /* texte secondaire */
+  --color-sky: #5aa7e0; /* bleu du logo éclairci : accents de titres */
+  --color-accent: #95be29; /* vert du logo : boutons et actions */
+  --color-accent-hover: #add14a;
+  --color-on-accent: #06182a; /* texte posé sur le vert */
   --color-logo-blue: #004e85;
   --color-logo-green: #95be29;
 
-  /* Police unique : Plus Jakarta Sans, en Regular (400), Medium (500) et Bold (700) uniquement. */
+/* Police unique : Plus Jakarta Sans, en Regular (400), Medium (500) et Bold (700) uniquement. */
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-weight-normal: 400;
@@ -43,19 +41,20 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
-  background: var(--color-ivory);
+  background: var(--color-canvas);
+  color-scheme: dark;
 }
 
 body {
-  background: var(--color-ivory);
-  color: var(--color-anthracite);
+  background: var(--color-canvas);
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--color-champagne-200);
-  color: var(--color-graphite);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 @layer components {
@@ -86,7 +85,7 @@ body {
   .container-x { padding-inline: 3rem; }
 }
 
-/* Sur-titre : fine ligne champagne + petites capitales */
+/* Sur-titre : fine ligne verte + petites capitales */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -95,15 +94,14 @@ body {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-champagne-700);
+  color: var(--color-accent);
 }
 .eyebrow::before {
   content: "";
   width: 2.5rem;
   height: 1px;
-  background: var(--color-champagne);
+  background: var(--color-accent);
 }
-.eyebrow-light { color: var(--color-champagne); }
 :lang(zh-Hans) .eyebrow { letter-spacing: 0.12em; font-size: 0.8125rem; }
 
 .focus-ring:focus-visible,
@@ -111,12 +109,8 @@ a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-graphite);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-}
-.on-dark :is(a, button, [tabindex]):focus-visible,
-.on-dark.focus-ring:focus-visible {
-  outline-color: var(--color-champagne);
 }
 
 /* Boutons : angles nets, transitions sobres */
@@ -138,16 +132,13 @@ summary:focus-visible,
 :lang(zh-Hans) .btn { letter-spacing: 0.08em; font-size: 0.9375rem; }
 .btn svg { transition: transform 0.3s; }
 .btn:hover svg.arrow { transform: translateX(4px); }
-.btn-dark { background: var(--color-graphite); color: #fff; }
-.btn-dark:hover { background: var(--color-graphite-900); }
-.btn-champagne { background: var(--color-champagne); color: var(--color-graphite); }
-.btn-champagne:hover { background: var(--color-champagne-300); }
-.btn-outline-light { border-color: rgb(255 255 255 / 0.35); color: #fff; }
-.btn-outline-light:hover { border-color: var(--color-champagne); color: var(--color-champagne); }
-.btn-outline-dark { border-color: var(--color-graphite); color: var(--color-graphite); }
-.btn-outline-dark:hover { background: var(--color-graphite); color: #fff; }
+/* Action principale : vert du logo. Action secondaire : contour clair. */
+.btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn-primary:hover { background: var(--color-accent-hover); }
+.btn-outline { border-color: rgb(238 243 248 / 0.45); color: var(--color-ink); }
+.btn-outline:hover { border-color: var(--color-ink); background: var(--color-ink); color: var(--color-canvas); }
 
-/* Lien éditorial souligné d'un trait champagne */
+/* Lien éditorial souligné d'un trait vert */
 .link-line {
   display: inline-flex;
   align-items: center;
@@ -158,7 +149,7 @@ summary:focus-visible,
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat,
-    linear-gradient(var(--color-champagne), var(--color-champagne)) 0 100% / 100% 1px no-repeat;
+    linear-gradient(var(--color-accent), var(--color-accent)) 0 100% / 100% 1px no-repeat;
   transition: background-size 0.4s;
 }
 .link-line:hover { background-size: 100% 1px, 100% 1px; }
@@ -169,29 +160,37 @@ summary:focus-visible,
   width: 100%;
   min-height: 3.25rem;
   padding: 0.75rem 1rem;
-  background: #fff;
-  color: var(--color-graphite);
-  border: 1px solid #b9cbdb;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
   border-radius: 2px;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-.field::placeholder { color: #7f9cb6; }
-.field:hover { border-color: #8aa7c0; }
+.field::placeholder { color: #6f8aa5; }
+.field:hover { border-color: #33597d; }
 .field:focus {
   outline: none;
-  border-color: var(--color-graphite);
-  box-shadow: 0 0 0 1px var(--color-graphite);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
 }
-.field[aria-invalid="true"] { border-color: #b42318; }
+.field[aria-invalid="true"] { border-color: #f97066; }
 select.field {
   appearance: none;
   padding-right: 2.75rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004e85' stroke-width='1.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23eef3f8' stroke-width='1.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1.1rem;
 }
+}
+
+/* Halo du haut de l'accueil : rappel discret du bleu et du vert du logo. */
+.hero-glow {
+  background:
+    radial-gradient(60rem 36rem at 88% -12%, rgb(0 78 133 / 0.55), transparent 62%),
+    radial-gradient(36rem 24rem at 4% 110%, rgb(149 190 41 / 0.08), transparent 70%),
+    var(--color-canvas);
 }
 
 @keyframes ah-progress {

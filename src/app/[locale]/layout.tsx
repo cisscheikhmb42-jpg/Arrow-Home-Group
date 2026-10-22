@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export const viewport: Viewport = { themeColor: "#ffffff", colorScheme: "light" };
+export const viewport: Viewport = { themeColor: "#06182a", colorScheme: "dark" };
 
 export default async function LocaleLayout({
   children,
@@ -70,7 +70,7 @@ export default async function LocaleLayout({
         </noscript>
         <a
           href="#contenu"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-graphite focus:px-5 focus:py-3 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-accent focus:px-5 focus:py-3 focus:text-on-accent"
         >
           {t.nav.skip}
         </a>

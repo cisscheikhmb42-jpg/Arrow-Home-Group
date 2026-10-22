@@ -51,8 +51,8 @@ export default function ScrollCarousel({
   };
 
   const btn = dark
-    ? "border-white/25 text-white enabled:hover:border-champagne enabled:hover:text-champagne"
-    : "border-graphite/25 text-graphite enabled:hover:border-graphite enabled:hover:bg-graphite enabled:hover:text-white";
+    ? "border-white/25 text-white enabled:hover:border-accent enabled:hover:text-accent"
+    : "border-ink/25 text-ink enabled:hover:border-accent enabled:hover:bg-accent enabled:hover:text-on-accent";
 
   return (
     <div>

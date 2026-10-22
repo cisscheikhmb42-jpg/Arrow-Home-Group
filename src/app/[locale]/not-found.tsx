@@ -14,12 +14,12 @@ export default function NotFound() {
   const locale = isLocale(seg) ? seg : defaultLocale;
   const t = dicts[locale].notFound;
   return (
-    <section className="flex min-h-[60vh] items-center bg-white py-24">
+    <section className="flex min-h-[60vh] items-center bg-canvas py-24">
       <div className="container-x max-w-2xl">
         <p className="eyebrow">404</p>
-        <h1 className="display mt-6 text-5xl text-graphite sm:text-6xl">{t.title}</h1>
-        <p className="mt-6 text-lg text-stone">{t.text}</p>
-        <Link href={`/${locale}`} className="btn btn-dark mt-10">
+        <h1 className="display mt-6 text-5xl text-ink sm:text-6xl">{t.title}</h1>
+        <p className="mt-6 text-lg text-muted">{t.text}</p>
+        <Link href={`/${locale}`} className="btn btn-primary mt-10">
           {t.back}
         </Link>
       </div>
