@@ -67,7 +67,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                   <ul className="mt-8 space-y-3 border-t border-line pt-8">
                     {s.points.map((p) => (
                       <li key={p} className="flex items-center gap-3 text-ink">
-                        <Check className="size-4 shrink-0 text-ink" aria-hidden />
+                        <Check className="size-4 shrink-0 text-accent" aria-hidden />
                         {p}
                       </li>
                     ))}

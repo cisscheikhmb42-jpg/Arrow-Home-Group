@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">{p.summary[locale]}</p>
           </div>
         </header>
-        <div className="relative aspect-[16/9] max-h-[80vh] w-full bg-accent">
+        <div className="relative aspect-[16/9] max-h-[80vh] w-full bg-surface">
           <Image src={p.cover} alt={fill(d.image, { title })} fill priority sizes="100vw" className="object-cover" />
         </div>
         <div className="container-x grid gap-14 py-20 lg:grid-cols-[1fr_2fr] lg:gap-24">
