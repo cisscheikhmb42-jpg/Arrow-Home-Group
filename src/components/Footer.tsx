@@ -52,7 +52,7 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dictionary })
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-graphite uppercase">{f.services}</h2>
+          <h2 className="text-xs font-medium tracking-[0.2em] text-graphite uppercase">{f.services}</h2>
           <ul className="mt-5 space-y-3 text-sm">
             {serviceSlugs.map((slug) => (
               <li key={slug}>
@@ -65,7 +65,7 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dictionary })
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-graphite uppercase">{f.navigation}</h2>
+          <h2 className="text-xs font-medium tracking-[0.2em] text-graphite uppercase">{f.navigation}</h2>
           <ul className="mt-5 space-y-3 text-sm">
             {navLinks.map((n) => (
               <li key={n.key}>
@@ -78,7 +78,7 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dictionary })
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-graphite uppercase">{f.contact}</h2>
+          <h2 className="text-xs font-medium tracking-[0.2em] text-graphite uppercase">{f.contact}</h2>
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-graphite" aria-hidden />

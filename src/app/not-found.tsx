@@ -1,4 +1,7 @@
-import "@fontsource-variable/manrope";
+// Plus Jakarta Sans : uniquement Regular (400), Medium (500) et Bold (700).
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/500.css";
+import "@fontsource/plus-jakarta-sans/700.css";
 import "./globals.css";
 
 /** 404 hors des pages localisées (ex. fichier inexistant). Les 404 des pages ont leur version traduite. */

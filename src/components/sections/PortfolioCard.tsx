@@ -29,13 +29,13 @@ export default function PortfolioCard({
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
             <span className="block h-0.5 w-10 bg-champagne" aria-hidden />
-            <span className="text-xs font-semibold tracking-[0.18em] text-stone uppercase">{placeholderLabel}</span>
+            <span className="text-xs font-medium tracking-[0.18em] text-stone uppercase">{placeholderLabel}</span>
           </div>
         )}
       </div>
       <div className="flex items-start justify-between gap-4 pt-5">
         <div>
-          <p className="text-xs font-semibold tracking-[0.18em] text-stone uppercase">{item.caption}</p>
+          <p className="text-xs font-medium tracking-[0.18em] text-stone uppercase">{item.caption}</p>
           <h3 className="display mt-2 text-2xl text-graphite sm:text-3xl">{item.title}</h3>
         </div>
         {item.href && (

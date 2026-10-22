@@ -29,7 +29,7 @@ export function AboutSection({
         <Reveal className="max-w-4xl">
           <p className="eyebrow">{a.eyebrow}</p>
           <Title className="display mt-6 text-4xl text-graphite sm:text-5xl lg:text-6xl">{full ? a.title : a.lead}</Title>
-          {full && <p className="display mt-6 text-2xl text-stone italic lang-zh:not-italic">{a.lead}</p>}
+          {full && <p className="display mt-6 text-2xl text-stone">{a.lead}</p>}
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-graphite">
             {(full ? a.paragraphs : a.paragraphs.slice(0, 2)).map((p) => (
               <p key={p}>{p}</p>
@@ -76,7 +76,7 @@ export function ProcessTimeline({ t, headingLevel = "h2" }: { t: Dictionary; hea
               <span aria-hidden className="absolute top-0 left-0 size-[15px] rounded-full border border-graphite bg-white lg:relative lg:block">
                 <span className="absolute inset-[4px] rounded-full bg-graphite" />
               </span>
-              <p className="text-xs font-semibold tracking-[0.2em] text-stone uppercase lg:mt-8">
+              <p className="text-xs font-medium tracking-[0.2em] text-stone uppercase lg:mt-8">
                 {p.step} {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="display mt-3 text-3xl text-graphite">{s.title}</h3>
@@ -102,7 +102,7 @@ export function Testimonials({ locale, t }: { locale: Locale; t: Dictionary }) {
               <blockquote className="display text-2xl leading-snug text-graphite">
                 {locale === "fr" ? `« ${q.quote[locale]} »` : `“${q.quote[locale]}”`}
               </blockquote>
-              <p className="mt-6 font-semibold text-graphite">{q.author}</p>
+              <p className="mt-6 font-medium text-graphite">{q.author}</p>
               <p className="text-sm text-stone">{q.context[locale]}</p>
             </li>
           ))}
@@ -140,7 +140,7 @@ export function ContactDetails({ t }: { t: Dictionary }) {
               {r.icon}
             </span>
             <span className="min-w-0">
-              <span className="block text-xs font-semibold tracking-[0.18em] text-stone uppercase">{r.label}</span>
+              <span className="block text-xs font-medium tracking-[0.18em] text-stone uppercase">{r.label}</span>
               <a
                 href={r.href}
                 {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -156,13 +156,13 @@ export function ContactDetails({ t }: { t: Dictionary }) {
             <MapPin className="size-5" strokeWidth={1.5} aria-hidden />
           </span>
           <span>
-            <span className="block text-xs font-semibold tracking-[0.18em] text-stone uppercase">{c.office}</span>
+            <span className="block text-xs font-medium tracking-[0.18em] text-stone uppercase">{c.office}</span>
             <span className="mt-1 block text-lg text-graphite">{c.address}</span>
             <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 text-sm">
               {c.hours.map((h) => (
                 <div key={h.days} className="contents">
                   <dt className="text-stone">{h.days}</dt>
-                  <dd className="font-semibold text-graphite">{h.time}</dd>
+                  <dd className="font-medium text-graphite">{h.time}</dd>
                 </div>
               ))}
             </dl>

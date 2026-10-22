@@ -55,7 +55,7 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
                 {t.contact.hours.map((h) => (
                   <div key={h.days} className="contents">
                     <dt className="text-stone">{h.days}</dt>
-                    <dd className="font-semibold text-graphite">{h.time}</dd>
+                    <dd className="font-medium text-graphite">{h.time}</dd>
                   </div>
                 ))}
               </dl>

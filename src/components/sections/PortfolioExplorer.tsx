@@ -35,7 +35,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
               type="button"
               aria-pressed={on}
               onClick={() => select(cat)}
-              className={`min-h-11 shrink-0 border px-5 text-[13px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors lang-zh:tracking-normal ${
+              className={`min-h-11 shrink-0 border px-5 text-[13px] font-medium tracking-[0.08em] whitespace-nowrap uppercase transition-colors lang-zh:tracking-normal ${
                 on ? "border-graphite bg-graphite text-white" : "border-mist bg-white text-graphite hover:border-graphite"
               }`}
             >

@@ -29,7 +29,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         <div className="container-x">
           <Reveal className="max-w-3xl border-l border-champagne pl-5 text-sm leading-relaxed text-stone">
             {t.portfolio.illustrationNote}{" "}
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-graphite underline decoration-champagne underline-offset-4">
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-graphite underline decoration-champagne underline-offset-4">
               <InstagramIcon className="size-4" />
               {t.portfolio.instagram}
             </a>

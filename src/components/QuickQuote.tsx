@@ -14,14 +14,14 @@ export default function QuickQuote({ locale, t }: { locale: Locale; t: Dictionar
   return (
     <div className="border border-mist bg-white p-6 shadow-[0_24px_60px_-30px_rgba(0,78,133,0.35)] sm:p-8">
       <span className="block h-0.5 w-10 bg-champagne" aria-hidden />
-      <h2 className="display mt-5 text-3xl text-graphite">{q.title}</h2>
+      <h2 className="display mt-5 text-2xl text-graphite sm:text-3xl">{q.title}</h2>
       <p className="mt-2 text-sm leading-relaxed text-stone">{q.text}</p>
       <ul className="mt-6 grid grid-cols-2 gap-2">
         {serviceSlugs.map((slug) => (
           <li key={slug}>
             <Link
               href={`${quote}?service=${slug}`}
-              className="flex h-full min-h-12 items-center gap-2.5 border border-mist px-3 py-2.5 text-[13px] leading-tight font-semibold text-graphite transition-colors hover:border-graphite hover:bg-tint focus-visible:border-graphite"
+              className="flex h-full min-h-12 items-center gap-2.5 border border-mist px-3 py-2.5 text-[13px] leading-tight font-medium text-graphite transition-colors hover:border-graphite hover:bg-tint focus-visible:border-graphite"
             >
               <Icon name={serviceMeta[slug].icon} className="size-4 shrink-0" strokeWidth={1.75} />
               {t.services.items[slug].title}
@@ -31,14 +31,14 @@ export default function QuickQuote({ locale, t }: { locale: Locale; t: Dictionar
         <li>
           <Link
             href={quote}
-            className="flex h-full min-h-12 items-center justify-between gap-2 bg-graphite px-3 py-2.5 text-[13px] leading-tight font-semibold text-white transition-colors hover:bg-stone"
+            className="flex h-full min-h-12 items-center justify-between gap-2 bg-graphite px-3 py-2.5 text-[13px] leading-tight font-medium text-white transition-colors hover:bg-stone"
           >
             {q.other}
             <ArrowRight className="size-4 shrink-0" aria-hidden />
           </Link>
         </li>
       </ul>
-      <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-stone uppercase">{q.or}</p>
+      <p className="mt-6 text-xs font-medium tracking-[0.18em] text-stone uppercase">{q.or}</p>
       <div className="mt-3 grid grid-cols-2 gap-2">
         <a href={site.phoneHref} className="btn btn-outline-dark px-3">
           <Phone className="size-4" aria-hidden />

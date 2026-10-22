@@ -24,7 +24,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <PageHero eyebrow={t.services.eyebrow} title={t.services.title} text={`${t.services.subtitle} ${t.services.pageIntro}`} />
 
       <nav aria-label={t.services.title} className="sticky top-[4.5rem] z-30 border-b border-mist bg-white/95 backdrop-blur lg:top-24">
-        <ul className="container-x scroller flex gap-6 overflow-x-auto py-4 text-[13px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase lang-zh:tracking-normal">
+        <ul className="container-x scroller flex gap-6 overflow-x-auto py-4 text-[13px] font-medium tracking-[0.08em] whitespace-nowrap uppercase lang-zh:tracking-normal">
           {serviceSlugs.map((slug) => (
             <li key={slug}>
               <a href={`#${slug}`} className="text-stone hover:text-graphite">
@@ -57,7 +57,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                   </Reveal>
                 )}
                 <Reveal delay={120} className="max-w-3xl">
-                  <p className="text-xs font-semibold tracking-[0.2em] text-stone tabular-nums">
+                  <p className="text-xs font-medium tracking-[0.2em] text-stone tabular-nums">
                     {String(i + 1).padStart(2, "0")} / {String(serviceSlugs.length).padStart(2, "0")}
                   </p>
                   <h2 id={`${slug}-title`} className="display mt-4 text-4xl text-graphite sm:text-5xl">

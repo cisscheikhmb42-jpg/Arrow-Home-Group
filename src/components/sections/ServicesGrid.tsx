@@ -27,7 +27,7 @@ export default function ServicesGrid({ locale, t }: { locale: Locale; t: Diction
                 <span className="inline-flex size-12 items-center justify-center bg-tint text-graphite">
                   <Icon name={meta.icon} className="size-6" strokeWidth={1.5} />
                 </span>
-                <span className="text-xs font-semibold tracking-[0.2em] text-stone tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-xs font-medium tracking-[0.2em] text-stone tabular-nums">{String(i + 1).padStart(2, "0")}</span>
               </div>
               <h3 className="display mt-6 text-2xl text-graphite sm:text-[1.75rem]">{s.title}</h3>
               <p className="mt-3 flex-1 text-[15px] leading-relaxed text-stone">{s.short}</p>
@@ -38,7 +38,7 @@ export default function ServicesGrid({ locale, t }: { locale: Locale; t: Diction
                 </Link>
                 <Link
                   href={`${href(locale, "quote")}?service=${slug}`}
-                  className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-graphite hover:underline"
+                  className="inline-flex items-center gap-1.5 text-[13px] font-medium text-graphite hover:underline"
                 >
                   {t.services.quote}
                   <span className="sr-only"> : {s.title}</span>

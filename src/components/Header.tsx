@@ -71,7 +71,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
                   <Link
                     href={href(locale, item.key)}
                     aria-current={active ? "page" : undefined}
-                    className={`relative py-2 text-[13px] font-semibold whitespace-nowrap tracking-[0.1em] uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-champagne after:transition-transform after:duration-300 lang-zh:tracking-normal ${
+                    className={`relative py-2 text-[13px] font-medium whitespace-nowrap tracking-[0.1em] uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-champagne after:transition-transform after:duration-300 lang-zh:tracking-normal ${
                       active ? "text-graphite after:scale-x-100" : "text-stone after:scale-x-0 hover:text-graphite hover:after:scale-x-100"
                     }`}
                   >
@@ -128,7 +128,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary["n
                         href={href(locale, item.key)}
                         onClick={() => setOpen(false)}
                         aria-current={active ? "page" : undefined}
-                        className={`flex items-center justify-between py-4 text-lg ${active ? "font-semibold text-graphite" : "text-anthracite"}`}
+                        className={`flex items-center justify-between py-4 text-lg ${active ? "font-medium text-graphite" : "text-anthracite"}`}
                       >
                         {t[item.label]}
                         {active && <span aria-hidden className="h-px w-8 bg-champagne" />}

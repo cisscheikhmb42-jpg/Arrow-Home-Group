@@ -86,7 +86,7 @@ export default function LeadForm({
   }
 
   const label = (f: LeadField, text: string, required: boolean) => (
-    <label htmlFor={`${kind}-${f}`} className="mb-2 block text-sm font-semibold text-graphite">
+    <label htmlFor={`${kind}-${f}`} className="mb-2 block text-sm font-medium text-graphite">
       {text}
       {required ? (
         <span className="text-champagne-700" aria-hidden>

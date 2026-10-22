@@ -9,7 +9,7 @@ import { WhatsAppIcon } from "./Icon";
 /** Barre d'actions fixée en bas de l'écran sur téléphone et tablette : appeler, WhatsApp, devis. */
 export default function MobileActionBar({ locale, t }: { locale: Locale; t: Dictionary }) {
   const m = t.hero.mobileBar;
-  const item = "flex flex-1 flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-semibold tracking-[0.08em] uppercase";
+  const item = "flex flex-1 flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-medium tracking-[0.08em] uppercase";
   return (
     <nav
       aria-label={m.label}

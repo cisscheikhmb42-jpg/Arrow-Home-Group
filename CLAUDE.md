@@ -4,7 +4,8 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 
 ## Stack
 - Next.js 15.5 (App Router, `src/`), React 19, TypeScript, Tailwind CSS v4 (thème dans `src/app/globals.css`, classes maison dans `@layer components`)
-- Polices : Cormorant Garamond (titres) + Manrope (texte), paquets @fontsource ; en chinois, polices système CJK
+- Police unique : Plus Jakarta Sans (@fontsource/plus-jakarta-sans), Regular 400 pour le texte, Medium 500 pour boutons, liens et étiquettes, Bold 700 pour les titres ; aucune autre graisse, pas d'italique ; en chinois, polices système CJK
+- Pas de bandeau défilant (supprimé à la demande du client)
 - zod (validation serveur uniquement, ne jamais l'importer dans un composant client)
 - Hébergement : Vercel, projet `arrow-home`. Base : Supabase, projet « Arrow Home » (en pause au 20/10/2026)
 

@@ -103,14 +103,14 @@ export default function HeroSlider({
             >
               <p className="eyebrow">{s.eyebrow}</p>
               {i === 0 ? (
-                <h1 className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[4.5rem] xl:text-[5.25rem]">
+                <h1 className="display mt-7 text-[2.5rem] sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]">
                   <span className="block">{s.title}</span>
-                  <span className="block text-stone italic lang-zh:not-italic">{s.highlight}</span>
+                  <span className="block text-stone">{s.highlight}</span>
                 </h1>
               ) : (
-                <p className="display mt-7 text-[2.75rem] sm:text-7xl lg:text-[4.5rem] xl:text-[5.25rem]">
+                <p className="display mt-7 text-[2.5rem] sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]">
                   <span className="block">{s.title}</span>
-                  <span className="block text-stone italic lang-zh:not-italic">{s.highlight}</span>
+                  <span className="block text-stone">{s.highlight}</span>
                 </p>
               )}
               <p className="mt-8 max-w-2xl text-base leading-relaxed text-graphite sm:text-lg">{s.text}</p>
@@ -189,7 +189,7 @@ export default function HeroSlider({
             >
               {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
             </button>
-            <p className="hidden text-xs font-semibold tracking-[0.2em] text-stone tabular-nums sm:block">
+            <p className="hidden text-xs font-medium tracking-[0.2em] text-stone tabular-nums sm:block">
               {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
             </p>
           </div>

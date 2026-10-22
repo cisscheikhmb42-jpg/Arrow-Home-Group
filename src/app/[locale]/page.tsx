@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import HeroSlider, { type Slide } from "@/components/HeroSlider";
 import { InstagramIcon } from "@/components/Icon";
-import Marquee from "@/components/Marquee";
 import QuickQuote from "@/components/QuickQuote";
 import Reveal from "@/components/Reveal";
 import { AboutSection, ContactSection, ProcessTimeline, Testimonials } from "@/components/sections/Blocks";
@@ -39,7 +38,6 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         </div>
       </section>
       <div id="contenu-suite" />
-      <Marquee items={t.marquee.items} label={t.marquee.label} />
 
       {/* Expertises */}
       <section className="bg-white py-24 lg:py-36">
@@ -65,7 +63,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           </SectionHeading>
           <Reveal className="mt-10 max-w-3xl border-l border-champagne pl-5 text-sm leading-relaxed text-stone">
             {t.portfolio.illustrationNote}{" "}
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-graphite underline decoration-champagne underline-offset-4">
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-graphite underline decoration-champagne underline-offset-4">
               <InstagramIcon className="size-4" />
               {t.portfolio.instagram}
             </a>
