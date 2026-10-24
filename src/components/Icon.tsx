@@ -4,6 +4,7 @@ import {
   Building2,
   Hammer,
   PaintRoller,
+  ShowerHead,
   Sofa,
   TreePine,
   type LucideProps,
@@ -15,6 +16,7 @@ const icons = {
   Building2,
   Hammer,
   PaintRoller,
+  ShowerHead,
   Sofa,
   TreePine,
 };

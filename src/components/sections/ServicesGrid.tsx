@@ -8,7 +8,7 @@ import { serviceMeta, serviceSlugs } from "@/content/services";
 import Icon from "../Icon";
 import Reveal from "../Reveal";
 
-/** Cartes des 7 expertises + une case d'appel à l'action (page d'accueil). La photo s'affiche des qu'elle est renseignee dans src/content/services.ts. */
+/** Cartes des 8 expertises + une case d'appel à l'action (page d'accueil). La photo s'affiche des qu'elle est renseignee dans src/content/services.ts. */
 export default function ServicesGrid({ locale, t }: { locale: Locale; t: Dictionary }) {
   return (
     <ul className="mt-16 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -49,14 +49,14 @@ export default function ServicesGrid({ locale, t }: { locale: Locale; t: Diction
           </Reveal>
         );
       })}
-      {/* Huitième case : appel à l'action (complète la grille de 4 colonnes). */}
-      <Reveal as="li" delay={270} className="flex flex-col justify-between gap-8 bg-raised p-7 text-ink sm:col-span-2 lg:col-span-1">
+      {/* Dernière case : appel à l'action, en bandeau pleine largeur sous les 8 expertises. */}
+      <Reveal as="li" delay={270} className="flex flex-col justify-between gap-8 bg-raised p-7 text-ink sm:col-span-2 lg:col-span-4 lg:flex-row lg:items-center lg:p-10">
         <div>
           <span className="block h-0.5 w-10 bg-accent" aria-hidden />
           <h3 className="display mt-6 text-2xl sm:text-[1.75rem]">{t.services.ctaTitle}</h3>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">{t.services.ctaText}</p>
         </div>
-        <Link href={href(locale, "quote")} className="btn btn-primary self-start">
+        <Link href={href(locale, "quote")} className="btn btn-primary self-start lg:self-auto">
           {t.services.quote}
           <ArrowRight className="arrow size-4" aria-hidden />
         </Link>

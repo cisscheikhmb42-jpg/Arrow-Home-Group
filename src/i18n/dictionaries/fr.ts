@@ -74,7 +74,7 @@ const fr = {
     whatsapp: "Écrire sur WhatsApp",
     trust: [
       "Bureau à Dakar, Avenue Malick Sy, Médina",
-      "7 métiers coordonnés par une seule équipe",
+      "8 métiers coordonnés par une seule équipe",
       "Joignables par téléphone, WhatsApp ou e-mail",
     ],
     quick: {
@@ -135,7 +135,7 @@ const fr = {
     more: "En savoir plus",
     quote: "Demander un devis",
     pageIntro:
-      "Un interlocuteur unique pour coordonner les différents corps de métier de votre projet : construction, finitions, menuiseries, ascenseurs et décoration.",
+      "Un interlocuteur unique pour coordonner les différents corps de métier de votre projet : construction, finitions, sanitaire et plomberie, menuiseries, ascenseurs et décoration.",
     items: {
       construction: {
         title: "Construction & BTP",
@@ -152,8 +152,14 @@ const fr = {
       "amenagement-finition": {
         title: "Aménagement & finition",
         short: "Second œuvre et finitions soignées pour des espaces cohérents.",
-        body: "Électricité, plomberie, étanchéité, carrelage, peinture, faux plafonds, aménagements extérieurs : nous prenons en charge le second œuvre et les finitions, avec un soin particulier apporté aux détails et à la cohérence de l'ensemble.",
+        body: "Électricité, étanchéité, carrelage, peinture, faux plafonds, aménagements extérieurs : nous prenons en charge le second œuvre et les finitions, avec un soin particulier apporté aux détails et à la cohérence de l'ensemble.",
         points: ["Second œuvre", "Finitions intérieures", "Aménagements extérieurs"],
+      },
+      "plomberie-sanitaire": {
+        title: "Sanitaire & plomberie",
+        short: "Installation et rénovation de vos réseaux d'eau et équipements sanitaires.",
+        body: "Alimentation en eau, évacuations, salles de bains, cuisines et équipements sanitaires : nous installons, remplaçons et remettons en état vos réseaux et appareils, pour des installations fiables et durables.",
+        points: ["Réseaux d'eau et évacuations", "Salles de bains et cuisines", "Pose d'équipements sanitaires"],
       },
       aluminium: {
         title: "Aluminium",
@@ -221,13 +227,25 @@ const fr = {
     },
   },
 
+  stats: {
+    label: "Arrow Home en chiffres",
+    items: [
+      { value: "50", suffix: "+", label: "Projets livrés" },
+      { value: "90", suffix: "j", label: "Délai moyen" },
+      { value: "100", suffix: "%", label: "Clients satisfaits" },
+      { value: "1", suffix: " an", label: "Garantie qualité" },
+    ],
+  },
+
   about: {
-    eyebrow: "À propos",
+    eyebrow: "Qui sommes-nous",
     title: "À propos d'Arrow Home Group",
-    lead: "Bâtir, transformer et valoriser vos espaces.",
+    lead: "Savoir-faire chinois, équipe locale, exigence internationale",
     paragraphs: [
+      "Arrow Home réunit l'excellence de l'ingénierie chinoise et la maîtrise du terrain sénégalais. Notre équipe internationale intervient sur des projets haut de gamme à Dakar et dans toute la région.",
+      "Nous garantissons des délais contractuels fermes, une qualité contrôlée à chaque étape et un service après-livraison sans compromis.",
       "Arrow Home Group accompagne les particuliers, les entreprises et les investisseurs dans leurs projets de construction, de rénovation et d'aménagement.",
-      "Basés à la Médina, à Dakar, nous réunissons dans une même structure plusieurs savoir-faire complémentaires : construction, finitions, menuiseries aluminium et bois, ascenseurs et décoration. Cette organisation permet de coordonner les intervenants et d'offrir à nos clients un interlocuteur unique.",
+      "Basés à la Médina, à Dakar, nous réunissons dans une même structure plusieurs savoir-faire complémentaires : construction, finitions, sanitaire et plomberie, menuiseries aluminium et bois, ascenseurs et décoration. Cette organisation permet de coordonner les intervenants et d'offrir à nos clients un interlocuteur unique.",
       "Notre vision est simple : proposer des solutions adaptées à chaque projet, réalisées avec soin, dans le respect des engagements pris avec le client.",
     ],
     values: [
@@ -235,6 +253,13 @@ const fr = {
       { title: "Transparence", text: "Une proposition détaillée et des points d'avancement réguliers." },
       { title: "Exigence", text: "Le soin du détail et le contrôle de la qualité à chaque étape." },
       { title: "Accompagnement", text: "Un suivi attentif, de la première rencontre à la finalisation." },
+    ],
+    commitmentsLabel: "Nos engagements",
+    commitments: [
+      "Contrat à prix ferme — pas de supplément",
+      "Délai 90 jours — pas un jour de plus",
+      "Contrôle qualité à chaque étape",
+      "Garantie 1 an · Maintenance à vie",
     ],
     cta: "Parlons de votre projet",
     more: "En savoir plus sur nous",

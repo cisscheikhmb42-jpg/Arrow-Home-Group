@@ -9,7 +9,32 @@ import { WhatsAppIcon } from "../Icon";
 import Reveal from "../Reveal";
 import SectionHeading from "./SectionHeading";
 
-/** A propos : texte et engagements. */
+/** Bandeau « en chiffres » : valeurs fournies par la direction (dictionnaires, clé `stats`). */
+export function StatsBand({ t }: { t: Dictionary }) {
+  const st = t.stats;
+  return (
+    <section aria-label={st.label} className="border-b border-line bg-surface">
+      <ul className="container-x grid grid-cols-2 lg:grid-cols-4">
+        {st.items.map((it, i) => (
+          <Reveal
+            as="li"
+            key={it.label}
+            delay={i * 90}
+            className={`flex flex-col items-center justify-center px-2 py-10 text-center lg:py-14 ${i % 2 ? "border-l border-line" : ""} ${i > 1 ? "border-t border-line lg:border-t-0" : ""} ${i === 2 ? "lg:border-l" : ""}`}
+          >
+            <p className="display text-5xl text-accent tabular-nums lg:text-6xl">
+              {it.value}
+              <span className="text-2xl lg:text-3xl">{it.suffix}</span>
+            </p>
+            <p className="mt-3 text-xs font-medium tracking-[0.18em] text-muted uppercase">{it.label}</p>
+          </Reveal>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** A propos : présentation, engagements et (page complète) valeurs. */
 export function AboutSection({
   locale,
   t,
@@ -25,12 +50,12 @@ export function AboutSection({
   const Title = headingLevel;
   return (
     <section className="border-t border-line bg-canvas py-24 lg:py-36">
-      <div className="container-x">
-        <Reveal className="max-w-4xl">
+      <div className="container-x grid gap-14 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
+        <Reveal>
           <p className="eyebrow">{a.eyebrow}</p>
           <Title className="display mt-6 text-4xl text-ink sm:text-5xl lg:text-6xl">{full ? a.title : a.lead}</Title>
           {full && <p className="display mt-6 text-2xl text-sky">{a.lead}</p>}
-          <div className="mt-8 space-y-5 text-lg leading-relaxed text-ink">
+          <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted">
             {(full ? a.paragraphs : a.paragraphs.slice(0, 2)).map((p) => (
               <p key={p}>{p}</p>
             ))}
@@ -48,15 +73,29 @@ export function AboutSection({
           </div>
         </Reveal>
 
-        <ul className="mt-20 grid border-y border-line sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
-          {a.values.map((v, i) => (
-            <Reveal as="li" key={v.title} delay={i * 100} className="py-8 sm:pr-8 lg:py-10">
-              <span className="block h-0.5 w-10 bg-accent" aria-hidden />
-              <h3 className="display mt-5 text-3xl text-ink">{v.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted">{v.text}</p>
-            </Reveal>
-          ))}
-        </ul>
+        <Reveal delay={120} className="self-center">
+          <h3 className="text-xs font-medium tracking-[0.2em] text-muted uppercase">{a.commitmentsLabel}</h3>
+          <ul className="mt-5 divide-y divide-line border-y border-line">
+            {a.commitments.map((c) => (
+              <li key={c} className="flex items-center gap-4 py-5 text-[15px] font-medium text-ink sm:text-base">
+                <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden />
+                {c}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        {full && (
+          <ul className="grid border-y border-line sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+            {a.values.map((v, i) => (
+              <Reveal as="li" key={v.title} delay={i * 100} className="py-8 sm:pr-8 lg:py-10">
+                <span className="block h-0.5 w-10 bg-accent" aria-hidden />
+                <h3 className="display mt-5 text-3xl text-ink">{v.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted">{v.text}</p>
+              </Reveal>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );

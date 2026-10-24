@@ -24,6 +24,8 @@ Site corporate multilingue d'**ARROW HOME GROUP** (construction, rénovation, am
 - Réalisations réelles : `src/content/portfolio.ts` (`projects`, vide pour l'instant ; encadrés « Photos à venir » via `placeholders`)
 - Témoignages : `src/content/trust.ts` (vide ; section masquée tant qu'elle est vide)
 - Ne pas inventer de chiffres, projets, témoignages, certifications, dates. Ne pas afficher d'année de création
+- Chiffres clés (50+ projets, 90 j, 100 %, garantie 1 an) et engagements « Qui sommes-nous » : fournis par la direction (octobre 2026), dictionnaires `stats` et `about.commitments`. Ne les modifier que sur instruction de la direction
+- 8 expertises dont « Sanitaire & plomberie » (`plomberie-sanitaire`) : `src/content/services.ts`
 - Infos de l'ancien site (50+ projets, 100 % satisfaits, 90 jours, garantie 1 an, ingénierie chinoise, projets Almadies/Plateau…) : à confirmer par l'utilisateur avant ajout
 
 ## Formulaires

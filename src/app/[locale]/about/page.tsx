@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AboutSection, CtaBand, ProcessTimeline, Testimonials } from "@/components/sections/Blocks";
+import { AboutSection, CtaBand, ProcessTimeline, StatsBand, Testimonials } from "@/components/sections/Blocks";
 import { getDictionary } from "@/i18n";
 import type { Locale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -15,6 +15,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <>
       <AboutSection locale={locale} t={t} full headingLevel="h1" />
+      <StatsBand t={t} />
       <ProcessTimeline t={t} />
       <Testimonials locale={locale} t={t} />
       <CtaBand locale={locale} t={t} />

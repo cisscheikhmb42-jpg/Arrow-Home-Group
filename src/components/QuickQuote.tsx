@@ -28,7 +28,7 @@ export default function QuickQuote({ locale, t }: { locale: Locale; t: Dictionar
             </Link>
           </li>
         ))}
-        <li>
+        <li className="col-span-2">
           <Link
             href={quote}
             className="flex h-full min-h-12 items-center justify-between gap-2 bg-accent px-3 py-2.5 text-[13px] leading-tight font-medium text-on-accent transition-colors hover:bg-accent-hover"

@@ -75,7 +75,7 @@ const en: Dictionary = {
     whatsapp: "Message us on WhatsApp",
     trust: [
       "Office in Dakar, Avenue Malick Sy, Médina",
-      "7 trades coordinated by a single team",
+      "8 trades coordinated by a single team",
       "Reach us by phone, WhatsApp or e-mail",
     ],
     quick: {
@@ -135,7 +135,7 @@ const en: Dictionary = {
     more: "Learn more",
     quote: "Request a quote",
     pageIntro:
-      "A single point of contact to coordinate every trade on your project: construction, finishing, joinery, elevators and interior design.",
+      "A single point of contact to coordinate every trade on your project: construction, finishing, plumbing, joinery, elevators and interior design.",
     items: {
       construction: {
         title: "Construction & civil works",
@@ -152,8 +152,14 @@ const en: Dictionary = {
       "amenagement-finition": {
         title: "Fit-out & finishing",
         short: "Secondary works and carefully executed finishes for coherent spaces.",
-        body: "Electrical work, plumbing, waterproofing, tiling, painting, suspended ceilings, outdoor landscaping: we handle secondary works and finishing, paying particular attention to detail and overall consistency.",
+        body: "Electrical work, waterproofing, tiling, painting, suspended ceilings, outdoor landscaping: we handle secondary works and finishing, paying particular attention to detail and overall consistency.",
         points: ["Secondary works", "Interior finishing", "Outdoor landscaping"],
+      },
+      "plomberie-sanitaire": {
+        title: "Plumbing & sanitary",
+        short: "Installation and renovation of water networks and sanitary fixtures.",
+        body: "Water supply, drainage, bathrooms, kitchens and sanitary fixtures: we install, replace and restore your systems and appliances for reliable, long-lasting installations.",
+        points: ["Water supply and drainage", "Bathrooms and kitchens", "Sanitary fixture installation"],
       },
       aluminium: {
         title: "Aluminium",
@@ -221,13 +227,25 @@ const en: Dictionary = {
     },
   },
 
+  stats: {
+    label: "Arrow Home in figures",
+    items: [
+      { value: "50", suffix: "+", label: "Projects delivered" },
+      { value: "90", suffix: " days", label: "Average timeline" },
+      { value: "100", suffix: "%", label: "Satisfied clients" },
+      { value: "1", suffix: " year", label: "Quality warranty" },
+    ],
+  },
+
   about: {
-    eyebrow: "About",
+    eyebrow: "Who we are",
     title: "About Arrow Home Group",
-    lead: "Building, transforming and enhancing your spaces.",
+    lead: "Chinese know-how, local team, international standards",
     paragraphs: [
+      "Arrow Home combines the excellence of Chinese engineering with in-depth knowledge of the Senegalese market. Our international team works on high-end projects in Dakar and throughout the region.",
+      "We guarantee firm contractual deadlines, quality control at every stage and uncompromising after-delivery service.",
       "Arrow Home Group supports individuals, businesses and investors with their construction, renovation and fit-out projects.",
-      "Based in Médina, Dakar, we bring several complementary skills together under one roof: construction, finishing, aluminium and wood joinery, elevators and interior design. This lets us coordinate every trade and give our clients a single point of contact.",
+      "Based in Médina, Dakar, we bring several complementary skills together under one roof: construction, finishing, plumbing and sanitary, aluminium and wood joinery, elevators and interior design. This lets us coordinate every trade and give our clients a single point of contact.",
       "Our vision is simple: to offer solutions tailored to each project, delivered with care and in line with the commitments made to the client.",
     ],
     values: [
@@ -235,6 +253,13 @@ const en: Dictionary = {
       { title: "Transparency", text: "A detailed proposal and regular progress updates." },
       { title: "High standards", text: "Attention to detail and quality control at every stage." },
       { title: "Support", text: "Close follow-up, from the first meeting to project completion." },
+    ],
+    commitmentsLabel: "Our commitments",
+    commitments: [
+      "Fixed-price contract — no extra charges",
+      "90-day timeline — not a day more",
+      "Quality control at every stage",
+      "1-year warranty · Lifetime maintenance",
     ],
     cta: "Let's talk about your project",
     more: "Learn more about us",
