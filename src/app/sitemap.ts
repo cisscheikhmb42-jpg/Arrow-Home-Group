@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/content/portfolio";
+import { publishedProjects as projects } from "@/content/portfolio";
 import { locales } from "@/i18n/config";
 import { allRouteKeys, href, type RouteKey } from "@/i18n/routes";
 import { languageAlternates } from "@/lib/seo";

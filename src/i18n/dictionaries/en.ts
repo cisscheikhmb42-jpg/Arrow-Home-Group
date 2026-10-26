@@ -232,7 +232,7 @@ const en: Dictionary = {
     items: [
       { value: "50", suffix: "+", label: "Projects delivered" },
       { value: "90", suffix: " days", label: "Average timeline" },
-      { value: "100", suffix: "%", label: "Satisfied clients" },
+      { value: "8", suffix: "", label: "Coordinated trades" },
       { value: "1", suffix: " year", label: "Quality warranty" },
     ],
   },
@@ -243,7 +243,7 @@ const en: Dictionary = {
     lead: "Chinese know-how, local team, international standards",
     paragraphs: [
       "Arrow Home combines the excellence of Chinese engineering with in-depth knowledge of the Senegalese market. Our international team works on high-end projects in Dakar and throughout the region.",
-      "We guarantee firm contractual deadlines, quality control at every stage and uncompromising after-delivery service.",
+      "We commit to a clear schedule, quality control at every stage and follow-up after delivery.",
       "Arrow Home Group supports individuals, businesses and investors with their construction, renovation and fit-out projects.",
       "Based in Médina, Dakar, we bring several complementary skills together under one roof: construction, finishing, plumbing and sanitary, aluminium and wood joinery, elevators and interior design. This lets us coordinate every trade and give our clients a single point of contact.",
       "Our vision is simple: to offer solutions tailored to each project, delivered with care and in line with the commitments made to the client.",
@@ -256,13 +256,19 @@ const en: Dictionary = {
     ],
     commitmentsLabel: "Our commitments",
     commitments: [
-      "Fixed-price contract — no extra charges",
-      "90-day timeline — not a day more",
+      "Detailed, transparent quote — no unpleasant surprises",
+      "Deadlines set by contract and met",
       "Quality control at every stage",
-      "1-year warranty · Lifetime maintenance",
+      "1-year warranty · After-delivery service",
     ],
     cta: "Let's talk about your project",
     more: "Learn more about us",
+  },
+
+  diaspora: {
+    title: "Living abroad?",
+    text: "Move your project in Senegal forward with peace of mind: a single point of contact, regular updates with photos and videos of the site, and clear follow-up at every stage.",
+    cta: "Talk about my project",
   },
 
   process: {
@@ -392,6 +398,8 @@ const en: Dictionary = {
         body: [
           "This website is published by ARROW HOME GROUP, whose office is located on Avenue Malick Sy, Médina, Dakar, Senegal.",
           "Phone: +221 78 715 54 54. Email: info@arrowhome.cc.",
+          "NINEA: [To be completed]",
+          "RCCM: [To be completed]",
         ],
       },
       {

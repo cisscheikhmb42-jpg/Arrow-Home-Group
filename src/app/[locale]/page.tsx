@@ -4,7 +4,7 @@ import HeroSlider, { type Slide } from "@/components/HeroSlider";
 import { InstagramIcon } from "@/components/Icon";
 import QuickQuote from "@/components/QuickQuote";
 import Reveal from "@/components/Reveal";
-import { AboutSection, ContactSection, ProcessTimeline, StatsBand, Testimonials } from "@/components/sections/Blocks";
+import { AboutSection, ContactSection, DiasporaBand, ProcessTimeline, StatsBand, Testimonials } from "@/components/sections/Blocks";
 import PortfolioRail from "@/components/sections/PortfolioRail";
 import SectionHeading from "@/components/sections/SectionHeading";
 import ServicesGrid from "@/components/sections/ServicesGrid";
@@ -77,6 +77,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
       <AboutSection locale={locale} t={t} />
       <ProcessTimeline t={t} />
+      <DiasporaBand t={t} />
       <Testimonials locale={locale} t={t} />
       <ContactSection locale={locale} t={t} />
     </>

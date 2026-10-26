@@ -4,13 +4,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CtaBand } from "@/components/sections/Blocks";
-import { categoryService, projects } from "@/content/portfolio";
+import { categoryService, publishedProjects as projects } from "@/content/portfolio";
 import { fill, getDictionary } from "@/i18n";
 import { locales, type Locale } from "@/i18n/config";
 import { href } from "@/i18n/routes";
 import { pageMetadata } from "@/lib/seo";
 
-/** Fiche projet : générée uniquement pour les réalisations réelles déclarées dans src/content/portfolio.ts. */
+/** Fiche projet : générée uniquement pour les réalisations réelles ayant une photo (src/content/portfolio.ts). */
 export const dynamicParams = false;
 export function generateStaticParams() {
   // Next.js exige au moins une entrée en export statique ; un slug réservé renvoie une 404 tant qu'aucun projet n'existe.

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { PortfolioItem } from "@/content/portfolio-items";
 
-/** Carte de realisation : photo reelle, ou encadre sobre « Photos a venir » tant que les photos ne sont pas fournies. */
+/** Carte de realisation : photo reelle, sinon encadre aux couleurs de la marque (domaine d'intervention, ou « Photos a venir »). */
 export default function PortfolioCard({
   item,
   placeholderLabel,
@@ -27,16 +27,21 @@ export default function PortfolioCard({
             className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
           />
         ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+          <div className={`absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center ${item.domain ? "hero-glow" : ""}`}>
             <span className="block h-0.5 w-10 bg-accent" aria-hidden />
-            <span className="text-xs font-medium tracking-[0.18em] text-muted uppercase">{placeholderLabel}</span>
+            {item.domain ? (
+              <span className="display text-3xl text-ink sm:text-4xl">{item.domain}</span>
+            ) : (
+              <span className="text-xs font-medium tracking-[0.18em] text-muted uppercase">{placeholderLabel}</span>
+            )}
           </div>
         )}
       </div>
       <div className="flex items-start justify-between gap-4 pt-5">
         <div>
-          <p className="text-xs font-medium tracking-[0.18em] text-muted uppercase">{item.caption}</p>
-          <h3 className="display mt-2 text-2xl text-ink sm:text-3xl">{item.title}</h3>
+          {!item.domain && <p className="mb-2 text-xs font-medium tracking-[0.18em] text-muted uppercase">{item.caption}</p>}
+          <h3 className="display text-2xl text-ink sm:text-3xl">{item.title}</h3>
+          {item.summary && <p className="mt-3 text-[15px] leading-relaxed text-muted">{item.summary}</p>}
         </div>
         {item.href && (
           <ArrowUpRight

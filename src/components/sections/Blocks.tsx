@@ -101,6 +101,33 @@ export function AboutSection({
   );
 }
 
+/** Bloc diaspora : projet au Sénégal suivi depuis l'étranger, contact direct par WhatsApp. */
+export function DiasporaBand({ t }: { t: Dictionary }) {
+  const d = t.diaspora;
+  return (
+    <section className="border-t border-line bg-canvas py-16 lg:py-24">
+      <div className="container-x">
+        <Reveal className="flex flex-col gap-8 border border-line bg-surface p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
+          <div className="max-w-2xl">
+            <span className="block h-0.5 w-10 bg-accent" aria-hidden />
+            <h2 className="display mt-6 text-3xl text-ink sm:text-4xl">{d.title}</h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted">{d.text}</p>
+          </div>
+          <a
+            href={whatsappLink(t.contact.whatsappMsg)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary shrink-0 self-start lg:self-auto"
+          >
+            <WhatsAppIcon className="size-4" />
+            {d.cta}
+          </a>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /** Notre methode : chronologie horizontale sur grand ecran, verticale sur mobile. */
 export function ProcessTimeline({ t, headingLevel = "h2" }: { t: Dictionary; headingLevel?: "h1" | "h2" }) {
   const p = t.process;

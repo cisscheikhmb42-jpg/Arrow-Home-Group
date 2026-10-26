@@ -232,7 +232,7 @@ const fr = {
     items: [
       { value: "50", suffix: "+", label: "Projets livrés" },
       { value: "90", suffix: "j", label: "Délai moyen" },
-      { value: "100", suffix: "%", label: "Clients satisfaits" },
+      { value: "8", suffix: "", label: "Métiers coordonnés" },
       { value: "1", suffix: " an", label: "Garantie qualité" },
     ],
   },
@@ -243,7 +243,7 @@ const fr = {
     lead: "Savoir-faire chinois, équipe locale, exigence internationale",
     paragraphs: [
       "Arrow Home réunit l'excellence de l'ingénierie chinoise et la maîtrise du terrain sénégalais. Notre équipe internationale intervient sur des projets haut de gamme à Dakar et dans toute la région.",
-      "Nous garantissons des délais contractuels fermes, une qualité contrôlée à chaque étape et un service après-livraison sans compromis.",
+      "Nous nous engageons sur un planning clair, une qualité contrôlée à chaque étape et un suivi après la livraison.",
       "Arrow Home Group accompagne les particuliers, les entreprises et les investisseurs dans leurs projets de construction, de rénovation et d'aménagement.",
       "Basés à la Médina, à Dakar, nous réunissons dans une même structure plusieurs savoir-faire complémentaires : construction, finitions, sanitaire et plomberie, menuiseries aluminium et bois, ascenseurs et décoration. Cette organisation permet de coordonner les intervenants et d'offrir à nos clients un interlocuteur unique.",
       "Notre vision est simple : proposer des solutions adaptées à chaque projet, réalisées avec soin, dans le respect des engagements pris avec le client.",
@@ -256,13 +256,19 @@ const fr = {
     ],
     commitmentsLabel: "Nos engagements",
     commitments: [
-      "Contrat à prix ferme — pas de supplément",
-      "Délai 90 jours — pas un jour de plus",
+      "Devis détaillé et transparent, sans mauvaise surprise",
+      "Délais fixés par contrat et respectés",
       "Contrôle qualité à chaque étape",
-      "Garantie 1 an · Maintenance à vie",
+      "Garantie 1 an · Service après-livraison",
     ],
     cta: "Parlons de votre projet",
     more: "En savoir plus sur nous",
+  },
+
+  diaspora: {
+    title: "Vous vivez à l'étranger ?",
+    text: "Faites avancer votre projet au Sénégal en toute sérénité : un seul interlocuteur, des points réguliers avec photos et vidéos du chantier, et un suivi clair à chaque étape.",
+    cta: "Parler de mon projet",
   },
 
   process: {
@@ -395,6 +401,8 @@ const fr = {
         body: [
           "Le présent site est édité par ARROW HOME GROUP, dont le bureau est situé Avenue Malick Sy, Médina, Dakar, Sénégal.",
           "Téléphone : +221 78 715 54 54. E-mail : info@arrowhome.cc.",
+          "NINEA : [À compléter]",
+          "RCCM : [À compléter]",
         ],
       },
       {

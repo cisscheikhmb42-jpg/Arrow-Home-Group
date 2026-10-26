@@ -3,12 +3,15 @@ import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { href } from "@/i18n/routes";
 import { placeholders, projects, type PortfolioCategory } from "./portfolio";
 
-/** Element affiche dans le portfolio : un projet reel, ou un encadre « Photos a venir ». */
+/** Element affiche dans le portfolio : un projet reel (avec ou sans photo), ou un encadre « Photos a venir ». */
 export type PortfolioItem = {
   id: string;
   category: PortfolioCategory;
   title: string;
   caption: string;
+  summary?: string;
+  /** Sans photo : nom du domaine d'intervention affiché dans l'encadré. */
+  domain?: string;
   href?: string;
   image?: string;
   placeholder: boolean;
@@ -20,7 +23,9 @@ export function getPortfolioItems(locale: Locale, t: Dictionary): PortfolioItem[
     category: p.category,
     title: p.title[locale],
     caption: p.location?.[locale] ?? t.portfolio.categories[p.category],
-    href: href(locale, "projects", `/${p.slug}`),
+    summary: p.summary[locale],
+    domain: p.cover ? undefined : t.portfolio.categories[p.category],
+    href: p.cover ? href(locale, "projects", `/${p.slug}`) : undefined,
     image: p.cover,
     placeholder: false,
   }));

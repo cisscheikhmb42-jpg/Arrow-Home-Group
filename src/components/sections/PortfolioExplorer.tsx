@@ -13,7 +13,8 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
   const router = useRouter();
   const pathname = usePathname();
   const raw = params.get("cat");
-  const active = isPortfolioCategory(raw) ? raw : "all";
+  // Une catégorie sans réalisation (ancien lien ?cat=…) revient sur « Tous ».
+  const active = isPortfolioCategory(raw) && items.some((i) => i.category === raw) ? raw : "all";
   const shown = active === "all" ? items : items.filter((i) => i.category === active);
 
   const select = (cat: string) => {
@@ -27,7 +28,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
   return (
     <div>
       <div role="group" aria-label={t.filterLabel} className="scroller -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
-        {portfolioCategories.map((cat) => {
+        {portfolioCategories.filter((cat) => cat === "all" || items.some((i) => i.category === cat)).map((cat) => {
           const on = cat === active;
           return (
             <button
