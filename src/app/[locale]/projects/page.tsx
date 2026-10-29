@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { InstagramIcon } from "@/components/Icon";
-import Reveal from "@/components/Reveal";
-import { CtaBand, PageHero } from "@/components/sections/Blocks";
+import { CtaBand, FollowNote, PageHero } from "@/components/sections/Blocks";
 import PortfolioExplorer from "@/components/sections/PortfolioExplorer";
 import PortfolioRail from "@/components/sections/PortfolioRail";
 import { getPortfolioItems } from "@/content/portfolio-items";
 import { getDictionary } from "@/i18n";
 import type { Locale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -27,13 +24,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
 
       <section className="overflow-hidden border-b border-line bg-canvas py-20 lg:py-28">
         <div className="container-x">
-          <Reveal className="max-w-3xl border-l border-accent pl-5 text-sm leading-relaxed text-muted">
-            {t.portfolio.illustrationNote}{" "}
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-ink underline decoration-accent underline-offset-4">
-              <InstagramIcon className="size-4" />
-              {t.portfolio.instagram}
-            </a>
-          </Reveal>
+          <FollowNote t={t} />
           <h2 className="sr-only">{t.portfolio.carouselLabel}</h2>
           <div className="mt-6">
             <PortfolioRail items={items} t={t} />

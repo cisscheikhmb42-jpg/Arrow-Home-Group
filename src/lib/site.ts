@@ -20,8 +20,10 @@ export const site = {
     facebook: "https://www.facebook.com/profile.php?id=61568603257478",
     instagram: "https://www.instagram.com/arrowhome_group/",
     linkedin: "https://www.linkedin.com/company/arrow-home-group/",
+    tiktok: "https://www.tiktok.com/@arrowhomegroup",
   },
   instagramHandle: "@arrowhome_group",
+  tiktokHandle: "@arrowhomegroup",
 };
 
 export const whatsappLink = (text?: string) =>

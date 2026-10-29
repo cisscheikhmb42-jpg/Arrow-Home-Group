@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import HeroSlider, { type Slide } from "@/components/HeroSlider";
-import { InstagramIcon } from "@/components/Icon";
 import QuickQuote from "@/components/QuickQuote";
-import Reveal from "@/components/Reveal";
-import { AboutSection, ContactSection, DiasporaBand, ProcessTimeline, StatsBand, Testimonials } from "@/components/sections/Blocks";
+import { AboutSection, ContactSection, DiasporaBand, FollowNote, ProcessTimeline, StatsBand, Testimonials, VideosBand } from "@/components/sections/Blocks";
 import PortfolioRail from "@/components/sections/PortfolioRail";
 import SectionHeading from "@/components/sections/SectionHeading";
 import ServicesGrid from "@/components/sections/ServicesGrid";
@@ -12,7 +10,6 @@ import { getPortfolioItems } from "@/content/portfolio-items";
 import { getDictionary } from "@/i18n";
 import type { Locale } from "@/i18n/config";
 import { href } from "@/i18n/routes";
-import { site } from "@/lib/site";
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -62,19 +59,14 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </SectionHeading>
-          <Reveal className="mt-10 max-w-3xl border-l border-accent pl-5 text-sm leading-relaxed text-muted">
-            {t.portfolio.illustrationNote}{" "}
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium text-ink underline decoration-accent underline-offset-4">
-              <InstagramIcon className="size-4" />
-              {t.portfolio.instagram}
-            </a>
-          </Reveal>
+          <FollowNote t={t} className="mt-10" />
           <div className="mt-6">
             <PortfolioRail items={getPortfolioItems(locale, t)} t={t} />
           </div>
         </div>
       </section>
 
+      <VideosBand t={t} />
       <AboutSection locale={locale} t={t} />
       <ProcessTimeline t={t} />
       <DiasporaBand t={t} />

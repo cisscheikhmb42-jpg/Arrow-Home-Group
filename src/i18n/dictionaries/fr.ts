@@ -212,7 +212,9 @@ const fr = {
     illustration: "Photos à venir",
     illustrationNote: "Les photographies de nos chantiers seront publiées très prochainement.",
     illustrationCaption: "Domaine d'intervention",
-    instagram: "Suivre nos chantiers sur Instagram",
+    followLead: "Suivre nos chantiers sur",
+    followAnd: "et",
+    followTail: "",
     startProject: "Un projet similaire ?",
     count: "{n} élément(s)",
     detail: {
@@ -263,6 +265,12 @@ const fr = {
     ],
     cta: "Parlons de votre projet",
     more: "En savoir plus sur nous",
+  },
+
+  videos: {
+    title: "Nos chantiers en vidéo",
+    text: "Découvrez nos chantiers en vidéo, étape par étape, sur notre compte TikTok @arrowhomegroup.",
+    cta: "Voir nos vidéos sur TikTok",
   },
 
   diaspora: {

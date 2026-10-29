@@ -5,7 +5,7 @@ import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { href } from "@/i18n/routes";
 import { testimonials } from "@/content/trust";
 import { site, whatsappLink } from "@/lib/site";
-import { WhatsAppIcon } from "../Icon";
+import { InstagramIcon, TikTokIcon, WhatsAppIcon } from "../Icon";
 import Reveal from "../Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -96,6 +96,53 @@ export function AboutSection({
             ))}
           </ul>
         )}
+      </div>
+    </section>
+  );
+}
+
+/** Note sous « Nos réalisations » : photos à venir + liens Instagram et TikTok. */
+export function FollowNote({ t, className = "" }: { t: Dictionary; className?: string }) {
+  const p = t.portfolio;
+  const link = "inline-flex items-center gap-1.5 font-medium text-ink underline decoration-accent underline-offset-4";
+  return (
+    <Reveal className={`max-w-3xl border-l border-accent pl-5 text-sm leading-relaxed text-muted ${className}`}>
+      {p.illustrationNote} {p.followLead}{" "}
+      <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className={link}>
+        <InstagramIcon className="size-4" />
+        Instagram
+      </a>{" "}
+      {p.followAnd}{" "}
+      <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className={link}>
+        <TikTokIcon className="size-4" />
+        TikTok
+      </a>
+      {p.followTail}
+    </Reveal>
+  );
+}
+
+/** Bandeau « Nos chantiers en vidéo » : lien vers le compte TikTok (aucun script TikTok chargé sur le site). */
+export function VideosBand({ t }: { t: Dictionary }) {
+  const v = t.videos;
+  return (
+    <section className="border-t border-line bg-canvas py-16 lg:py-24">
+      <div className="container-x">
+        <Reveal className="hero-glow flex flex-col gap-8 border border-line p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
+          <div className="flex max-w-2xl items-start gap-5">
+            <span className="inline-flex size-12 shrink-0 items-center justify-center bg-raised text-ink">
+              <TikTokIcon className="size-6" />
+            </span>
+            <div>
+              <h2 className="display text-3xl text-ink sm:text-4xl">{v.title}</h2>
+              <p className="mt-4 text-lg leading-relaxed text-muted">{v.text}</p>
+            </div>
+          </div>
+          <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className="btn btn-primary shrink-0 self-start lg:self-auto">
+            <TikTokIcon className="size-4" />
+            {v.cta}
+          </a>
+        </Reveal>
       </div>
     </section>
   );

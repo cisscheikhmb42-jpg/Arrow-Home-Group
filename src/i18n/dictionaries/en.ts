@@ -212,7 +212,9 @@ const en: Dictionary = {
     illustration: "Photos coming soon",
     illustrationNote: "Photographs of our projects will be published very soon.",
     illustrationCaption: "Field of work",
-    instagram: "Follow our sites on Instagram",
+    followLead: "Follow our sites on",
+    followAnd: "and",
+    followTail: "",
     startProject: "Planning something similar?",
     count: "{n} item(s)",
     detail: {
@@ -263,6 +265,12 @@ const en: Dictionary = {
     ],
     cta: "Let's talk about your project",
     more: "Learn more about us",
+  },
+
+  videos: {
+    title: "Our projects on video",
+    text: "Watch our projects step by step on our TikTok account @arrowhomegroup.",
+    cta: "Watch our videos on TikTok",
   },
 
   diaspora: {

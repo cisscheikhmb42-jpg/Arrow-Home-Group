@@ -5,7 +5,7 @@ import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { href, type RouteKey } from "@/i18n/routes";
 import { serviceSlugs } from "@/content/services";
 import { site } from "@/lib/site";
-import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./Icon";
+import { FacebookIcon, InstagramIcon, LinkedinIcon, TikTokIcon } from "./Icon";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
 
@@ -14,6 +14,7 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dictionary })
   const socials = [
     { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
     { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
+    { href: site.social.tiktok, label: "TikTok", Icon: TikTokIcon },
     { href: site.social.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
   ];
   const navLinks: { key: RouteKey; label: string }[] = [

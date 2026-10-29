@@ -202,7 +202,9 @@ const zh: Dictionary = {
     illustration: "照片即将上线",
     illustrationNote: "我们的工程实景照片即将发布。",
     illustrationCaption: "业务领域",
-    instagram: "在 Instagram 关注我们的工地动态",
+    followLead: "在",
+    followAnd: "和",
+    followTail: "关注我们的工地动态",
     startProject: "有类似的项目？",
     count: "{n} 项",
     detail: {
@@ -253,6 +255,12 @@ const zh: Dictionary = {
     ],
     cta: "洽谈您的项目",
     more: "进一步了解我们",
+  },
+
+  videos: {
+    title: "工地视频",
+    text: "在我们的 TikTok 账号 @arrowhomegroup 上，逐步了解我们的施工项目。",
+    cta: "在 TikTok 观看视频",
   },
 
   diaspora: {
