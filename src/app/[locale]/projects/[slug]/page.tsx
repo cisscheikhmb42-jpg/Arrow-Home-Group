@@ -95,10 +95,49 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             </Link>
           </div>
         </div>
-        {p.gallery.length > 0 && (
+        {(p.chapters?.length || p.gallery.length > 0) && (
           <section className="container-x pb-24">
-            <h2 className="display text-3xl text-ink">{d.gallery}</h2>
-            <ProjectGallery photos={p.gallery.map((g) => ({ src: g.src, alt: g.alt[locale] }))} labels={d.viewer} />
+            {p.chapters?.length ? (
+              <div className="max-w-3xl">
+                <p className="eyebrow">{d.gallery}</p>
+                <h2 className="display mt-5 text-4xl text-ink sm:text-5xl">{d.galleryTitle}</h2>
+                <p className="mt-5 text-lg leading-relaxed text-muted">{d.galleryIntro}</p>
+              </div>
+            ) : (
+              <h2 className="display text-3xl text-ink">{d.gallery}</h2>
+            )}
+            {p.beforeAfter && (
+              <div className="mt-12 grid gap-6 sm:grid-cols-2">
+                {(
+                  [
+                    [d.before, p.beforeAfter.before, false],
+                    [d.after, p.beforeAfter.after, true],
+                  ] as const
+                ).map(([label, photo, isAfter]) => (
+                  <figure key={photo.src}>
+                    <div className="relative aspect-[3/2] overflow-hidden bg-surface">
+                      <Image src={photo.src} alt={photo.alt[locale]} fill sizes="(min-width:640px) 50vw, 100vw" className="object-cover" />
+                      <span
+                        className={`absolute top-4 left-4 px-3 py-1.5 text-xs font-medium tracking-[0.18em] uppercase ${
+                          isAfter ? "bg-accent text-on-accent" : "bg-canvas/85 text-ink"
+                        }`}
+                      >
+                        {label}
+                      </span>
+                    </div>
+                    <figcaption className="mt-3 text-sm leading-relaxed text-muted">{photo.alt[locale]}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+            <ProjectGallery
+              chapters={
+                p.chapters?.length
+                  ? p.chapters.map((c) => ({ title: c.title[locale], photos: c.photos.map((g) => ({ src: g.src, alt: g.alt[locale] })) }))
+                  : [{ photos: p.gallery.map((g) => ({ src: g.src, alt: g.alt[locale] })) }]
+              }
+              labels={{ ...d.viewer, chapters: d.chapters, photoCount: d.photoCount }}
+            />
           </section>
         )}
       </article>

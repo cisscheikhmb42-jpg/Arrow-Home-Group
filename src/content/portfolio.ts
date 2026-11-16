@@ -49,6 +49,8 @@ type Localized = { fr: string; en: string; zh: string };
  *   highlights: [],
  * }
  */
+export type ProjectPhoto = { src: string; alt: Localized };
+
 export type Project = {
   slug: string;
   category: PortfolioCategory;
@@ -58,7 +60,11 @@ export type Project = {
   /** Cadrage de la photo principale quand elle est recadrée (CSS object-position), ex. "70% 60%". */
   coverPosition?: string;
   /** Photos complémentaires, dans l'ordre d'affichage, chacune avec sa légende. */
-  gallery: { src: string; alt: Localized }[];
+  gallery: ProjectPhoto[];
+  /** Galerie organisée en chapitres (étapes du chantier), affichée à la place de `gallery`. */
+  chapters?: { title: Localized; photos: ProjectPhoto[] }[];
+  /** Comparaison avant / après, affichée en tête de la galerie. */
+  beforeAfter?: { before: ProjectPhoto; after: ProjectPhoto };
   title: Localized;
   summary: Localized;
   location?: Localized;
@@ -70,45 +76,291 @@ export const projects: Project[] = [
   {
     slug: "stade-iba-mar-diop",
     category: "renovation",
-    cover: "/photos/projets/stade-iba-mar-diop/stade-termine.jpg",
+    cover: "/photos/projets/stade-iba-mar-diop/couverture-tribune.jpg",
     coverAlt: {
-      fr: "La piste d'athlétisme et la tribune principale du stade Iba Mar Diop",
-      en: "The athletics track and main stand of Iba Mar Diop Stadium",
-      zh: "Iba Mar Diop 体育场的田径跑道与主看台",
+      fr: "La nouvelle tribune principale du stade Iba Mar Diop, vue depuis la pelouse",
+      en: "The new main stand of Iba Mar Diop Stadium, seen from the pitch",
+      zh: "从草坪看 Iba Mar Diop 体育场新建主看台",
     },
-    coverPosition: "72% 80%",
-    gallery: [
-      {
-        src: "/photos/projets/stade-iba-mar-diop/chantier-01.jpg",
+    coverPosition: "50% 62%",
+    gallery: [],
+    beforeAfter: {
+      before: {
+        src: "/photos/projets/stade-iba-mar-diop/avant-demolition.jpg",
         alt: {
-          fr: "Vue aérienne du chantier : construction des tribunes",
-          en: "Aerial view of the site: construction of the stands",
-          zh: "工地航拍：看台施工",
+          fr: "Avant : démolition de l'ancienne tribune",
+          en: "Before: demolition of the old stand",
+          zh: "改造前：拆除旧看台",
         },
       },
-      {
-        src: "/photos/projets/stade-iba-mar-diop/chantier-02.jpg",
+      after: {
+        src: "/photos/projets/stade-iba-mar-diop/apres-complexe-acheve.jpg",
         alt: {
-          fr: "Vue aérienne du chantier : montage des charpentes métalliques",
-          en: "Aerial view of the site: steel frames going up",
-          zh: "工地航拍：钢结构安装",
+          fr: "Après : le complexe achevé, vu du ciel",
+          en: "After: the completed complex from above",
+          zh: "改造后：俯瞰竣工后的综合体",
         },
       },
+    },
+    chapters: [
       {
-        src: "/photos/projets/stade-iba-mar-diop/chantier-03.jpg",
-        alt: {
-          fr: "Vue aérienne du chantier : charpente de la tribune principale",
-          en: "Aerial view of the site: main stand roof structure",
-          zh: "工地航拍：主看台屋顶钢结构",
-        },
+        title: { fr: "Démolition de l'ancienne tribune", en: "Demolition of the old stand", zh: "拆除旧看台" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/01-demolition-1.jpg",
+            alt: {
+              fr: "Démolition de l'ancienne tribune",
+              en: "Demolition of the old stand",
+              zh: "拆除旧看台",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/01-demolition-2.jpg",
+            alt: {
+              fr: "Les derniers éléments de l'ancienne tribune",
+              en: "The last sections of the old stand",
+              zh: "旧看台的最后部分",
+            },
+          },
+        ],
       },
       {
-        src: "/photos/projets/stade-iba-mar-diop/chantier-04.jpg",
-        alt: {
-          fr: "Vue aérienne du chantier : tribune et préparation de l'aire de jeu",
-          en: "Aerial view of the site: stand and preparation of the playing area",
-          zh: "工地航拍：看台与比赛场地整备",
-        },
+        title: { fr: "Fondations et gros œuvre", en: "Foundations and structural work", zh: "基础与主体结构" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-1.jpg",
+            alt: {
+              fr: "Fondations de la nouvelle tribune",
+              en: "Foundations of the new stand",
+              zh: "新看台基础施工",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-2.jpg",
+            alt: {
+              fr: "Ferraillage d'une dalle par les équipes",
+              en: "Teams placing slab reinforcement",
+              zh: "施工人员绑扎楼板钢筋",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-3.jpg",
+            alt: {
+              fr: "Vue du ciel : le site pendant les fondations",
+              en: "Overhead view: the site during foundation works",
+              zh: "俯瞰：基础施工阶段的场地",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-4.jpg",
+            alt: {
+              fr: "Élévation de la structure en béton de la tribune",
+              en: "The stand's concrete structure rising",
+              zh: "看台混凝土结构施工",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-5.jpg",
+            alt: {
+              fr: "Vue du ciel : structure de la tribune et du bâtiment voisin",
+              en: "Overhead view: structure of the stand and the adjoining building",
+              zh: "俯瞰：看台与相邻建筑结构",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-6.jpg",
+            alt: {
+              fr: "Vue aérienne : construction des tribunes",
+              en: "Aerial view: construction of the stands",
+              zh: "航拍：看台施工",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/02-gros-oeuvre-7.jpg",
+            alt: {
+              fr: "Escaliers de la tribune en cours de réalisation",
+              en: "Stand staircases under construction",
+              zh: "看台楼梯施工",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Charpente métallique", en: "Steel structure", zh: "钢结构" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/03-charpente-1.jpg",
+            alt: {
+              fr: "Vue aérienne : montage des charpentes métalliques",
+              en: "Aerial view: steel frames going up",
+              zh: "航拍：钢结构安装",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/03-charpente-2.jpg",
+            alt: {
+              fr: "Vue aérienne : charpente de la tribune principale",
+              en: "Aerial view: main stand roof structure",
+              zh: "航拍：主看台屋顶钢结构",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/03-charpente-3.jpg",
+            alt: {
+              fr: "Détail de la charpente métallique",
+              en: "Close-up of the steel structure",
+              zh: "钢结构细节",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/03-charpente-4.jpg",
+            alt: {
+              fr: "Vue aérienne : couverture de la tribune et préparation de l'aire de jeu",
+              en: "Aerial view: stand roofing and preparation of the playing area",
+              zh: "航拍：看台屋面与比赛场地整备",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Terrains et pistes", en: "Pitches and tracks", zh: "场地与跑道" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/04-terrains-1.jpg",
+            alt: {
+              fr: "Vue du ciel : tribune avancée et terrassement du second terrain",
+              en: "Overhead view: stand well advanced and earthworks for the second pitch",
+              zh: "俯瞰：看台主体基本完成，第二块场地土方施工",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/04-terrains-2.jpg",
+            alt: {
+              fr: "Vue du ciel : préparation de la plateforme du terrain et de la piste",
+              en: "Overhead view: pitch and track base preparation",
+              zh: "俯瞰：场地与跑道基层施工",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/04-terrains-3.jpg",
+            alt: {
+              fr: "Vue du ciel : aire de jeu et piste en cours de revêtement",
+              en: "Overhead view: playing area and track being surfaced",
+              zh: "俯瞰：比赛场地与跑道面层施工",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Bâtiments du complexe", en: "Complex buildings", zh: "场馆配套建筑" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/05-batiments-1.jpg",
+            alt: {
+              fr: "Bâtiment en construction le long de la route",
+              en: "Building under construction along the road",
+              zh: "沿路建筑施工",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/05-batiments-2.jpg",
+            alt: {
+              fr: "Vue aérienne : dalle de toiture d'un bâtiment",
+              en: "Aerial view: a building's roof slab",
+              zh: "航拍：建筑屋面板",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/05-batiments-3.jpg",
+            alt: {
+              fr: "Élévation des murs en briques",
+              en: "Brick walls going up",
+              zh: "砖墙砌筑",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Second œuvre intérieur", en: "Interior fit-out", zh: "室内装修" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/06-interieur-1.jpg",
+            alt: {
+              fr: "Couloir : ossature du faux plafond et réseaux",
+              en: "Corridor: suspended-ceiling frame and services",
+              zh: "走廊：吊顶龙骨与管线",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/06-interieur-2.jpg",
+            alt: {
+              fr: "Ossature métallique du faux plafond et passage des câbles",
+              en: "Metal suspended-ceiling frame and cable runs",
+              zh: "吊顶金属龙骨与线缆敷设",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/06-interieur-3.jpg",
+            alt: {
+              fr: "Pose du faux plafond acoustique perforé",
+              en: "Installing the perforated acoustic ceiling",
+              zh: "安装穿孔吸音吊顶",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Le stade achevé", en: "The finished stadium", zh: "竣工效果" },
+        photos: [
+          {
+            src: "/photos/projets/stade-iba-mar-diop/07-acheve-1.jpg",
+            alt: {
+              fr: "La piste d'athlétisme et la tribune principale",
+              en: "The athletics track and main stand",
+              zh: "田径跑道与主看台",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/07-acheve-2.jpg",
+            alt: {
+              fr: "La tribune principale et les mâts de drapeaux",
+              en: "The main stand and flagpoles",
+              zh: "主看台与旗杆",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/07-acheve-3.jpg",
+            alt: {
+              fr: "Les façades à lames de la salle et de la tribune",
+              en: "The slatted façades of the hall and the stand",
+              zh: "场馆与看台的格栅立面",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/07-acheve-4.jpg",
+            alt: {
+              fr: "Façade en briques et panneaux ajourés",
+              en: "Brick façade with perforated panels",
+              zh: "砖砌立面与镂空面板",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/07-acheve-5.jpg",
+            alt: {
+              fr: "Bâtiment achevé et équipements techniques en toiture",
+              en: "Completed building with rooftop technical equipment",
+              zh: "竣工建筑及屋顶设备",
+            },
+          },
+          {
+            src: "/photos/projets/stade-iba-mar-diop/07-acheve-6.jpg",
+            alt: {
+              fr: "Bâtiment achevé en bordure du stade",
+              en: "Completed building alongside the stadium",
+              zh: "体育场旁的竣工建筑",
+            },
+          },
+        ],
       },
     ],
     title: { fr: "Stade Iba Mar Diop, Dakar", en: "Iba Mar Diop Stadium, Dakar", zh: "达喀尔 Iba Mar Diop 体育场" },
