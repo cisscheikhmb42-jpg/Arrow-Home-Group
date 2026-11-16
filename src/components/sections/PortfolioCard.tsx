@@ -24,6 +24,7 @@ export default function PortfolioCard({
             alt={item.title}
             fill
             sizes={sizes}
+            style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
             className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
           />
         ) : (

@@ -40,7 +40,8 @@ type Localized = { fr: string; en: string; zh: string };
  *   slug: "villa-ngor",
  *   category: "construction",
  *   cover: "/photos/projets/villa-ngor/01.jpg",
- *   gallery: ["/photos/projets/villa-ngor/02.jpg"],
+ *   coverAlt: { fr: "…", en: "…", zh: "…" },
+ *   gallery: [{ src: "/photos/projets/villa-ngor/02.jpg", alt: { fr: "…", en: "…", zh: "…" } }],
  *   title: { fr: "…", en: "…", zh: "…" },
  *   summary: { fr: "…", en: "…", zh: "…" },
  *   location: { fr: "Dakar", en: "Dakar", zh: "达喀尔" },
@@ -52,7 +53,12 @@ export type Project = {
   slug: string;
   category: PortfolioCategory;
   cover?: string;
-  gallery: string[];
+  /** Description de la photo principale (accessibilité et référencement). */
+  coverAlt?: Localized;
+  /** Cadrage de la photo principale quand elle est recadrée (CSS object-position), ex. "70% 60%". */
+  coverPosition?: string;
+  /** Photos complémentaires, dans l'ordre d'affichage, chacune avec sa légende. */
+  gallery: { src: string; alt: Localized }[];
   title: Localized;
   summary: Localized;
   location?: Localized;
@@ -64,7 +70,47 @@ export const projects: Project[] = [
   {
     slug: "stade-iba-mar-diop",
     category: "renovation",
-    gallery: [],
+    cover: "/photos/projets/stade-iba-mar-diop/stade-termine.jpg",
+    coverAlt: {
+      fr: "La piste d'athlétisme et la tribune principale du stade Iba Mar Diop",
+      en: "The athletics track and main stand of Iba Mar Diop Stadium",
+      zh: "Iba Mar Diop 体育场的田径跑道与主看台",
+    },
+    coverPosition: "72% 80%",
+    gallery: [
+      {
+        src: "/photos/projets/stade-iba-mar-diop/chantier-01.jpg",
+        alt: {
+          fr: "Vue aérienne du chantier : construction des tribunes",
+          en: "Aerial view of the site: construction of the stands",
+          zh: "工地航拍：看台施工",
+        },
+      },
+      {
+        src: "/photos/projets/stade-iba-mar-diop/chantier-02.jpg",
+        alt: {
+          fr: "Vue aérienne du chantier : montage des charpentes métalliques",
+          en: "Aerial view of the site: steel frames going up",
+          zh: "工地航拍：钢结构安装",
+        },
+      },
+      {
+        src: "/photos/projets/stade-iba-mar-diop/chantier-03.jpg",
+        alt: {
+          fr: "Vue aérienne du chantier : charpente de la tribune principale",
+          en: "Aerial view of the site: main stand roof structure",
+          zh: "工地航拍：主看台屋顶钢结构",
+        },
+      },
+      {
+        src: "/photos/projets/stade-iba-mar-diop/chantier-04.jpg",
+        alt: {
+          fr: "Vue aérienne du chantier : tribune et préparation de l'aire de jeu",
+          en: "Aerial view of the site: stand and preparation of the playing area",
+          zh: "工地航拍：看台与比赛场地整备",
+        },
+      },
+    ],
     title: { fr: "Stade Iba Mar Diop, Dakar", en: "Iba Mar Diop Stadium, Dakar", zh: "达喀尔 Iba Mar Diop 体育场" },
     summary: {
       fr: "Participation à la rénovation du stade, en préparation des Jeux Olympiques de la Jeunesse Dakar 2026.",

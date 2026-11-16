@@ -226,6 +226,7 @@ const en: Dictionary = {
       back: "All projects",
       cta: "Let's talk about your project",
       image: "Photo of the {title} project",
+      viewer: { open: "Enlarge photo", close: "Close", prev: "Previous photo", next: "Next photo", counter: "Photo {n} of {total}" },
     },
   },
 

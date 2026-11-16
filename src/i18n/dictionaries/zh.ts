@@ -216,6 +216,7 @@ const zh: Dictionary = {
       back: "全部项目",
       cta: "洽谈您的项目",
       image: "{title} 项目照片",
+      viewer: { open: "放大照片", close: "关闭", prev: "上一张", next: "下一张", counter: "第 {n} 张，共 {total} 张" },
     },
   },
 

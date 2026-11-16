@@ -14,6 +14,8 @@ export type PortfolioItem = {
   domain?: string;
   href?: string;
   image?: string;
+  /** Cadrage de la photo (CSS object-position). */
+  imagePosition?: string;
   placeholder: boolean;
 };
 
@@ -27,6 +29,7 @@ export function getPortfolioItems(locale: Locale, t: Dictionary): PortfolioItem[
     domain: p.cover ? undefined : t.portfolio.categories[p.category],
     href: p.cover ? href(locale, "projects", `/${p.slug}`) : undefined,
     image: p.cover,
+    imagePosition: p.coverPosition,
     placeholder: false,
   }));
   const covered = new Set(real.map((r) => r.category));

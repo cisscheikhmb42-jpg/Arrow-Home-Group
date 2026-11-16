@@ -226,6 +226,7 @@ const fr = {
       back: "Toutes les réalisations",
       cta: "Parlons de votre projet",
       image: "Photo du projet {title}",
+      viewer: { open: "Agrandir la photo", close: "Fermer", prev: "Photo précédente", next: "Photo suivante", counter: "Photo {n} sur {total}" },
     },
   },
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CtaBand } from "@/components/sections/Blocks";
+import ProjectGallery from "@/components/sections/ProjectGallery";
 import { categoryService, publishedProjects as projects } from "@/content/portfolio";
 import { fill, getDictionary } from "@/i18n";
 import { locales, type Locale } from "@/i18n/config";
@@ -42,13 +43,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
               <ArrowLeft className="size-4" aria-hidden />
               {d.back}
             </Link>
-            <p className="eyebrow mt-12">{t.portfolio.categories[p.category]}</p>
+            <p className="eyebrow mt-12 flex">{t.portfolio.categories[p.category]}</p>
             <h1 className="display mt-6 max-w-4xl text-5xl text-ink sm:text-6xl lg:text-7xl">{title}</h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">{p.summary[locale]}</p>
           </div>
         </header>
         <div className="relative aspect-[16/9] max-h-[80vh] w-full bg-surface">
-          <Image src={p.cover} alt={fill(d.image, { title })} fill priority sizes="100vw" className="object-cover" />
+          <Image
+            src={p.cover}
+            alt={p.coverAlt?.[locale] ?? fill(d.image, { title })}
+            fill
+            priority
+            sizes="100vw"
+            style={p.coverPosition ? { objectPosition: p.coverPosition } : undefined}
+            className="object-cover"
+          />
         </div>
         <div className="container-x grid gap-14 py-20 lg:grid-cols-[1fr_2fr] lg:gap-24">
           <dl className="space-y-6 border-t border-ink pt-6 text-sm">
@@ -89,13 +98,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
         {p.gallery.length > 0 && (
           <section className="container-x pb-24">
             <h2 className="display text-3xl text-ink">{d.gallery}</h2>
-            <ul className="mt-8 grid gap-6 sm:grid-cols-2">
-              {p.gallery.map((src, i) => (
-                <li key={src} className="relative aspect-[4/3] overflow-hidden bg-line">
-                  <Image src={src} alt={`${fill(d.image, { title })} (${i + 2})`} fill sizes="(min-width:640px) 50vw, 100vw" className="object-cover" />
-                </li>
-              ))}
-            </ul>
+            <ProjectGallery photos={p.gallery.map((g) => ({ src: g.src, alt: g.alt[locale] }))} labels={d.viewer} />
           </section>
         )}
       </article>
