@@ -7,7 +7,7 @@ import type { PortfolioItem } from "@/content/portfolio-items";
 export default function PortfolioCard({
   item,
   placeholderLabel,
-  sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 85vw",
+  sizes = "(min-width: 640px) 50vw, 85vw",
   tall = false,
 }: {
   item: PortfolioItem;

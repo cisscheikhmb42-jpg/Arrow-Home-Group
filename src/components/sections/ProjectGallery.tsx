@@ -81,9 +81,11 @@ export default function ProjectGallery({ chapters, labels }: { chapters: Chapter
                 <header className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-t border-line pt-8">
                   <span className="display text-3xl text-accent tabular-nums sm:text-4xl">{String(ci + 1).padStart(2, "0")}</span>
                   <h3 className="display text-2xl text-ink sm:text-3xl">{c.title}</h3>
-                  <span className="text-xs font-medium tracking-[0.18em] text-muted uppercase">
-                    {fill(labels.photoCount, { n: c.photos.length })}
-                  </span>
+                  {c.photos.length > 1 && (
+                    <span className="text-xs font-medium tracking-[0.18em] text-muted uppercase">
+                      {fill(labels.photoCount, { n: c.photos.length })}
+                    </span>
+                  )}
                 </header>
               )}
               <ul className={`grid gap-6 sm:grid-cols-2 ${titled ? "mt-8 lg:grid-cols-3" : ""}`}>
@@ -92,14 +94,19 @@ export default function ProjectGallery({ chapters, labels }: { chapters: Chapter
                   const n = c.photos.length;
                   const wideSm = titled && n % 2 === 1 && pi === 0;
                   const wideLg = titled && ((n % 3 === 2 && pi === 0) || (n % 3 === 1 && n > 1 && (pi === 0 || pi === n - 1)));
+                  // Photo unique d'un chapitre : pleine largeur.
+                  const solo = titled && n === 1;
                   return (
-                  <li key={p.src} className={`${wideSm ? "sm:col-span-2" : ""} ${wideLg ? "lg:col-span-2" : titled ? "lg:col-span-1" : ""}`}>
+                  <li
+                    key={p.src}
+                    className={`${wideSm ? "sm:col-span-2" : ""} ${solo ? "lg:col-span-3" : wideLg ? "lg:col-span-2" : titled ? "lg:col-span-1" : ""}`}
+                  >
                     <figure>
                       <button
                         type="button"
                         onClick={() => open(start + pi)}
                         className={`group relative block aspect-[4/3] w-full overflow-hidden bg-surface ${wideSm ? "sm:aspect-[8/3]" : ""} ${
-                          wideLg ? "lg:aspect-[11/4]" : titled ? "lg:aspect-[4/3]" : ""
+                          solo ? "lg:aspect-[16/7]" : wideLg ? "lg:aspect-[11/4]" : titled ? "lg:aspect-[4/3]" : ""
                         }`}
                         aria-label={`${labels.open} : ${p.alt}`}
                       >
@@ -114,7 +121,7 @@ export default function ProjectGallery({ chapters, labels }: { chapters: Chapter
                                 ? "(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                                 : "(min-width:640px) 50vw, 100vw"
                           }
-                          className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                          className={`object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03] ${solo ? "object-[50%_75%]" : ""}`}
                         />
                         <span
                           className="absolute right-3 bottom-3 inline-flex size-10 items-center justify-center bg-canvas/80 text-ink opacity-90 transition-colors group-hover:text-accent"

@@ -48,7 +48,7 @@ export default function PortfolioExplorer({ items, t }: { items: PortfolioItem[]
       <p className="mt-6 text-sm text-muted" aria-live="polite">
         {fill(t.count, { n: shown.length })}
       </p>
-      <ul className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2">
         {shown.map((item) => (
           <li key={item.id}>
             <PortfolioCard item={item} placeholderLabel={t.illustration} />

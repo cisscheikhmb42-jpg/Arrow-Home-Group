@@ -523,6 +523,13 @@ export const projects: Project[] = [
   {
     slug: "axil-hotel-dakar",
     category: "aluminium",
+    cover: "/photos/projets/axil-hotel-dakar/facade.jpg",
+    coverAlt: {
+      fr: "Façade de l'Axil Hôtel à Dakar : baies vitrées et garde-corps en verre",
+      en: "Façade of Axil Hotel in Dakar: glazed bays and glass balustrades",
+      zh: "达喀尔 Axil 酒店外立面：玻璃窗与玻璃栏杆",
+    },
+    coverPosition: "50% 40%",
     gallery: [],
     title: { fr: "Axil Hôtel, Dakar", en: "Axil Hotel, Dakar", zh: "达喀尔 Axil 酒店" },
     summary: {
@@ -536,7 +543,85 @@ export const projects: Project[] = [
   {
     slug: "p703-villa-sangalkam",
     category: "amenagement",
+    cover: "/photos/projets/p703-villa-sangalkam/villa-jardin.jpg",
+    coverAlt: {
+      fr: "Villa achevée avec jardin et pergolas, cité P703 à Sangalkam",
+      en: "Completed villa with garden and pergolas, P703 estate in Sangalkam",
+      zh: "Sangalkam P703 小区：带花园与花架的竣工别墅",
+    },
+    coverPosition: "50% 55%",
     gallery: [],
+    galleryTitle: { fr: "La cité en images", en: "The estate in pictures", zh: "小区图集" },
+    galleryIntro: {
+      fr: "Villas, maisons de plain-pied et résidence d'appartements.",
+      en: "Villas, single-storey houses and an apartment building.",
+      zh: "别墅、单层住宅与公寓楼。",
+    },
+    chapters: [
+      {
+        title: { fr: "Les villas", en: "The villas", zh: "别墅" },
+        photos: [
+          {
+            src: "/photos/projets/p703-villa-sangalkam/01-villas-1.jpg",
+            alt: {
+              fr: "Villas achevées, jardins et terrain de sport",
+              en: "Completed villas, gardens and sports ground",
+              zh: "竣工别墅、花园与运动场",
+            },
+          },
+          {
+            src: "/photos/projets/p703-villa-sangalkam/01-villas-2.jpg",
+            alt: {
+              fr: "Vue d'ensemble des villas pendant les travaux",
+              en: "Overview of the villas during the works",
+              zh: "施工期间的别墅全景",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Les maisons de plain-pied", en: "The single-storey houses", zh: "单层住宅" },
+        photos: [
+          {
+            src: "/photos/projets/p703-villa-sangalkam/02-maisons-1.jpg",
+            alt: {
+              fr: "Allée fleurie entre les maisons",
+              en: "Planted lane between the houses",
+              zh: "住宅间的绿化步道",
+            },
+          },
+          {
+            src: "/photos/projets/p703-villa-sangalkam/02-maisons-2.jpg",
+            alt: {
+              fr: "Rue intérieure de la cité",
+              en: "Internal street of the estate",
+              zh: "小区内部道路",
+            },
+          },
+          {
+            src: "/photos/projets/p703-villa-sangalkam/02-maisons-3.jpg",
+            alt: {
+              fr: "Vue aérienne des rangées de maisons",
+              en: "Aerial view of the rows of houses",
+              zh: "航拍：成排住宅",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "La résidence d'appartements", en: "The apartment building", zh: "公寓楼" },
+        photos: [
+          {
+            src: "/photos/projets/p703-villa-sangalkam/03-appartements-1.jpg",
+            alt: {
+              fr: "Immeuble d'appartements en construction, devant la cité",
+              en: "Apartment building under construction in front of the estate",
+              zh: "小区前在建的公寓楼",
+            },
+          },
+        ],
+      },
+    ],
     title: { fr: "P703 Villa Sangalkam", en: "P703 Villa Sangalkam", zh: "P703 Villa Sangalkam 住宅区" },
     summary: {
       fr: "Cité résidentielle de villas et d'appartements haut confort : second œuvre, finitions et ameublement, livrée clé en main.",
