@@ -227,7 +227,6 @@ const en: Dictionary = {
       cta: "Let's talk about your project",
       image: "Photo of the {title} project",
       galleryTitle: "The project in pictures",
-      galleryIntro: "From the demolition of the old stand to the finished stadium, step by step.",
       chapters: "Project stages",
       photoCount: "{n} photos",
       before: "Before",

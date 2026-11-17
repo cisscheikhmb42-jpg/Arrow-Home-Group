@@ -17,6 +17,7 @@ export default function ProjectGallery({ chapters, labels }: { chapters: Chapter
   const dialog = useRef<HTMLDialogElement>(null);
   const [index, setIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const touchX = useRef<number | null>(null);
   const flat = chapters.flatMap((c) => c.photos.map((p) => ({ ...p, chapter: c.title })));
   const total = flat.length;
   const titled = chapters.length > 1 && chapters.every((c) => c.title);
@@ -152,7 +153,19 @@ export default function ProjectGallery({ chapters, labels }: { chapters: Chapter
                 <X className="size-5" aria-hidden />
               </button>
             </div>
-            <div className="relative min-h-0 flex-1">
+            <div
+              className="relative min-h-0 flex-1 touch-pan-y"
+              onTouchStart={(e) => {
+                touchX.current = e.touches[0].clientX;
+              }}
+              onTouchEnd={(e) => {
+                // Balayage du doigt sur téléphone et tablette : gauche = suivante, droite = précédente.
+                if (touchX.current === null) return;
+                const dx = e.changedTouches[0].clientX - touchX.current;
+                touchX.current = null;
+                if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+              }}
+            >
               <Image key={photo.src} src={photo.src} alt={photo.alt} fill sizes="100vw" className="object-contain" />
             </div>
             <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6">

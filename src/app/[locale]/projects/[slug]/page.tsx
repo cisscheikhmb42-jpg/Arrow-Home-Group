@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">{p.summary[locale]}</p>
           </div>
         </header>
-        <div className="relative aspect-[16/9] max-h-[80vh] w-full bg-surface">
+        <div className="relative h-[72svh] min-h-80 w-full bg-surface sm:h-[78svh] lg:h-[88svh]">
           <Image
             src={p.cover}
             alt={p.coverAlt?.[locale] ?? fill(d.image, { title })}
@@ -100,8 +100,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             {p.chapters?.length ? (
               <div className="max-w-3xl">
                 <p className="eyebrow">{d.gallery}</p>
-                <h2 className="display mt-5 text-4xl text-ink sm:text-5xl">{d.galleryTitle}</h2>
-                <p className="mt-5 text-lg leading-relaxed text-muted">{d.galleryIntro}</p>
+                <h2 className="display mt-5 text-4xl text-ink sm:text-5xl">{p.galleryTitle?.[locale] ?? d.galleryTitle}</h2>
+                {p.galleryIntro && <p className="mt-5 text-lg leading-relaxed text-muted">{p.galleryIntro[locale]}</p>}
               </div>
             ) : (
               <h2 className="display text-3xl text-ink">{d.gallery}</h2>

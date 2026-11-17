@@ -217,7 +217,6 @@ const zh: Dictionary = {
       cta: "洽谈您的项目",
       image: "{title} 项目照片",
       galleryTitle: "项目图集",
-      galleryIntro: "从拆除旧看台到体育场竣工，逐步呈现。",
       chapters: "施工阶段",
       photoCount: "{n} 张照片",
       before: "改造前",

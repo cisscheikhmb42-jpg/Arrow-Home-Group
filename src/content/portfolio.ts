@@ -61,6 +61,10 @@ export type Project = {
   coverPosition?: string;
   /** Photos complémentaires, dans l'ordre d'affichage, chacune avec sa légende. */
   gallery: ProjectPhoto[];
+  /** Titre de la galerie en chapitres (par défaut : « Le chantier en images »). */
+  galleryTitle?: Localized;
+  /** Phrase d'introduction de la galerie en chapitres. */
+  galleryIntro?: Localized;
   /** Galerie organisée en chapitres (étapes du chantier), affichée à la place de `gallery`. */
   chapters?: { title: Localized; photos: ProjectPhoto[] }[];
   /** Comparaison avant / après, affichée en tête de la galerie. */
@@ -84,6 +88,11 @@ export const projects: Project[] = [
     },
     coverPosition: "50% 62%",
     gallery: [],
+    galleryIntro: {
+      fr: "De la démolition de l'ancienne tribune jusqu'au stade achevé, étape par étape.",
+      en: "From the demolition of the old stand to the finished stadium, step by step.",
+      zh: "从拆除旧看台到体育场竣工，逐步呈现。",
+    },
     beforeAfter: {
       before: {
         src: "/photos/projets/stade-iba-mar-diop/avant-demolition.jpg",
@@ -375,7 +384,133 @@ export const projects: Project[] = [
   {
     slug: "agence-ecobank-thiaroye",
     category: "construction",
+    cover: "/photos/projets/agence-ecobank-thiaroye/facade.jpg",
+    coverAlt: {
+      fr: "Façade de l'agence Ecobank de Thiaroye",
+      en: "Façade of the Ecobank Thiaroye branch",
+      zh: "Ecobank 银行 Thiaroye 支行外立面",
+    },
+    coverPosition: "50% 30%",
     gallery: [],
+    galleryTitle: { fr: "L'agence en images", en: "The branch in pictures", zh: "支行图集" },
+    galleryIntro: {
+      fr: "L'agence livrée : accueil, mezzanine, bureaux et salle de réunion.",
+      en: "The completed branch: reception, mezzanine, offices and meeting room.",
+      zh: "竣工后的支行：接待区、夹层、办公室与会议室。",
+    },
+    chapters: [
+      {
+        title: { fr: "Accueil et espace clientèle", en: "Reception and customer area", zh: "接待与客户区" },
+        photos: [
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/01-accueil-1.jpg",
+            alt: {
+              fr: "Hall d'accueil et escalier hélicoïdal",
+              en: "Entrance hall and spiral staircase",
+              zh: "接待大厅与旋转楼梯",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/01-accueil-2.jpg",
+            alt: {
+              fr: "Banque d'accueil et espace d'attente",
+              en: "Reception desk and waiting area",
+              zh: "接待台与等候区",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/01-accueil-3.jpg",
+            alt: {
+              fr: "Postes de conseillers et cloisons vitrées",
+              en: "Advisor desks and glass partitions",
+              zh: "客户经理工位与玻璃隔断",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/01-accueil-4.jpg",
+            alt: {
+              fr: "Espace caisses",
+              en: "Teller area",
+              zh: "柜台区",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Mezzanine et espaces ouverts", en: "Mezzanine and open spaces", zh: "夹层与开放空间" },
+        photos: [
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/02-mezzanine-1.jpg",
+            alt: {
+              fr: "Vue depuis la mezzanine sur le hall",
+              en: "View of the hall from the mezzanine",
+              zh: "从夹层俯瞰大厅",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/02-mezzanine-2.jpg",
+            alt: {
+              fr: "Mezzanine et garde-corps en verre",
+              en: "Mezzanine with glass balustrade",
+              zh: "夹层与玻璃栏杆",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/02-mezzanine-3.jpg",
+            alt: {
+              fr: "Coursive végétalisée autour de la trémie",
+              en: "Planted walkway around the open void",
+              zh: "环绕中庭的绿植走廊",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/02-mezzanine-4.jpg",
+            alt: {
+              fr: "Coursive et grandes baies vitrées",
+              en: "Walkway and large windows",
+              zh: "走廊与大面积窗户",
+            },
+          },
+        ],
+      },
+      {
+        title: { fr: "Bureaux et salle de réunion", en: "Offices and meeting room", zh: "办公室与会议室" },
+        photos: [
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/03-bureaux-1.jpg",
+            alt: {
+              fr: "Salle de réunion",
+              en: "Meeting room",
+              zh: "会议室",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/03-bureaux-2.jpg",
+            alt: {
+              fr: "Bureaux cloisonnés en aluminium et verre",
+              en: "Aluminium and glass partitioned offices",
+              zh: "铝合金玻璃隔断办公室",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/03-bureaux-3.jpg",
+            alt: {
+              fr: "Bureau individuel derrière une cloison vitrée",
+              en: "Private office behind a glass partition",
+              zh: "玻璃隔断后的独立办公室",
+            },
+          },
+          {
+            src: "/photos/projets/agence-ecobank-thiaroye/03-bureaux-4.jpg",
+            alt: {
+              fr: "Couloir des bureaux",
+              en: "Office corridor",
+              zh: "办公室走廊",
+            },
+          },
+        ],
+      },
+    ],
     title: { fr: "Agence Ecobank Thiaroye", en: "Ecobank Thiaroye Branch", zh: "Ecobank 银行 Thiaroye 支行" },
     summary: {
       fr: "Construction complète de l'agence : gros œuvre, menuiserie aluminium et finitions.",

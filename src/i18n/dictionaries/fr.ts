@@ -227,7 +227,6 @@ const fr = {
       cta: "Parlons de votre projet",
       image: "Photo du projet {title}",
       galleryTitle: "Le chantier en images",
-      galleryIntro: "De la démolition de l'ancienne tribune jusqu'au stade achevé, étape par étape.",
       chapters: "Étapes du chantier",
       photoCount: "{n} photos",
       before: "Avant",
