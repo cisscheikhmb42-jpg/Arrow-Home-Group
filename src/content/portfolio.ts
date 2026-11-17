@@ -631,6 +631,44 @@ export const projects: Project[] = [
     services: [],
     highlights: [],
   },
+  {
+    slug: "projet-p7-kalia",
+    category: "amenagement",
+    cover: "/photos/projets/projet-p7-kalia/facade-principale.jpg",
+    coverAlt: {
+      fr: "La résidence Kalia (projet P7), Zone de Captage, Dakar",
+      en: "The Kalia residence (P7 project), Zone de Captage, Dakar",
+      zh: "达喀尔 Zone de Captage 的 Kalia 住宅（P7 项目）",
+    },
+    coverPosition: "50% 62%",
+    gallery: [
+      {
+        src: "/photos/projets/projet-p7-kalia/vue-aerienne.jpg",
+        alt: {
+          fr: "Vue aérienne de la résidence Kalia et de sa terrasse",
+          en: "Aerial view of the Kalia residence and its roof terrace",
+          zh: "航拍：Kalia 住宅及屋顶露台",
+        },
+      },
+      {
+        src: "/photos/projets/projet-p7-kalia/angle-rue.jpg",
+        alt: {
+          fr: "La résidence Kalia vue depuis la rue",
+          en: "The Kalia residence seen from the street",
+          zh: "从街道看 Kalia 住宅",
+        },
+      },
+    ],
+    title: { fr: "Projet P7 – Kalia, Zone de Captage", en: "P7 Project – Kalia, Zone de Captage", zh: "P7 项目 – Kalia，Zone de Captage" },
+    summary: {
+      fr: "Travaux de finition, d'ameublement et d'aménagement de la résidence.",
+      en: "Finishing, furnishing and fit-out works for the residence.",
+      zh: "住宅的精装修、家具配置与室内布置工程。",
+    },
+    location: { fr: "Zone de Captage, Dakar", en: "Zone de Captage, Dakar", zh: "达喀尔 Zone de Captage" },
+    services: [],
+    highlights: [],
+  },
 ];
 
 /** Réalisations ayant une photo : seules celles-ci ont une fiche détaillée (et figurent dans le sitemap). */

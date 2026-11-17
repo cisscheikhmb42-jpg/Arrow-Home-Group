@@ -24,7 +24,7 @@ export function getPortfolioItems(locale: Locale, t: Dictionary): PortfolioItem[
     id: p.slug,
     category: p.category,
     title: p.title[locale],
-    caption: p.location?.[locale] ?? t.portfolio.categories[p.category],
+    caption: t.portfolio.categories[p.category],
     summary: p.summary[locale],
     domain: p.cover ? undefined : t.portfolio.categories[p.category],
     href: p.cover ? href(locale, "projects", `/${p.slug}`) : undefined,
