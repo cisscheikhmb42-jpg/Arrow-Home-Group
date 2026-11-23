@@ -71,8 +71,9 @@ export default function HeroSlider({
       }}
     >
       {hasImages && (
-        <div aria-hidden className="absolute inset-0 -z-10">
-          {/* Photos de nos réalisations en fond : fondu enchaîné et léger zoom lent. */}
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[52svh] sm:h-[56svh] lg:inset-y-0 lg:h-auto">
+          {/* Photos de nos réalisations en fond : fondu enchaîné et léger zoom lent.
+              Téléphone et tablette : bandeau photo en haut ; ordinateur : pleine hauteur. */}
           {slides.map((s, i) =>
             s.image ? (
               <div
@@ -91,14 +92,16 @@ export default function HeroSlider({
               </div>
             ) : null,
           )}
-          {/* Voile : texte toujours lisible (contraste ≥ 4,5:1), photo visible à droite sur grand écran. */}
-          <div className="absolute inset-0 bg-canvas/75 lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-10% lg:via-canvas/65 lg:via-50% lg:to-canvas/10" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-canvas/90 to-transparent" />
+          {/* Voile : photo nette en haut sur téléphone/tablette, à droite sur ordinateur ; texte toujours lisible. */}
+          <div className="absolute inset-0 bg-linear-to-b from-canvas/20 via-canvas/60 via-60% to-canvas lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-10% lg:via-canvas/65 lg:via-50% lg:to-canvas/10" />
+          <div className="absolute inset-x-0 bottom-0 hidden h-40 bg-linear-to-t from-canvas/90 to-transparent lg:block" />
         </div>
       )}
 
       <div
-        className={`container-x relative grid min-h-[34rem] items-center gap-12 pt-14 pb-28 lg:min-h-[44rem] lg:pt-16 ${
+        className={`container-x relative grid min-h-[34rem] items-center gap-12 pb-28 lg:min-h-[44rem] lg:pt-16 ${
+          hasImages ? "pt-[30svh] sm:pt-[34svh]" : "pt-14"
+        } ${
           aside ? "lg:grid-cols-[minmax(0,1fr)_25rem] xl:gap-20" : ""
         }`}
       >

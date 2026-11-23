@@ -295,11 +295,14 @@ export function CtaPanel({ locale, t }: { locale: Locale; t: Dictionary }) {
 /** En-tete des pages interieures. */
 export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; title: string; text?: string; image?: string }) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-line bg-canvas pt-16 pb-16 lg:pt-28 lg:pb-24">
+    <section
+      className={`relative isolate overflow-hidden border-b border-line bg-canvas pb-16 lg:pt-28 lg:pb-24 ${image ? "pt-44 sm:pt-60" : "pt-16"}`}
+    >
       {image && (
-        <div aria-hidden className="absolute inset-0 -z-10">
+        // Téléphone et tablette : bandeau photo en haut qui se fond dans le bleu nuit ; ordinateur : pleine hauteur.
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-72 sm:h-96 lg:inset-y-0 lg:h-auto">
           <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-canvas/75 lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-15% lg:via-canvas/65 lg:via-50% lg:to-canvas/15" />
+          <div className="absolute inset-0 bg-linear-to-b from-canvas/15 via-canvas/60 via-60% to-canvas lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-15% lg:via-canvas/65 lg:via-50% lg:to-canvas/15" />
         </div>
       )}
       <div className="container-x">
