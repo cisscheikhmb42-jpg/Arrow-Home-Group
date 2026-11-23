@@ -200,11 +200,7 @@ const zh: Dictionary = {
     gridTitle: "全部类别",
     viewAll: "查看全部项目",
     illustration: "照片即将上线",
-    illustrationNote: "我们的工程实景照片即将发布。",
     illustrationCaption: "业务领域",
-    followLead: "在",
-    followAnd: "和",
-    followTail: "关注我们的工地动态",
     startProject: "有类似的项目？",
     count: "{n} 项",
     detail: {
@@ -269,11 +265,6 @@ const zh: Dictionary = {
     cta: "在 TikTok 观看视频",
   },
 
-  diaspora: {
-    title: "您旅居海外？",
-    text: "安心推进您在塞内加尔的项目：单一对接人，定期提供工地照片和视频，每个阶段清晰跟进。",
-    cta: "咨询我的项目",
-  },
 
   process: {
     eyebrow: "服务流程",

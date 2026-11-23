@@ -210,11 +210,7 @@ const en: Dictionary = {
     gridTitle: "All categories",
     viewAll: "View all projects",
     illustration: "Photos coming soon",
-    illustrationNote: "Photographs of our projects will be published very soon.",
     illustrationCaption: "Field of work",
-    followLead: "Follow our sites on",
-    followAnd: "and",
-    followTail: "",
     startProject: "Planning something similar?",
     count: "{n} item(s)",
     detail: {
@@ -279,11 +275,6 @@ const en: Dictionary = {
     cta: "Watch our videos on TikTok",
   },
 
-  diaspora: {
-    title: "Living abroad?",
-    text: "Move your project in Senegal forward with peace of mind: a single point of contact, regular updates with photos and videos of the site, and clear follow-up at every stage.",
-    cta: "Talk about my project",
-  },
 
   process: {
     eyebrow: "Our process",

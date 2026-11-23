@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { CtaBand, FollowNote, PageHero } from "@/components/sections/Blocks";
+import { CtaBand, PageHero } from "@/components/sections/Blocks";
 import PortfolioExplorer from "@/components/sections/PortfolioExplorer";
 import PortfolioRail from "@/components/sections/PortfolioRail";
 import { getPortfolioItems } from "@/content/portfolio-items";
@@ -20,11 +20,10 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
 
   return (
     <>
-      <PageHero eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} text={t.portfolio.subtitle} />
+      <PageHero eyebrow={t.portfolio.eyebrow} title={t.portfolio.title} text={t.portfolio.subtitle} image="/photos/projets/stade-iba-mar-diop/apres-complexe-acheve.jpg" />
 
       <section className="overflow-hidden border-b border-line bg-canvas py-20 lg:py-28">
         <div className="container-x">
-          <FollowNote t={t} />
           <h2 className="sr-only">{t.portfolio.carouselLabel}</h2>
           <div className="mt-6">
             <PortfolioRail items={items} t={t} />

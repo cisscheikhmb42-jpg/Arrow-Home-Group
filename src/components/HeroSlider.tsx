@@ -14,8 +14,10 @@ export type Slide = {
   text: string;
   cta: { label: string; href: string };
   secondary: { label: string; href: string };
-  /** Photo dans /public (ex. "/photos/hero/facade.jpg"), affichée a droite du texte. A ajouter des reception des photos. */
+  /** Photo de réalisation dans /public, affichée en fond pleine largeur sous un voile bleu nuit. */
   image?: string;
+  /** Cadrage de la photo de fond (CSS object-position). */
+  imagePosition?: string;
 };
 
 const DURATION = 7000;
@@ -27,7 +29,7 @@ export default function HeroSlider({
 }: {
   slides: Slide[];
   t: Dictionary["hero"];
-  /** Encadré affiché à droite sur grand écran quand il n'y a pas de photo (ex. choix rapide de prestation). */
+  /** Encadré affiché à droite sur grand écran (ex. choix rapide de prestation). */
   aside?: React.ReactNode;
 }) {
   const [index, setIndex] = useState(0);
@@ -53,7 +55,7 @@ export default function HeroSlider({
 
   return (
     <section
-      className="hero-glow relative isolate overflow-hidden border-b border-line text-ink"
+      className="hero-glow relative isolate overflow-hidden border-b border-line bg-canvas text-ink"
       aria-roledescription="carousel"
       aria-label={t.carousel}
       onMouseEnter={() => setHover(true)}
@@ -68,25 +70,39 @@ export default function HeroSlider({
         touchX.current = null;
       }}
     >
-      {hasImages &&
-        slides.map((s, i) =>
-          s.image ? (
-            <div
-              key={i}
-              aria-hidden
-              className={`absolute inset-y-0 right-0 -z-10 hidden w-[45%] transition-opacity duration-1000 lg:block ${i === index ? "opacity-100" : "opacity-0"}`}
-            >
-              <Image src={s.image} alt="" fill priority={i === 0} sizes="45vw" className="object-cover" />
-            </div>
-          ) : null,
-        )}
+      {hasImages && (
+        <div aria-hidden className="absolute inset-0 -z-10">
+          {/* Photos de nos réalisations en fond : fondu enchaîné et léger zoom lent. */}
+          {slides.map((s, i) =>
+            s.image ? (
+              <div
+                key={i}
+                className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ${i === index ? "opacity-100" : "opacity-0"}`}
+              >
+                <Image
+                  src={s.image}
+                  alt=""
+                  fill
+                  priority={i === 0}
+                  sizes="100vw"
+                  style={s.imagePosition ? { objectPosition: s.imagePosition } : undefined}
+                  className={`object-cover transition-transform duration-[8000ms] ease-out ${i === index ? "scale-100" : "scale-110"}`}
+                />
+              </div>
+            ) : null,
+          )}
+          {/* Voile : texte toujours lisible (contraste ≥ 4,5:1), photo visible à droite sur grand écran. */}
+          <div className="absolute inset-0 bg-canvas/75 lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-10% lg:via-canvas/65 lg:via-50% lg:to-canvas/10" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-canvas/90 to-transparent" />
+        </div>
+      )}
 
       <div
         className={`container-x relative grid min-h-[34rem] items-center gap-12 pt-14 pb-28 lg:min-h-[44rem] lg:pt-16 ${
-          aside && !hasImages ? "lg:grid-cols-[minmax(0,1fr)_25rem] xl:gap-20" : ""
+          aside ? "lg:grid-cols-[minmax(0,1fr)_25rem] xl:gap-20" : ""
         }`}
       >
-        <div className={`relative ${hasImages ? "max-w-2xl lg:max-w-[50%]" : "max-w-4xl"}`}>
+        <div className="relative max-w-4xl [text-shadow:0_1px_14px_rgba(4,17,31,0.75)] [&_.btn]:[text-shadow:none]">
           {slides.map((s, i) => (
             <div
               key={i}
@@ -135,7 +151,7 @@ export default function HeroSlider({
           </ul>
         </div>
 
-        {aside && !hasImages && <div className="hidden lg:block">{aside}</div>}
+        {aside && <div className="hidden lg:block">{aside}</div>}
 
         <div className="absolute inset-x-0 bottom-0 pb-8">
           <div className="container-x flex items-center gap-4">

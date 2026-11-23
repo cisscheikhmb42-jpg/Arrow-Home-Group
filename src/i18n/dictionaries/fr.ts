@@ -210,11 +210,7 @@ const fr = {
     gridTitle: "Toutes les catégories",
     viewAll: "Voir toutes les réalisations",
     illustration: "Photos à venir",
-    illustrationNote: "Les photographies de nos chantiers seront publiées très prochainement.",
     illustrationCaption: "Domaine d'intervention",
-    followLead: "Suivre nos chantiers sur",
-    followAnd: "et",
-    followTail: "",
     startProject: "Un projet similaire ?",
     count: "{n} élément(s)",
     detail: {
@@ -279,11 +275,6 @@ const fr = {
     cta: "Voir nos vidéos sur TikTok",
   },
 
-  diaspora: {
-    title: "Vous vivez à l'étranger ?",
-    text: "Faites avancer votre projet au Sénégal en toute sérénité : un seul interlocuteur, des points réguliers avec photos et vidéos du chantier, et un suivi clair à chaque étape.",
-    cta: "Parler de mon projet",
-  },
 
   process: {
     eyebrow: "Notre méthode",

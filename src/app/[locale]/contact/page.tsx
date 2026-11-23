@@ -17,7 +17,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const t = getDictionary(locale);
   return (
     <>
-      <PageHero eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} />
+      <PageHero eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} image="/photos/projets/agence-ecobank-thiaroye/facade.jpg" />
       <section className="bg-canvas py-20 lg:py-28">
         <div className="container-x grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <Reveal className="space-y-10">

@@ -29,7 +29,7 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
   };
   return (
     <>
-      <PageHero eyebrow={t.quote.eyebrow} title={t.quote.title} text={t.quote.text} />
+      <PageHero eyebrow={t.quote.eyebrow} title={t.quote.title} text={t.quote.text} image="/photos/projets/p703-villa-sangalkam/villa-jardin.jpg" />
       <section className="bg-canvas py-20 lg:py-28">
         <div className="container-x grid gap-14 lg:grid-cols-[1.6fr_1fr] lg:gap-20">
           <Reveal>

@@ -12,7 +12,7 @@ export default function QuickQuote({ locale, t }: { locale: Locale; t: Dictionar
   const q = t.hero.quick;
   const quote = href(locale, "quote");
   return (
-    <div className="border border-line bg-raised p-6 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.6)] sm:p-8">
+    <div className="border border-line bg-raised/85 p-6 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-md sm:p-8">
       <span className="block h-0.5 w-10 bg-accent" aria-hidden />
       <h2 className="display mt-5 text-2xl text-ink sm:text-3xl">{q.title}</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted">{q.text}</p>

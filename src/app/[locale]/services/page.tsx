@@ -21,7 +21,12 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const t = getDictionary(locale);
   return (
     <>
-      <PageHero eyebrow={t.services.eyebrow} title={t.services.title} text={`${t.services.subtitle} ${t.services.pageIntro}`} />
+      <PageHero
+        eyebrow={t.services.eyebrow}
+        title={t.services.title}
+        text={`${t.services.subtitle} ${t.services.pageIntro}`}
+        image="/photos/projets/projet-p7-kalia/vue-aerienne.jpg"
+      />
 
       <nav aria-label={t.services.title} className="sticky top-[4.5rem] z-30 border-b border-line bg-canvas/90 backdrop-blur lg:top-24">
         <ul className="container-x scroller flex gap-6 overflow-x-auto py-4 text-[13px] font-medium tracking-[0.08em] whitespace-nowrap uppercase lang-zh:tracking-normal">

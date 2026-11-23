@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import HeroSlider, { type Slide } from "@/components/HeroSlider";
 import QuickQuote from "@/components/QuickQuote";
-import { AboutSection, ContactSection, DiasporaBand, FollowNote, ProcessTimeline, StatsBand, Testimonials, VideosBand } from "@/components/sections/Blocks";
+import { AboutSection, ContactSection, ProcessTimeline, StatsBand, Testimonials, VideosBand } from "@/components/sections/Blocks";
 import PortfolioRail from "@/components/sections/PortfolioRail";
 import SectionHeading from "@/components/sections/SectionHeading";
 import ServicesGrid from "@/components/sections/ServicesGrid";
@@ -19,10 +19,33 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   // Chaque diapositive renvoie vers une vraie page (devis pré-rempli, réalisations, méthode…).
   const slides: Slide[] = [
-    { ...s[0], cta: { label: s[0].cta, href: quote }, secondary: { label: s[0].secondary, href: href(locale, "projects") } },
-    { ...s[1], cta: { label: s[1].cta, href: `${quote}?service=construction` }, secondary: { label: s[1].secondary, href: href(locale, "services") } },
-    { ...s[2], cta: { label: s[2].cta, href: `${quote}?service=renovation` }, secondary: { label: s[2].secondary, href: href(locale, "projects") } },
-    { ...s[3], cta: { label: s[3].cta, href: `${quote}?service=construction` }, secondary: { label: s[3].secondary, href: href(locale, "process") } },
+    // Fond de chaque diapositive : une photo de nos réalisations.
+    {
+      ...s[0],
+      cta: { label: s[0].cta, href: quote },
+      secondary: { label: s[0].secondary, href: href(locale, "projects") },
+      image: "/photos/projets/stade-iba-mar-diop/couverture-tribune.jpg",
+      imagePosition: "50% 60%",
+    },
+    {
+      ...s[1],
+      cta: { label: s[1].cta, href: `${quote}?service=construction` },
+      secondary: { label: s[1].secondary, href: href(locale, "services") },
+      image: "/photos/projets/projet-p7-kalia/facade-principale.jpg",
+      imagePosition: "60% 55%",
+    },
+    {
+      ...s[2],
+      cta: { label: s[2].cta, href: `${quote}?service=renovation` },
+      secondary: { label: s[2].secondary, href: href(locale, "projects") },
+      image: "/photos/projets/agence-ecobank-thiaroye/01-accueil-1.jpg",
+    },
+    {
+      ...s[3],
+      cta: { label: s[3].cta, href: `${quote}?service=construction` },
+      secondary: { label: s[3].secondary, href: href(locale, "process") },
+      image: "/photos/projets/p703-villa-sangalkam/01-villas-1.jpg",
+    },
   ];
 
   return (
@@ -59,8 +82,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </SectionHeading>
-          <FollowNote t={t} className="mt-10" />
-          <div className="mt-6">
+          <div className="mt-12">
             <PortfolioRail items={getPortfolioItems(locale, t)} t={t} />
           </div>
         </div>
@@ -69,7 +91,6 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <VideosBand t={t} />
       <AboutSection locale={locale} t={t} />
       <ProcessTimeline t={t} />
-      <DiasporaBand t={t} />
       <Testimonials locale={locale} t={t} />
       <ContactSection locale={locale} t={t} />
     </>

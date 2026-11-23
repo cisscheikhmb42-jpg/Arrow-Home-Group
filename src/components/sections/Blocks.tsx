@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import type { Locale } from "@/i18n/config";
@@ -5,7 +6,7 @@ import type { Dictionary } from "@/i18n/dictionaries/fr";
 import { href } from "@/i18n/routes";
 import { testimonials } from "@/content/trust";
 import { site, whatsappLink } from "@/lib/site";
-import { InstagramIcon, TikTokIcon, WhatsAppIcon } from "../Icon";
+import { TikTokIcon, WhatsAppIcon } from "../Icon";
 import Reveal from "../Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -101,27 +102,6 @@ export function AboutSection({
   );
 }
 
-/** Note sous « Nos réalisations » : photos à venir + liens Instagram et TikTok. */
-export function FollowNote({ t, className = "" }: { t: Dictionary; className?: string }) {
-  const p = t.portfolio;
-  const link = "inline-flex items-center gap-1.5 font-medium text-ink underline decoration-accent underline-offset-4";
-  return (
-    <Reveal className={`max-w-3xl border-l border-accent pl-5 text-sm leading-relaxed text-muted ${className}`}>
-      {p.illustrationNote} {p.followLead}{" "}
-      <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className={link}>
-        <InstagramIcon className="size-4" />
-        Instagram
-      </a>{" "}
-      {p.followAnd}{" "}
-      <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className={link}>
-        <TikTokIcon className="size-4" />
-        TikTok
-      </a>
-      {p.followTail}
-    </Reveal>
-  );
-}
-
 /** Bandeau « Nos chantiers en vidéo » : lien vers le compte TikTok (aucun script TikTok chargé sur le site). */
 export function VideosBand({ t }: { t: Dictionary }) {
   const v = t.videos;
@@ -141,33 +121,6 @@ export function VideosBand({ t }: { t: Dictionary }) {
           <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className="btn btn-primary shrink-0 self-start lg:self-auto">
             <TikTokIcon className="size-4" />
             {v.cta}
-          </a>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/** Bloc diaspora : projet au Sénégal suivi depuis l'étranger, contact direct par WhatsApp. */
-export function DiasporaBand({ t }: { t: Dictionary }) {
-  const d = t.diaspora;
-  return (
-    <section className="border-t border-line bg-canvas py-16 lg:py-24">
-      <div className="container-x">
-        <Reveal className="flex flex-col gap-8 border border-line bg-surface p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
-          <div className="max-w-2xl">
-            <span className="block h-0.5 w-10 bg-accent" aria-hidden />
-            <h2 className="display mt-6 text-3xl text-ink sm:text-4xl">{d.title}</h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">{d.text}</p>
-          </div>
-          <a
-            href={whatsappLink(t.contact.whatsappMsg)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary shrink-0 self-start lg:self-auto"
-          >
-            <WhatsAppIcon className="size-4" />
-            {d.cta}
           </a>
         </Reveal>
       </div>
@@ -340,14 +293,22 @@ export function CtaPanel({ locale, t }: { locale: Locale; t: Dictionary }) {
 }
 
 /** En-tete des pages interieures. */
-export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; title: string; text?: string; image?: string }) {
   return (
-    <section className="border-b border-line bg-canvas pt-16 pb-16 lg:pt-28 lg:pb-24">
+    <section className="relative isolate overflow-hidden border-b border-line bg-canvas pt-16 pb-16 lg:pt-28 lg:pb-24">
+      {image && (
+        <div aria-hidden className="absolute inset-0 -z-10">
+          <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-canvas/75 lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-15% lg:via-canvas/65 lg:via-50% lg:to-canvas/15" />
+        </div>
+      )}
       <div className="container-x">
         <Reveal className="max-w-4xl">
           <p className="eyebrow">{eyebrow}</p>
-          <h1 className="display mt-6 text-5xl text-ink sm:text-6xl lg:text-7xl">{title}</h1>
-          {text && <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{text}</p>}
+          <h1 className="display mt-6 text-5xl text-ink [text-shadow:0_1px_14px_rgba(4,17,31,0.75)] sm:text-6xl lg:text-7xl">{title}</h1>
+          {text && (
+            <p className={`mt-8 max-w-2xl text-lg leading-relaxed sm:text-xl ${image ? "text-ink [text-shadow:0_1px_10px_rgba(4,17,31,0.8)]" : "text-muted"}`}>{text}</p>
+          )}
         </Reveal>
       </div>
     </section>
