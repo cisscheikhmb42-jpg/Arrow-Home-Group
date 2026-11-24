@@ -293,6 +293,8 @@ export function CtaPanel({ locale, t }: { locale: Locale; t: Dictionary }) {
 }
 
 /** En-tete des pages interieures. */
+const SHADOW_CLASS = "[text-shadow:0_2px_18px_rgba(4,17,31,0.9)]";
+
 export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; title: string; text?: string; image?: string }) {
   return (
     <section
@@ -302,15 +304,15 @@ export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; tit
         // Téléphone et tablette : bandeau photo en haut qui se fond dans le bleu nuit ; ordinateur : pleine hauteur.
         <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-72 sm:h-96 lg:inset-y-0 lg:h-auto">
           <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-linear-to-b from-canvas/15 via-canvas/60 via-60% to-canvas lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-15% lg:via-canvas/65 lg:via-50% lg:to-canvas/15" />
+          <div className="absolute inset-0 bg-linear-to-b from-canvas/10 via-canvas/85 via-50% to-canvas lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/95 lg:from-15% lg:via-canvas/85 lg:via-55% lg:to-canvas/20" />
         </div>
       )}
       <div className="container-x">
-        <Reveal className="max-w-4xl">
+        <Reveal className={`max-w-4xl ${image ? SHADOW_CLASS : ""}`}>
           <p className="eyebrow">{eyebrow}</p>
-          <h1 className="display mt-6 text-5xl text-ink [text-shadow:0_1px_14px_rgba(4,17,31,0.75)] sm:text-6xl lg:text-7xl">{title}</h1>
+          <h1 className="display mt-6 text-5xl text-ink [text-shadow:0_2px_18px_rgba(4,17,31,0.9)] sm:text-6xl lg:text-7xl">{title}</h1>
           {text && (
-            <p className={`mt-8 max-w-2xl text-lg leading-relaxed sm:text-xl ${image ? "text-ink [text-shadow:0_1px_10px_rgba(4,17,31,0.8)]" : "text-muted"}`}>{text}</p>
+            <p className={`mt-8 max-w-2xl text-lg leading-relaxed sm:text-xl ${image ? "text-ink [text-shadow:0_2px_18px_rgba(4,17,31,0.9)]" : "text-muted"}`}>{text}</p>
           )}
         </Reveal>
       </div>

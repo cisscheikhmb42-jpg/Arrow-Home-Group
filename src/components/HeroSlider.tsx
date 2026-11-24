@@ -93,7 +93,7 @@ export default function HeroSlider({
             ) : null,
           )}
           {/* Voile : photo nette en haut sur téléphone/tablette, à droite sur ordinateur ; texte toujours lisible. */}
-          <div className="absolute inset-0 bg-linear-to-b from-canvas/20 via-canvas/60 via-60% to-canvas lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/90 lg:from-10% lg:via-canvas/65 lg:via-50% lg:to-canvas/10" />
+          <div className="absolute inset-0 bg-linear-to-b from-canvas/10 via-canvas/85 via-48% to-canvas lg:bg-transparent lg:bg-linear-to-r lg:from-canvas/95 lg:from-15% lg:via-canvas/85 lg:via-55% lg:to-canvas/20" />
           <div className="absolute inset-x-0 bottom-0 hidden h-40 bg-linear-to-t from-canvas/90 to-transparent lg:block" />
         </div>
       )}
@@ -105,7 +105,7 @@ export default function HeroSlider({
           aside ? "lg:grid-cols-[minmax(0,1fr)_25rem] xl:gap-20" : ""
         }`}
       >
-        <div className="relative max-w-4xl [text-shadow:0_1px_14px_rgba(4,17,31,0.75)] [&_.btn]:[text-shadow:none]">
+        <div className="relative max-w-4xl [text-shadow:0_2px_18px_rgba(4,17,31,0.9)] [&_.btn]:[text-shadow:none]">
           {slides.map((s, i) => (
             <div
               key={i}
